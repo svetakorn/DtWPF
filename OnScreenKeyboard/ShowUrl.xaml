@@ -1,0 +1,49 @@
+﻿<Page x:Class="OnScreenKeyboard.ShowUrl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OnScreenKeyboard"
+      xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+      xmlns:viewModels="clr-namespace:OnScreenKeyboard"
+      mc:Ignorable="d" 
+      d:DesignHeight="535" Width="668" MaxWidth="668"
+      Title="ShowUrl">
+    
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="background.png"/>
+        </Grid.Background>
+        <cefSharp:ChromiumWebBrowser
+      Address="{Binding Address, Mode=TwoWay}"
+      Title="{Binding Title, Mode=OneWayToSource}"
+      AllowDrop="True"
+      WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}" Margin="0,74,0,0">
+            <FrameworkElement.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Back" Command="{Binding WebBrowser.BackCommand}" />
+                    <MenuItem Header="Forward" Command="{Binding WebBrowser.ForwardCommand}" />
+                    <Separator />
+                    <MenuItem Header="Print ..." Command="{Binding WebBrowser.PrintCommand}" />
+                    <Separator />
+                    <MenuItem Header="Zoom In" Command="{Binding WebBrowser.ZoomInCommand}" />
+                    <MenuItem Header="Zoom Out" Command="{Binding WebBrowser.ZoomOutCommand}" />
+                    <MenuItem Header="Zoom Reset" Command="{Binding WebBrowser.ZoomResetCommand}" />
+                    <Separator />
+                    <MenuItem Header="Show DevTools" Command="{Binding ShowDevToolsCommand}" />
+                    <MenuItem Header="Close DevTools" Command="{Binding CloseDevToolsCommand}" />
+                    <Separator />
+                    <MenuItem Header="View Source" Command="{Binding WebBrowser.ViewSourceCommand}" />
+                    <MenuItem Header="Cut" Command="{Binding WebBrowser.CutCommand}"/>
+                    <MenuItem Header="Copy" Command="{Binding WebBrowser.CopyCommand}"/>
+                    <MenuItem Header="Paste" Command="{Binding WebBrowser.PasteCommand}"/>
+                </ContextMenu>
+            </FrameworkElement.ContextMenu>
+        </cefSharp:ChromiumWebBrowser>
+        <Image Name="backBut" HorizontalAlignment="Left" Height="27" Margin="606,27,0,0" VerticalAlignment="Top" Width="24" Source="back.png" MouseDown="backBut_MouseDown">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="back.png"/>
+            </Image.OpacityMask>
+        </Image>
+    </Grid>
+</Page>
