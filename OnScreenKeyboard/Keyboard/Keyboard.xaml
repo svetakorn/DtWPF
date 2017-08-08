@@ -7,48 +7,60 @@
              mc:Ignorable="d" 
              d:DesignHeight="351" d:DesignWidth="1120">
     <UserControl.Resources>
+        <Style x:Key="KeyButtonFocused">
+            
+            <Setter Property="Control.Background" Value="#886431EA" />
+            
+        </Style>
         <Style x:Key="KeyButtonSmall">
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
+            <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
         </Style>
         <Style x:Key="KeyButtonMedium">
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
+            <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="2" />
         </Style>
         <Style x:Key="KeyButtonBig">
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
+            <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="3" />
         </Style>
         <Style x:Key="KeyButtonSpace">
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
+            <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="8" />
         </Style>
     </UserControl.Resources>
     <Grid>
-            <!--Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4" Width="72" Content="Q" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></-->
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
