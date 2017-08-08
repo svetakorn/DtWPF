@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:OnScreenKeyboard"
       xmlns:TermControls="clr-namespace:TermControls;assembly=TermControls"
       mc:Ignorable="d" 
-      d:DesignHeight="1080"
-      Title="MainPage" KeepAlive="True" Width="1920">
+      d:DesignHeight="1077"
+      Title="MainPage" KeepAlive="True" d:DesignWidth="1998.5">
 
     <Grid>
         <Grid.Background>
@@ -55,7 +55,7 @@
                 </Image>
             </Grid>
             <Grid Grid.Row="1">
-                <local:NinePatch1 Margin="32"></local:NinePatch1>
+                <local:NinePatchPurple Margin="32"></local:NinePatchPurple>
                 <TermControls:OnScreenKeyboard x:Name="onScreenKeyboard" Command="{Binding ButtonClickCommand, ElementName=m}" Margin="64"/>
             </Grid>
             <Grid Grid.Row="2">
@@ -66,9 +66,15 @@
                 </Grid.ColumnDefinitions>
                 <local:Attach x:Name="attach_control" Grid.Column="0" Margin="32"/>
                 <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="32"></local:SeeMore>
-                <local:NinePatch1 Grid.Column="2" Margin="32"></local:NinePatch1>
-                <Image Source="prev_arrow.png" Grid.Column="2" VerticalAlignment="Top" Margin="64,48,64,0"></Image>
-                <Image Source="next_arrow.png" Grid.Column="2" VerticalAlignment="Bottom" Margin="64,0,64,48"></Image>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <local:NinePatch1 Margin="32" Grid.RowSpan="2"></local:NinePatch1>
+                    <Image Source="prev_arrow.png" VerticalAlignment="Top" Margin="64,48,64,48" Grid.Row="0"></Image>
+                    <Image Source="next_arrow.png" VerticalAlignment="Bottom" Margin="64,48,64,48" Grid.Row="1"></Image>
+                </Grid>
             </Grid>
             <Grid Grid.Row="3">
                 <Canvas Name="canvas" Grid.Row="2" Margin="-40,98,-40,2" Grid.RowSpan="2">
@@ -81,5 +87,5 @@
             </Grid>
         </Grid>
     </Grid>
-    
+
 </Page>
