@@ -125,6 +125,9 @@
       <DependentUpon>ListUrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NetworkingSingleton.cs" />
+    <Compile Include="NinePatchPurple.xaml.cs">
+      <DependentUpon>NinePatchPurple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NinePatch1.xaml.cs">
       <DependentUpon>NinePatch1.xaml</DependentUpon>
     </Compile>
@@ -181,6 +184,10 @@
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NinePatchPurple.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="NinePatch1.xaml">
       <SubType>Designer</SubType>
@@ -313,6 +320,14 @@
     <Resource Include="w_9\glow_gray9_tl.png" />
     <Resource Include="w_9\glow_gray9_tr.png" />
     <Resource Include="seeMoreText.png" />
+    <Resource Include="p_9\glow_purple9_bc.png" />
+    <Resource Include="p_9\glow_purple9_bl.png" />
+    <Resource Include="p_9\glow_purple9_br.png" />
+    <Resource Include="p_9\glow_purple9_ml.png" />
+    <Resource Include="p_9\glow_purple9_mr.png" />
+    <Resource Include="p_9\glow_purple9_tc.png" />
+    <Resource Include="p_9\glow_purple9_tl.png" />
+    <Resource Include="p_9\glow_purple9_tr.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
