@@ -7,13 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="351" d:DesignWidth="1120">
     <UserControl.Resources>
-        <Style x:Key="KeyButtonFocused">
-            
-            <Setter Property="Control.Background" Value="#886431EA" />
-            
-        </Style>
-        <Style x:Key="KeyButtonSmall">
-            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
+        <Style x:Key="KeyButtonSmall" TargetType="{x:Type Button}">
+
             <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
@@ -22,9 +17,29 @@
             <Setter Property="Control.Foreground" Value="White" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" 
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" 
+                          Value="True">
+                                <Setter Property="Background" 
+                           Value="#666431EA"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
         </Style>
         <Style x:Key="KeyButtonMedium">
-            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
             <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
@@ -36,7 +51,6 @@
             <Setter Property="Grid.ColumnSpan" Value="2" />
         </Style>
         <Style x:Key="KeyButtonBig">
-            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
             <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />
@@ -48,7 +62,6 @@
             <Setter Property="Grid.ColumnSpan" Value="3" />
         </Style>
         <Style x:Key="KeyButtonSpace">
-            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{DynamicResource KeyButtonFocused}" />
             <Setter Property="UIElement.Focusable" Value="false" />
             <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
             <Setter Property="FrameworkElement.Margin" Value="4" />

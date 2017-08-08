@@ -30,7 +30,15 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image Source="/OnScreenKeyboard;component/seeMoreText.png" Grid.Row="0" Margin="0,32,0,16"/>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="0.5*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Image Source="/OnScreenKeyboard;component/seeMoreText.png" Grid.Row="1" Opacity="0.86"/>
+            </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
 
@@ -41,10 +49,42 @@
 
 
                 </Grid.ColumnDefinitions>
-                <Image x:Name="num1" Grid.Column="0" Source="Images/num1.png" MouseDown="num1_MouseDown" VerticalAlignment="top" Margin="32"/>
-                <Image x:Name="num2" Grid.Column="1" Source="Images/num2.png" MouseDown="num2_MouseDown" VerticalAlignment="top" Margin="32"/>
-                <Image x:Name="num3" Grid.Column="2" Source="Images/num3.png" MouseDown="num3_MouseDown" VerticalAlignment="top" Margin="32"/>
-                <Image x:Name="num4" Grid.Column="3" Source="Images/num4.png" MouseDown="num4_MouseDown" VerticalAlignment="top" Margin="32"/>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="num1" Grid.Row="1" Source="Images/num1.png" MouseDown="num1_MouseDown" VerticalAlignment="top"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Image x:Name="num2" Grid.Row="1" Source="Images/num2.png" MouseDown="num2_MouseDown" VerticalAlignment="top"/>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Image x:Name="num3" Grid.Row="1" Source="Images/num3.png" MouseDown="num3_MouseDown" VerticalAlignment="top"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Image x:Name="num4" Grid.Row="1" Source="Images/num4.png" MouseDown="num4_MouseDown" VerticalAlignment="top"/>
+                </Grid>
             </Grid>
 
 

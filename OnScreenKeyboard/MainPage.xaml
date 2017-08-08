@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnScreenKeyboard"
+      xmlns:local1="clr-namespace:OnScreenKeyboard.Keyboard"
       xmlns:TermControls="clr-namespace:TermControls;assembly=TermControls"
       mc:Ignorable="d" 
       d:DesignHeight="1077"
@@ -20,10 +21,10 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="2.4*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="1.2*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -40,7 +41,7 @@
                         <ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
                     </Image.OpacityMask>
                 </Image>
-                <TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="32" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="4">
+                <TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
                     <TextBox.SelectionBrush>
                         <SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
                     </TextBox.SelectionBrush>
@@ -53,36 +54,36 @@
                         <ImageBrush ImageSource="search_icon.png" Stretch="Uniform"/>
                     </Image.OpacityMask>
                 </Image>
+                <Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="White" Foreground="#00000000" BorderThickness="4" />
             </Grid>
             <Grid Grid.Row="1">
-                <local:NinePatchPurple Margin="32"></local:NinePatchPurple>
-                <TermControls:OnScreenKeyboard x:Name="onScreenKeyboard" Command="{Binding ButtonClickCommand, ElementName=m}" Margin="64"/>
+                <local:NinePatchPurple Margin="16"></local:NinePatchPurple>
+                <local1:Keyboard Margin="48"></local1:Keyboard>
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"></ColumnDefinition>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <local:Attach x:Name="attach_control" Grid.Column="0" Margin="32"/>
-                <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="32"></local:SeeMore>
-                <Grid Grid.Column="2">
+                <local:Attach x:Name="attach_control" Grid.Column="0" Margin="16"/>
+                <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16"></local:SeeMore>
+                <Grid Grid.Column="2" Margin="16">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <local:NinePatch1 Margin="32" Grid.RowSpan="2"></local:NinePatch1>
-                    <Image Source="prev_arrow.png" VerticalAlignment="Top" Margin="64,48,64,48" Grid.Row="0"></Image>
-                    <Image Source="next_arrow.png" VerticalAlignment="Bottom" Margin="64,48,64,48" Grid.Row="1"></Image>
+                    <local:NinePatchA Grid.RowSpan="2"></local:NinePatchA>
+                    <Image Source="up_arrow.png" VerticalAlignment="Center" Grid.Row="0" Height="12"></Image>
+                    <Image Source="down_arrow.png" VerticalAlignment="Center" Grid.Row="1" Height="12"></Image>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3">
-                <Canvas Name="canvas" Grid.Row="2" Margin="-40,98,-40,2" Grid.RowSpan="2">
-                    <Canvas.Background>
-                        <ImageBrush ImageSource="InfoBarBackground.png" Stretch="Uniform"/>
-                    </Canvas.Background>
+                <local:RunningText Margin="16, 0"></local:RunningText>
+                <Canvas Name="canvas">
+                    
 
-                    <TextBlock x:Name="_runningText" Padding="5,0" Foreground="White" FontSize="40" VerticalAlignment="Center" Canvas.Left="80" ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="560" HorizontalAlignment="Center" Canvas.Top="10" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"><Run/><LineBreak/><Run Text="Какие документы стратегического планирования разрабатываются МинФином России?"/></TextBlock>
+                    <TextBlock x:Name="_runningText" Padding="5,10" Foreground="White" FontSize="32" VerticalAlignment="Center" Canvas.Left="80" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Canvas.Top="10" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"><Run/><Run Text="Какие документы стратегического планирования разрабатываются МинФином России?"/></TextBlock>
                 </Canvas>
             </Grid>
         </Grid>

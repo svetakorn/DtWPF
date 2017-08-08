@@ -128,6 +128,9 @@
       <DependentUpon>ListUrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="NetworkingSingleton.cs" />
+    <Compile Include="NinePatchA.xaml.cs">
+      <DependentUpon>NinePatchA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NinePatchPurple.xaml.cs">
       <DependentUpon>NinePatchPurple.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,9 @@
     </Compile>
     <Compile Include="Node.cs" />
     <Compile Include="OSD.cs" />
+    <Compile Include="RunningText.xaml.cs">
+      <DependentUpon>RunningText.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SeeMore\SeeMore.xaml.cs">
       <DependentUpon>SeeMore.xaml</DependentUpon>
     </Compile>
@@ -192,11 +198,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NinePatchA.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="NinePatchPurple.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NinePatch1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RunningText.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,15 +331,6 @@
     <Resource Include="pic_icon.png" />
     <Resource Include="url_icon.png" />
     <Resource Include="doc_icon.png" />
-    <Resource Include="w_9\glow_gray9_bc.png" />
-    <Resource Include="w_9\glow_gray9_bl.png" />
-    <Resource Include="w_9\glow_gray9_br.png" />
-    <Resource Include="w_9\glow_gray9_mc.png" />
-    <Resource Include="w_9\glow_gray9_ml.png" />
-    <Resource Include="w_9\glow_gray9_mr.png" />
-    <Resource Include="w_9\glow_gray9_tc.png" />
-    <Resource Include="w_9\glow_gray9_tl.png" />
-    <Resource Include="w_9\glow_gray9_tr.png" />
     <Resource Include="seeMoreText.png" />
     <Resource Include="p_9\glow_purple9_bc.png" />
     <Resource Include="p_9\glow_purple9_bl.png" />
@@ -335,6 +340,21 @@
     <Resource Include="p_9\glow_purple9_tc.png" />
     <Resource Include="p_9\glow_purple9_tl.png" />
     <Resource Include="p_9\glow_purple9_tr.png" />
+    <Resource Include="down_arrow.png" />
+    <Resource Include="up_arrow.png" />
+    <Resource Include="a_9\a9_1.png" />
+    <Resource Include="a_9\a9_2.png" />
+    <Resource Include="a_9\a9_22.png" />
+    <Resource Include="w_9\glow_gray9_bc.png" />
+    <Resource Include="w_9\glow_gray9_bl.png" />
+    <Resource Include="w_9\glow_gray9_br.png" />
+    <Resource Include="w_9\glow_gray9_mc.png" />
+    <Resource Include="w_9\glow_gray9_ml.png" />
+    <Resource Include="w_9\glow_gray9_mr.png" />
+    <Resource Include="w_9\glow_gray9_tc.png" />
+    <Resource Include="w_9\glow_gray9_tl.png" />
+    <Resource Include="w_9\glow_gray9_tr.png" />
+    <Resource Include="infoBarDecoration.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

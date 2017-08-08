@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:OnScreenKeyboard" 
+             xmlns:local="clr-namespace:OnScreenKeyboard"
              >
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="16" />
+                <RowDefinition Height="32" />
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="16"/>
+                <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="32"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="32"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="1" Grid.Column="0" >
@@ -23,34 +23,34 @@
                     <ImageBrush ImageSource="w_9/glow_gray9_ml.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentX="Left"
-                       Viewport="0,0,3000,10.85"
+                       Viewport="0,0,3000,32"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1" >
                 <Grid.Background>
-                    <ImageBrush ImageSource="w_9/glow_gray9_tc.png" TileMode="FlipY" 
+                    <ImageBrush ImageSource="w_9/glow_gray9_tc.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentY="Top"
-                       Viewport="0,0,10.85,3000"
+                       Viewport="0,0,32,3000"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="2" >
                 <Grid.Background>
-                    <ImageBrush ImageSource="w_9/glow_gray9_mr.png" TileMode="FlipX" 
+                    <ImageBrush ImageSource="w_9/glow_gray9_mr.png" TileMode="FlipXY" 
                        Stretch="Uniform"
-                       AlignmentX="Right"
-                       Viewport="0,0,16.275,10.85"
+                       AlignmentX="Left"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
             <Grid Grid.Row="2" Grid.Column="1" >
                 <Grid.Background>
-                    <ImageBrush ImageSource="w_9/glow_gray9_bc.png" TileMode="FlipY" 
+                    <ImageBrush ImageSource="w_9/glow_gray9_bc.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentY="Bottom"
-                       Viewport="0,0,10.85,16.275"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -63,7 +63,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Right"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -74,7 +74,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Left"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -85,7 +85,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Right"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -96,7 +96,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Left"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,32,32"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
