@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="OnScreenKeyboard.Keyboard.Keyboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnScreenKeyboard.Keyboard"
+             mc:Ignorable="d" 
+             d:DesignHeight="351" d:DesignWidth="1120">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4" Width="72" Content="Q" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="W" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="E" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="R" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="T" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="Y" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="U" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="I" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="O" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="P" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="[" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="72" Content="]" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Margin="4"  Width="152" Content="(=" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="A" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="S" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="D" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="F" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="G" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="H" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="J" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="K" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="L" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content=";" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="'" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="232" Content="ENTER" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="152" Content="^" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="Z" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="X" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="C" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="V" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="B" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="N" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="M" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="," Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="." Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="72" Content="/" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="152" Content="^" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="152" Content="?123" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="792" Content="                                              " Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+            <Button FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"  Margin="4" Width="152" Content="(RU)" Background="#336431EA" Foreground="White" BorderBrush="#CCFFFFFF" Padding="24,0" FontSize="36"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

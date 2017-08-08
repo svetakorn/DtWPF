@@ -55,7 +55,7 @@
                 </Image>
             </Grid>
             <Grid Grid.Row="1">
-                <local:NinePatch1 Margin="32"></local:NinePatch1>
+                <local:NinePatchPurple Margin="32"></local:NinePatchPurple>
                 <TermControls:OnScreenKeyboard x:Name="onScreenKeyboard" Command="{Binding ButtonClickCommand, ElementName=m}" Margin="64"/>
             </Grid>
             <Grid Grid.Row="2">
