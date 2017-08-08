@@ -41,6 +41,7 @@
                         <ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
                     </Image.OpacityMask>
                 </Image>
+                <Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#66FFFFFF" Foreground="#00000000" BorderThickness="4" />
                 <TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
                     <TextBox.SelectionBrush>
                         <SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
@@ -54,7 +55,6 @@
                         <ImageBrush ImageSource="search_icon.png" Stretch="Uniform"/>
                     </Image.OpacityMask>
                 </Image>
-                <Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="White" Foreground="#00000000" BorderThickness="4" />
             </Grid>
             <Grid Grid.Row="1">
                 <local:NinePatchPurple Margin="16"></local:NinePatchPurple>
