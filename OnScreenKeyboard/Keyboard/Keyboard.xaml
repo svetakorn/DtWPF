@@ -12,7 +12,7 @@
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
         </Style>
@@ -21,7 +21,7 @@
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="2" />
@@ -31,7 +31,7 @@
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="3" />
@@ -41,7 +41,7 @@
             <Setter Property="FrameworkElement.Margin" Value="4" />
             <Setter Property="Control.Background" Value="#336431EA" />
             <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="#556431EA" />
+            <Setter Property="Control.Foreground" Value="Black" />
             <Setter Property="Control.FontSize" Value="32" />
             <Setter Property="Control.Padding" Value="16" />
             <Setter Property="Grid.ColumnSpan" Value="8" />
