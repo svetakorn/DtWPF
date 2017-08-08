@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnScreenKeyboard"
         mc:Ignorable="d"
-        Title="Datatron" Height="1080" Width="1920" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Left="0" HorizontalAlignment="Center" VerticalAlignment="Center" Top="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="48">
+        Title="Datatron" Height="1080" Width="1920">
     <Grid>
         <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
     </Grid>
