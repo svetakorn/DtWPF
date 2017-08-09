@@ -307,51 +307,29 @@ namespace OnScreenKeyboard
 
                         try
                         {
-                            List<string> docs     = new List<string>();
-                            List<string> docNames = new List<string>();
-                            List<string> pics     = new List<string>();
-                            List<string> picNames = new List<string>();
-                            List<string> urls     = new List<string>();
-                            List<string> urlNames = new List<string>();
+
+                            int docCount = 0, picCount = 0, urlCount = 0;
 
                             JArray attachments = responce["answer"]["attachments"];
+                            List<AttachClass> AL = new List<AttachClass>();
                             foreach (dynamic item in attachments)
                             {
-                                switch ((string)item["type"])
-                                {
-                                    case "document":
-                                        docs.Add((string)item["path"]);
-                                        docNames.Add((string)item["description"]);
-                                        break;
-                                    case "picture":
-                                        pics.Add((string)item["path"]);
-                                        picNames.Add((string)item["description"]);
-                                        break;
-                                    case "url":
-                                        urls.Add((string)item["path"]);
-                                        urlNames.Add((string)item["description"]);
-                                        break;
+                                AL.Add(new AttachClass((string)item["description"], (string)item["path"], (string)item["type"]));
+                                switch ((string)item["type"]) {
+                                    case "document":docCount++;break;
+                                    case "image":picCount++; break;
+                                    case "url":urlCount++; break;
                                 }
                             }
 
+                            attach_control.SetDocCount(docCount);
+                            docsCount = docCount;
+                            attach_control.SetPicCount(picCount);
+                            picsCount = picCount;
+                            attach_control.SetUrlCount(urlCount);
+                            urlsCount = urlCount;
 
-
-                            attach_control.SetDocCount(docs.Count);
-                            docsCount = docs.Count;
-                            ListDocument.SendDocNames(docNames);
-                            ShowDocument.SendDocs(docs);
-                            
-                            attach_control.SetPicCount(pics.Count);
-                            picsCount = pics.Count;
-                            ListImage.SendImgNames(picNames);
-                            ListImage.SendImgs(pics);
-                            ShowImage.SendImgs(pics);
-
-                            ListUrl.SendUrlNames(urlNames);
-                            attach_control.SetUrlCount(urls.Count);
-                            urlsCount = urls.Count;
-                            ShowUrlViewModel.SendUrls(urls);
-
+                            ListAttachments.SendAttachInfo(AL);
                             //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
                         catch
@@ -761,10 +739,14 @@ namespace OnScreenKeyboard
 
         private void attach_control_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Debug.WriteLine("KEK");
             if ((attach_control.DocLabel != 0) || (attach_control.PicLabel != 0) || (attach_control.UrlLabel != 0))
             {
+            Debug.WriteLine("LOL");
                 NavigationService nav = NavigationService.GetNavigationService(this);
-                nav.Navigate(new Uri("AttachMenu.xaml", UriKind.RelativeOrAbsolute));
+            Debug.WriteLine("ARBIDOL");
+                nav.Navigate(new Uri("ListAttachments.xaml", UriKind.RelativeOrAbsolute));
+                Debug.WriteLine("KEK");
 
             }
         }

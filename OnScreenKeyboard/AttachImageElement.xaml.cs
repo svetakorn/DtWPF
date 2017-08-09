@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace OnScreenKeyboard
 {
     /// <summary>
-    /// Логика взаимодействия для AttachMenu.xaml
+    /// Логика взаимодействия для AttachImageElement.xaml
     /// </summary>
-    public partial class AttachMenu : Page
+    public partial class AttachImageElement : UserControl
     {
-        public AttachMenu()
+        public AttachImageElement()
         {
             InitializeComponent();
-        }
-
-        private void backBut_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.GoBack();
         }
     }
 }

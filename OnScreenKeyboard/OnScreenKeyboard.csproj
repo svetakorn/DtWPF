@@ -101,8 +101,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AttachMenu.xaml.cs">
-      <DependentUpon>AttachMenu.xaml</DependentUpon>
+    <Compile Include="AttachClass.cs" />
+    <Compile Include="AttachElement.xaml.cs">
+      <DependentUpon>AttachElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttachImageElement.xaml.cs">
+      <DependentUpon>AttachImageElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Attach\Attach.xaml.cs">
       <DependentUpon>Attach.xaml</DependentUpon>
@@ -110,6 +114,9 @@
     <Compile Include="CubeAnswer.cs" />
     <Compile Include="Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListAttachments.xaml.cs">
+      <DependentUpon>ListAttachments.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -156,7 +163,11 @@
       <DependentUpon>ShowUrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShowUrlViewModel.cs" />
-    <Page Include="AttachMenu.xaml">
+    <Page Include="AttachElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AttachImageElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Keyboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListAttachments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -352,6 +367,9 @@
     <Resource Include="w_9\glow_gray9_tl.png" />
     <Resource Include="w_9\glow_gray9_tr.png" />
     <Resource Include="infoBarDecoration.png" />
+    <Resource Include="doc_only_icon.png" />
+    <Resource Include="pic_only_icon.png" />
+    <Resource Include="url_only_icon.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

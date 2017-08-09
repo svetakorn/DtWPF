@@ -1,0 +1,43 @@
+﻿<Page x:Class="OnScreenKeyboard.ListAttachments"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OnScreenKeyboard"
+      mc:Ignorable="d" 
+      d:DesignWidth="1920" d:DesignHeight="1080"
+      Title="ListAttachments">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="background.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="7*" ></RowDefinition>
+            <RowDefinition Height="64"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Content="ДОПОЛНЕНИЯ" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="64"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="64"/>
+
+        <Grid Grid.Column="1" Grid.Row="2" Name="grid1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+    </Grid>
+</Page>

@@ -107,7 +107,7 @@ namespace speechKit
 		public static void text_to_speech(string text, string filename = null, string lang="ru-RU", bool convert=true, bool as_audio=false, string file_like=null )
 		{
 			string url = string.Format("{0}?text={1}&format={2}&lang={3}&speaker={4}&key={5}&emotion={6}&speed={7}",
-			                    TTS_URL, text, "wav", lang, "oksana", YANDEX_API_KEY, "neutral", "1.0");
+			                    TTS_URL, text, "wav", lang, "oksana", YANDEX_API_KEY, "good", "1.0");
 
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
             
