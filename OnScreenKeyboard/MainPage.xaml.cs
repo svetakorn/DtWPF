@@ -45,6 +45,7 @@ namespace OnScreenKeyboard
             InitializeComponent();
             seeMore.num1.MouseDown += Num1_MouseDown;
             seeMore.num2.MouseDown += Num2_MouseDown;
+            onScreenKeyboard.Enter.Click += enter_MouseDown;
             Page_Loaded();
         }
 
@@ -271,7 +272,7 @@ namespace OnScreenKeyboard
         }
         string seeMoreQ1 = "", seeMoreQ2 = "";
 
-        void proceedRequest(string requestString)
+        void proceedRequest(string requestString, bool needClean = true)
         {
             string APIRESPONCE = GetAPIanswer(requestString);
 
@@ -326,7 +327,7 @@ namespace OnScreenKeyboard
                                         pics.Add((string)item["path"]);
                                         picNames.Add((string)item["description"]);
                                         break;
-                                    case "link":
+                                    case "url":
                                         urls.Add((string)item["path"]);
                                         urlNames.Add((string)item["description"]);
                                         break;
@@ -346,22 +347,25 @@ namespace OnScreenKeyboard
                             ListImage.SendImgs(pics);
                             ShowImage.SendImgs(pics);
 
+                            ListUrl.SendUrlNames(urlNames);
                             attach_control.SetUrlCount(urls.Count);
                             urlsCount = urls.Count;
-                            ListUrl.SendUrlNames(urlNames);
                             ShowUrlViewModel.SendUrls(urls);
 
                             //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
                         catch
                         {
+                            attach_control.SetDocCount(0);
+                            attach_control.SetPicCount(0);
+                            attach_control.SetUrlCount(0);
                             //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
                         }
 
                         if (docsCount + picsCount + urlsCount == 0)
-                            attach_control.background9.Opacity = 0.3;
+                            attach_control.Opacity = 0.3;
                         else
-                            attach_control.background9.Opacity = 1;
+                            attach_control.Opacity = 1;
 
                         if (!recordedAnswers.Contains(vns))
                         {
@@ -459,8 +463,12 @@ namespace OnScreenKeyboard
                 if (networking.client.Connected)
                 {
                     networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1.ToString(), vn2.ToString());
-                    onScreenKeyboard.Text = "";
-                    textBox.Text = "";
+                    if (needClean)
+                    {
+                        onScreenKeyboard.Text = "";
+                        textBox.Text = "";
+                    }
+
                 }
                 else
                 {
@@ -485,9 +493,13 @@ namespace OnScreenKeyboard
         {
             proceedRequest(textBox.Text);
         }
+        private void enter_MouseDown(object sender, RoutedEventArgs e)
+        {
+            proceedRequest(textBox.Text);
+        }
 
         #endregion
-        
+
         #region SPEECHKIT
         // WaveIn - поток для записи
         WaveIn waveIn;
@@ -569,11 +581,28 @@ namespace OnScreenKeyboard
             image2.Visibility = Visibility.Hidden;
             image.Visibility = Visibility.Visible;
 
-            textBox.Text = speechKit.Program.speech_to_text(outputFilename);
+            string voicetext = "";
+            voicetext = speechKit.Program.speech_to_text(outputFilename);
+            if (!voicetext.Equals("Извините, я не понимаю, попробуйте повторить запрос"))
+            {
+                textBox.Text = voicetext;
+                proceedRequest(textBox.Text, false);
+            }
+            else
+            {
+                Debug.WriteLine("TTS START");
+                speechKit.Program.text_to_speech("Извините, я не понимаю, попробуйте повторить запрос");
+                Debug.WriteLine("TTS STOP");
+                SoundPlayer sp = new SoundPlayer();
+                sp.SoundLocation = "speechGenerated.wav";
+                sp.Load();
+                sp.Play();
+                Debug.WriteLine("PLAY STOP");
+            }
         }
 
         #endregion
-    
+
         DoubleAnimation animation;
         ColorAnimation animation2;
         //double speed = 2;

@@ -127,7 +127,7 @@ namespace speechKit
                 	dataStream.CopyTo(ms);
                 	bArray = ms.ToArray();
                 	
-                	using (FileStream fs = new FileStream(@"\speechGenerated.wav", FileMode.Create, FileAccess.Write))
+                	using (FileStream fs = new FileStream("speechGenerated.wav", FileMode.Create, FileAccess.Write))
             		using (BinaryWriter bw = new BinaryWriter(fs))
             		{
                 		foreach(var item in bArray)
@@ -356,10 +356,19 @@ namespace speechKit
             var doc = new XmlDocument();
             {
                 doc.LoadXml(text);
-                foreach (XmlNode node in doc.SelectNodes("recognitionResults"))
+                try
                 {
-                    req = node.FirstChild.InnerText; //полученный текст
+                    foreach (XmlNode node in doc.SelectNodes("recognitionResults"))
+                    {
+                        req = node.FirstChild.InnerText; //полученный текст
+                    }
                 }
+                catch (Exception)
+                {
+
+                    req = "Извините, я не понимаю, попробуйте повторить запрос";
+                }
+               
             }
 
             return req;
