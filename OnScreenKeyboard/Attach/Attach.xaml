@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:OnScreenKeyboard"
              
              mc:Ignorable="d" 
-             d:DesignHeight="142.25" d:DesignWidth="346.691" >
+             d:DesignHeight="436.001" d:DesignWidth="1208.877" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0"></RowDefinition>
@@ -28,30 +28,30 @@
 
 
             <Grid Grid.Column="0">
-                <Image Source="/OnScreenKeyboard;component/doc_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Image Name="doc_img" Source="/OnScreenKeyboard;component/doc_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="240">
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/doc_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="doc_label" Margin="10, 34, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="8"></Label>
+                <Label Name="doc_label" Margin="204,246,123,124" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Height="66" Width="76"></Label>
             </Grid>
 
             <Grid Grid.Column="1">
-                <Image Source="/OnScreenKeyboard;component/pic_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <Image Name="pic_img" Source="/OnScreenKeyboard;component/pic_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center"  Width="240">
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/pic_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="pic_label" Margin="20, 32.5, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="8"></Label>
+                <Label Name="pic_label" Margin="220,244,117,124" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Width="66" Height="68"></Label>
             </Grid>
 
             <Grid Grid.Column="2">
-                <Image Source="/OnScreenKeyboard;component/url_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image Name="url_img" Source="/OnScreenKeyboard;component/url_icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="240">
                     <Image.OpacityMask>
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/url_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="url_label" Margin="15.5, 33.5, 0, 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="8"></Label>
+                <Label Name="url_label" Margin="212,246,140,124" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Height="66" Width="51"></Label>
             </Grid>
 
 
