@@ -514,7 +514,6 @@ namespace OnScreenKeyboard
         {
             waveIn.StopRecording();
             writer.Close();
-            try { File.Delete("2.wav"); } catch { Debug.WriteLine("cant delete 2.wav"); }
 
         }
         //Окончание записи
@@ -570,7 +569,7 @@ namespace OnScreenKeyboard
             image2.Visibility = Visibility.Hidden;
             image.Visibility = Visibility.Visible;
 
-            textBox.Text = speechKit.Program.speech_to_text(80, filename: outputFilename);
+            textBox.Text = speechKit.Program.speech_to_text(outputFilename);
         }
 
         #endregion

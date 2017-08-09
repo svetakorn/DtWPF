@@ -14,14 +14,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Xml;
-using Alvas.Audio;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace speechKit
 {
-	class Program
+	public class Program
 	{
 		public static string YANDEX_API_KEY = "e05f5a12-8e05-4161-ad05-cf435a4e7d5b";
         public static string YANDEX_ASR_HOST = "asr.yandex.net";
@@ -36,29 +35,6 @@ namespace speechKit
 		{
 		}
 
-        public static void convert_to_ogg(string filePath) //return byte[]
-		{
-            DsReader dr = new DsReader(filePath);
-            if (dr.HasAudio)
-            {
-                string waveFile = filePath + ".wav";
-                WaveWriter ww = new WaveWriter(File.Create(waveFile),
-                    AudioCompressionManager.FormatBytes(dr.ReadFormat()));
-                ww.WriteData(dr.ReadData());
-                ww.Close();
-                dr.Close();
-                try
-                {
-                    Sox.Convert(@"C:\sox-14-4-2\sox.exe", waveFile, waveFile + ".ogg", SoxAudioFileType.Ogg);
-                    Console.WriteLine("the file "+waveFile+" is converted to ogg");
-                }
-                catch (SoxException ex)
-                {
-                    Console.WriteLine(ex); ;
-                }
-            }
-		}
-		
         /*
 		public static byte[] convert_to_mp3(string filePath)
 		{
@@ -266,9 +242,9 @@ namespace speechKit
 		}
 		*/
 		
-		public static string speech_to_text(byte[] bytes)
+		public static string speech_to_text(string filepath)
 		{
-			/* TASK USAGE
+            /* TASK USAGE
 			var topic= "queries";
 			var lang="ru-RU";
 			HttpWebRequest request = null;
@@ -282,7 +258,9 @@ namespace speechKit
 			send_task.Start();
 			send_task.Wait();
 			*/
-			var topic = "queries";
+            byte[] bytes = File.ReadAllBytes(filepath);
+
+            var topic = "queries";
 			var lang = "ru-RU";
 			
 			var request_id = new Guid();
@@ -372,8 +350,19 @@ namespace speechKit
 
            tcpStream.Close();
            client.Close();
+            Debug.WriteLine("!@#%^&" + returnData + "&^%$");
 
-            return (returnData);
+            string req = "";
+            var doc = new XmlDocument();
+            {
+                doc.LoadXml(text);
+                foreach (XmlNode node in doc.SelectNodes("recognitionResults"))
+                {
+                    req = node.FirstChild.InnerText; //полученный текст
+                }
+            }
+
+            return req;
 
 		}
 		
