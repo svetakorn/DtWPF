@@ -32,9 +32,9 @@ namespace OnScreenKeyboard
             imgNum = i;
         }
 
-        public static void SendImgs(JArray d)
+        public static void SendImgs(List<string> d)
         {
-            img = d.ToObject<string[]>();
+            img = d.ToArray();
         }
 
         public ShowImage()

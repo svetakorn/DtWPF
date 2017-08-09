@@ -52,9 +52,9 @@ namespace OnScreenKeyboard
             }
         }
 
-        public static void SendUrlNames(JArray docs)
+        public static void SendUrlNames(List<string> docs)
         {
-            urlNames = docs.ToObject<string[]>();
+            urlNames = docs.ToArray();
         }
 
         private void label_MouseDown(object sender, MouseButtonEventArgs e)

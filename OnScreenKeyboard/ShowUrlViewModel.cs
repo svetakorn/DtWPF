@@ -22,9 +22,9 @@ namespace OnScreenKeyboard
             urlNum = i;
         }
 
-        public static void SendUrls(JArray d)
+        public static void SendUrls(List<string> d)
         {
-            url = d.ToObject<string[]>();
+            url = d.ToArray();
         }
 
 

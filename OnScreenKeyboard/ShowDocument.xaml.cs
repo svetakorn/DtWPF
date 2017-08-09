@@ -37,9 +37,9 @@ namespace OnScreenKeyboard
             docNum = i;
         }
 
-        public static void SendDocs(JArray d)
+        public static void SendDocs(List<string> d)
         {
-            docs = d.ToObject<string[]>();
+            docs = d.ToArray();
         }
 
         public ShowDocument()

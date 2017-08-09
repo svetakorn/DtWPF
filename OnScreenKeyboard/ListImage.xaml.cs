@@ -70,14 +70,14 @@ namespace OnScreenKeyboard
             }
         }
 
-        public static void SendImgs(JArray im)
+        public static void SendImgs(List<string> im)
         {
-            img = im.ToObject<string[]>();
+            img = im.ToArray();
         }
 
-        public static void SendImgNames(JArray img)
+        public static void SendImgNames(List<string> img)
         {
-            imgNames = img.ToObject<string[]>();
+            imgNames = img.ToArray();
         }
 
         private void label_MouseDown(object sender, MouseButtonEventArgs e)

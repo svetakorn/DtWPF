@@ -50,6 +50,161 @@ namespace OnScreenKeyboard
 
         #region UNITY_NETWORKING
 
+        string[] recordedAnswers = {
+            "2.1",
+            "2.2",
+            "2.3",
+            "2.4",
+            "4.1",
+            "4.2",
+            "4.3",
+            "4.4",
+            "4.5",
+            "4.6",
+            "4.7",
+            "4.8",
+            "4.9",
+            "4.10",
+            "4.11",
+            "4.12",
+            "4.13",
+            "4.14",
+            "4.15",
+            "4.16",
+            "4.17",
+            "4.18",
+            "4.19",
+            "4.20",
+            "4.21",
+            "4.22",
+            "4.23",
+            "4.28",
+            "4.29",
+            "6.1",
+            "6.2",
+            "8.1",
+            "8.2",
+            "8.3",
+            "8.4",
+            "8.5",
+            "8.6",
+            "8.7",
+            "8.8",
+            "8.9",
+            "8.10",
+            "8.11",
+            "8.12",
+            "8.13",
+            "8.14",
+            "8.15",
+            "8.16",
+            "8.17",
+            "8.18",
+            "8.19",
+            "8.20",
+            "8.21",
+            "8.22",
+            "9.1",
+            "9.2",
+            "9.3",
+            "9.4",
+            "9.5",
+            "9.6",
+            "10.1",
+            "10.2",
+            "10.3",
+            "10.4",
+            "10.5",
+            "10.6",
+            "14.1",
+            "14.2",
+            "14.3",
+            "14.4",
+            "14.5",
+            "16.1",
+            "16.2",
+            "16.3",
+            "16.4",
+            "16.5",
+            "16.6",
+            "16.7",
+            "16.8",
+            "17.1",
+            "17.2",
+            "17.3",
+            "17.4",
+            "17.5",
+            "17.6",
+            "17.7",
+            "17.8",
+            "17.9",
+            "17.10",
+            "17.11",
+            "17.12",
+            "17.13",
+            "17.14",
+            "17.15",
+            "17.16",
+            "17.17",
+            "17.18",
+            "17.19",
+            "17.20",
+            "17.21",
+            "17.22",
+            "17.23",
+            "17.24",
+            "17.25",
+            "17.26",
+            "18.1",
+            "18.2",
+            "18.3",
+            "18.4",
+            "18.5",
+            "19.1",
+            "19.2",
+            "19.3",
+            "19.4",
+            "19.5",
+            "18.1",
+            "20.2",
+            "20.3",
+            "20.4",
+            "20.5",
+            "21.1",
+            "21.2",
+            "21.3",
+            "21.4",
+            "21.5",
+            "21.6",
+            "21.7",
+            "21.8",
+            "21.9",
+            "21.10",
+            "21.11",
+            "21.12",
+            "21.13",
+            "21.14",
+            "21.15",
+            "21.16",
+            "21.17",
+            "21.18",
+            "21.19",
+            "21.20",
+            "21.21",
+            "21.22",
+            "21.23",
+            "21.24",
+            "21.25",
+            "21.26",
+            "21.27",
+            "21.28",
+            "21.29",
+            "21.30",
+            "21.31",
+            "21.32",
+            "21.33"
+        };
+
         NetworkingSingleton networking = NetworkingSingleton.getInstance();
         SendAudioData audioLoudness = new SendAudioData();
 
@@ -150,52 +305,82 @@ namespace OnScreenKeyboard
 
                         try
                         {
-                            JArray docs = responce["answer"]["document"];
-                            JArray docNames = responce["answer"]["document_caption"];
+                            List<string> docs     = new List<string>();
+                            List<string> docNames = new List<string>();
+                            List<string> pics     = new List<string>();
+                            List<string> picNames = new List<string>();
+                            List<string> urls     = new List<string>();
+                            List<string> urlNames = new List<string>();
+
+                            JArray attachments = responce["answer"]["attachments"];
+                            foreach (dynamic item in attachments)
+                            {
+                                switch ((string)item["type"])
+                                {
+                                    case "document":
+                                        docs.Add((string)item["path"]);
+                                        docNames.Add((string)item["description"]);
+                                        break;
+                                    case "picture":
+                                        pics.Add((string)item["path"]);
+                                        picNames.Add((string)item["description"]);
+                                        break;
+                                    case "link":
+                                        urls.Add((string)item["path"]);
+                                        urlNames.Add((string)item["description"]);
+                                        break;
+                                }
+                            }
+
+
+
                             attach_control.SetDocCount(docs.Count);
                             docsCount = docs.Count;
                             ListDocument.SendDocNames(docNames);
                             ShowDocument.SendDocs(docs);
-
-                            if (docs.Count == 0) attach_control.doc_img.Opacity = 0.3; else attach_control.doc_img.Opacity = 1;
-                        }
-                        catch
-                        {
-                            attach_control.SetDocCount(0); attach_control.doc_img.Opacity = 0.3;
-                        }
-                        try
-                        {
-                            JArray pics = responce["answer"]["picture"];
-                            JArray picNames = responce["answer"]["picture_caption"];
+                            
                             attach_control.SetPicCount(pics.Count);
                             picsCount = pics.Count;
                             ListImage.SendImgNames(picNames);
                             ListImage.SendImgs(pics);
                             ShowImage.SendImgs(pics);
 
-                            if (pics.Count == 0) attach_control.pic_img.Opacity = 0.3; else attach_control.pic_img.Opacity = 1;
-                        }
-                        catch
-                        {
-                            attach_control.SetPicCount(0); attach_control.pic_img.Opacity = 0.3;
-                        }
-                        try
-                        {
-                            JArray urls = responce["answer"]["link"];
-                            JArray urlNames = responce["answer"]["link_name"];
                             attach_control.SetUrlCount(urls.Count);
                             urlsCount = urls.Count;
                             ListUrl.SendUrlNames(urlNames);
                             ShowUrlViewModel.SendUrls(urls);
 
-                            if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
+                            //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
                         catch
                         {
-                            attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
+                            //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
                         }
 
+                        if (docsCount + picsCount + urlsCount == 0)
+                            attach_control.background9.Opacity = 0.3;
+                        else
+                            attach_control.background9.Opacity = 1;
 
+                        if (!recordedAnswers.Contains(vns))
+                        {
+                            try
+                            {
+                                //SpeechKit.text_to_speech((string)responce["answer"]["short_answer"]);
+                                SoundPlayer sp = new SoundPlayer();
+                                sp.SoundLocation = "speechGenerated.wav";
+                                sp.Load();
+                                Task.Delay(1500).ContinueWith(_ =>
+                                {
+                                    sp.Play();
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                Debug.WriteLine(ex);
+                                //MessageBox.Show("Голосовая запись ответа по кубу не создана");
+                            }
+                        }
 
                     }
                     if (type.Equals("cube"))
