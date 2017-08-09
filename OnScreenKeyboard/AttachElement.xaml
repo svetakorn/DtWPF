@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <local:NinePatchPurple Grid.ColumnSpan="4" ></local:NinePatchPurple>
-        <Image Name="icon" Grid.Column="1" Source="url_only_icon.png" Height="32"/>
-        <Label Name="caption" Grid.Column="2" Content="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
+        <Image Name="icon" Grid.Column="1" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Name="caption" Grid.Column="2" Text="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="80" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32"/>
     </Grid>
 </UserControl>

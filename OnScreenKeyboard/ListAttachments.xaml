@@ -24,8 +24,8 @@
             <RowDefinition Height="64"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Content="ДОПОЛНЕНИЯ" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="64"/>
-        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="64"/>
+        <Label Content="ДОПОЛНЕНИЯ" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="64" Margin="32,0,0,0"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
 
         <Grid Grid.Column="1" Grid.Row="2" Name="grid1">
             <Grid.ColumnDefinitions>

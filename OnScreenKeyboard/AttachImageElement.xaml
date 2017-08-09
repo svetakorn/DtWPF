@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnScreenKeyboard"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="400" d:DesignWidth="743"
       >
 
     <Grid>
@@ -16,13 +16,15 @@
             <ColumnDefinition Width="16" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="16"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <local:NinePatchPurple Grid.ColumnSpan="4" Grid.RowSpan="2" ></local:NinePatchPurple>
-        <Image Name="icon" Grid.Column="1" Source="pic_only_icon.png" Height="32"/>
-        <Label Name="caption" Grid.Column="2" Content="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Height="32"/>
-        <Image Name="image" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Margin="16" Source="p_9/glow_purple9_tl.png" Stretch="Fill"/>
+        <local:NinePatchPurple Grid.ColumnSpan="4" Grid.RowSpan="4" ></local:NinePatchPurple>
+        <Image Name="icon" Grid.Column="1" Grid.Row="1" Source="pic_only_icon.png" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBlock Name="caption" Grid.Column="2" Grid.Row="1" Text="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Stretch"  FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0"/>
+        <Image Name="image" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Source="p_9/glow_purple9_tl.png" />
     </Grid>
 </UserControl>
