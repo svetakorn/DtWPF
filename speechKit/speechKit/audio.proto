@@ -1,0 +1,246 @@
+﻿syntax = "proto2";
+
+import "basic.proto";
+
+package VoiceProxyProtobuf;
+
+// use this part of ConnectionRequest to specify additional options for decoder/proxy
+message AdvancedASROptions
+{
+  // send back partial results, if disabled only results with endOfUtt == true will be send
+  optional bool partial_results = 1 [default = true];
+
+  // beam, lattice_beam, lattice_nbest - are low level decoder options
+  optional float beam = 2 [default = -1];
+
+  optional float lattice_beam = 3 [default = -1];
+
+  optional int32 lattice_nbest = 4 [default = -1];
+
+  // specify interval in 10mc of silence/noice which will separe sentences, defines how often you will receive endOfUtt == true
+  optional int32 utterance_silence = 5 [default = 120];
+
+  // disable all partial and results with "endOfUtt" - will response only when AddData with "lastChunk" is received
+  optional bool allow_multi_utt = 16 [default = true];
+
+  // if client sends too many chunks (more then server could process) - if timeout (in mc) specify how many buffers sound should be read
+  // before sending to decoder, this may vary how often partial_results are sending
+  optional int32 chunk_process_limit = 17 [default = 100];
+
+  // cmn is a internal feature of decoder
+  optional int32 cmn_window = 18 [default = 600];
+
+  optional int32 cmn_latency = 19 [default = 150];
+
+  // capitalize and expected_num_count are features of "normalized" field of the AddDataResponse recognition result
+  
+  // specify if "normalized" results will be capitalize
+  optional bool capitalize = 20 [default = false];
+
+  // if specified normalizer will try to fit this count, for example "twenty two" will normalize to 20 2, if "3" is set as expected, default will be 22
+  optional int32 expected_num_count = 21 [default = 0];
+  
+  // list of phrases for on-fly grammar, for example "yes", "no" in case of en-US
+  // this field made "topic" in ConnectionRequest irrelevant, instead this list is used to build "language model" on the fly
+  repeated string grammar = 22;
+  
+  // the same as previous, but partially support srgs, you can specify items, tags and simple rules, for example:
+  //   <?xml version="1.0" ?>
+  // <grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="ru-RU" root="root" version="1.0" mode="voice" tag-format="semantics/1.0-literals">
+  //   <rule id="root">
+  //     <one-of>
+  //       <item><ruleref special="GARBAGE" /></item>
+  //       <item><tag>оплатил</tag>оплатил</item>
+  //       <item><tag>оплатил</tag>да</item>
+  //       <item><tag>не оплатил</tag>не оплатил</item>
+  //       <item><tag>не оплатил</tag>нет</item>
+  //     </one-of>
+  //   </rule>
+  // </grammar>
+  optional string srgs = 23;
+
+  // currently supports "gender", "age", "group", "language", "children", "emotion" and combination with ",", like "age,gender"
+  // checkout BiometryResult
+  optional string biometry = 24;
+
+  // turn on confidence rescoring procedure
+  optional bool use_snr = 25 [default = false];
+}
+
+message ConnectionRequest
+{
+  optional int32 protocolVersion = 1 [default = 1];
+
+  // leave empty if you are not speechkit
+  required string speechkitVersion = 2;
+
+  required string serviceName = 3; // "asr_dictation", etc.
+
+  required string uuid = 4;
+
+  optional string yandexuid = 21;
+
+  required string apiKey = 5;
+
+  required string applicationName = 6;
+
+  // vendor:model:type... user defined
+  required string device = 7;
+
+  // lat.lat,lan.lan
+  required string coords = 8;
+
+  // "general", "mapsyari", "freeform", "music"
+  // topic is ignored, if grammar or srgs from advancedAsrOptions are set
+  required string topic = 9;
+
+  // "ru-RU"
+  required string lang = 10;
+
+  // "audio/x-speex", "audio/x-pcm;bit=16;rate=8000", etc.
+  required string format = 11;
+
+  // enable punctuation mode for "freeform" topic (some other topic may support punctuation in the future)
+  optional bool punctuation = 12 [default = true];
+
+  optional bool disableAntimatNormalizer = 18 [default = false];
+
+  optional AdvancedASROptions advancedASROptions = 19;
+
+  optional bool skipAudioFromLogging = 20 [default = false];
+
+  // deprecated
+  optional MusicRequest musicRequest = 17;
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+message AddData
+{
+  optional bytes audioData = 1;
+
+  required bool lastChunk = 2;
+}
+
+///////////////////////////////////////////////////////////////////////////
+
+message AlignInfo
+{
+  optional float start_time = 1;
+
+  optional float end_time = 2;
+
+  optional float acoustic_score = 3;
+
+  optional float graph_score = 4;
+
+  optional float lm_score = 5;
+
+  optional float total_score = 6;
+}
+
+message Word
+{
+  required float confidence = 1;
+
+  required string value = 2;
+
+  optional VoiceProxyProtobuf.AlignInfo align_info = 3;
+}
+
+message Result
+{
+  // notice: confidence valid only when endOfUttr is true, otherwise always "1"
+  required float confidence = 1;
+
+  repeated Word words = 2;
+
+  optional string normalized = 3;
+
+  optional VoiceProxyProtobuf.AlignInfo align_info = 4;
+}
+
+message BiometryResult
+{
+    required string classname = 1;
+
+    required float confidence = 2;
+
+    optional string tag = 3;
+}
+
+message SnrFeature
+{
+    optional string name = 1;
+
+    optional float value = 2;
+}
+
+message SnrInfo
+{
+    optional string normalizedText = 1;
+
+    optional float snrValue = 2;
+
+    repeated SnrFeature features = 3;
+
+    optional string featureSlices = 4;
+
+    optional int32 originalCandidateIndex = 5;
+}
+
+message Metainfo
+{
+    required float minBeam = 1;
+
+    required float maxBeam = 2;
+    
+    repeated SnrInfo snrInfos = 3;
+
+    optional string topic = 4;
+
+    optional string lang = 5;
+
+    optional string version = 6;
+    
+    optional string load_timestamp = 7;
+
+    optional int32 snrResponseCode = 8;
+
+    optional bool snr_performed_rescoring = 9;
+}
+
+message AddDataResponse
+{
+  required BasicProtobuf.ConnectionResponse.ResponseCode responseCode = 1;
+
+  repeated Result recognition = 2;
+
+  // if true : recognition contains fully parsed N-best list (n results with n words)
+  // otherwise recognition contains just 1 result 1 word with current "partical result"
+  optional bool endOfUtt = 3 [default = false];
+
+  // how many AddData requests were merged for this response
+  optional int32 messagesCount = 4 [default = 1];
+
+  // if not empty messageCounter should be 0
+  optional string musicProxyResponse = 5;
+
+  repeated BiometryResult bioResult = 6;
+
+  optional Metainfo metainfo = 7;
+}
+
+// deprecated
+message MusicRequest
+{
+  message MusicParam
+  {
+    required string name = 1;
+
+    required string value = 2;
+  }
+
+  // default options are "uid", "OAuth", "widget"
+  repeated MusicParam musicProxyOptions = 1;
+}

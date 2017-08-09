@@ -156,9 +156,6 @@
       <DependentUpon>ShowUrl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ShowUrlViewModel.cs" />
-    <Compile Include="WaitingMode.xaml.cs">
-      <DependentUpon>WaitingMode.xaml</DependentUpon>
-    </Compile>
     <Page Include="AttachMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -227,10 +224,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowUrl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WaitingMode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -31,6 +31,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using Datatron.Networking;
 using System.Media;
+using speechKit;
 
 namespace OnScreenKeyboard
 {
@@ -366,7 +367,7 @@ namespace OnScreenKeyboard
                         {
                             try
                             {
-                                //SpeechKit.text_to_speech((string)responce["answer"]["short_answer"]);
+                                speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
                                 SoundPlayer sp = new SoundPlayer();
                                 sp.SoundLocation = "speechGenerated.wav";
                                 sp.Load();
@@ -392,7 +393,7 @@ namespace OnScreenKeyboard
                         user_query = responce["answer"]["feedback"]["user_request"];
                         try
                         {
-                            //SpeechKit.text_to_speech((string)responce["answer"]["formatted_response"]);
+                            speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
                             SoundPlayer sp = new SoundPlayer();
                             sp.SoundLocation = "speechGenerated.wav";
                             sp.Load();
@@ -569,7 +570,7 @@ namespace OnScreenKeyboard
             image2.Visibility = Visibility.Hidden;
             image.Visibility = Visibility.Visible;
 
-         //   textBox.Text = SpeechKit.speech_to_text(80, filename: outputFilename);
+            textBox.Text = speechKit.Program.speech_to_text(80, filename: outputFilename);
         }
 
         #endregion

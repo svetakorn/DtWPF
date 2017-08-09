@@ -1,0 +1,83 @@
+﻿syntax = "proto2";
+
+import "basic.proto";
+
+package ProtobufSerialize;
+
+message ConnectionRequest
+{
+  optional int32 protocolVersion = 1 [default = 1];
+  
+  required string speechkitVersion = 2;
+            
+  required string serviceName = 3;
+            
+  required string uuid = 4;
+            
+  required string apiKey = 5;
+            
+  required string applicationName = 6;
+            
+  required string device = 7;
+            
+  required string coords = 8;
+            
+  required string topic = 9;
+            
+  required string lang = 10;
+            
+  required string format = 11;            
+}
+
+message ConnectionResponse
+{
+    required ResponseCode responseCode = 1;
+            
+    required string sessionId = 2;
+            
+    optional string message = 3;
+            
+    enum ResponseCode {
+    OK = 200;
+    BadMessageFormatting = 400;
+    UnknownService = 404;
+    NotSupportedVersion = 405;
+    Timeout = 408;
+    ProtocolError = 410;
+    InternalError = 500;
+    }
+}
+
+message AddData
+{
+  optional bytes audioData = 1;
+            
+  required bool lastChunk = 2;
+}
+
+message Word
+{
+  required float confidence = 1;
+            
+  required string value = 2;
+}
+            
+message Result
+{
+  required float confidence = 1;
+  
+  repeated Word words = 2;
+            
+  optional string normalized = 3;
+}
+            
+message AddDataResponse
+{
+  required BasicProtobuf.ConnectionResponse.ResponseCode responseCode = 1;
+            
+  repeated Result recognition = 2;
+            
+  optional bool endOfUtt = 3 [default = false];
+            
+  optional int32 messagesCount = 4 [default = 1];
+}
