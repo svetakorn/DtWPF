@@ -393,7 +393,8 @@ namespace OnScreenKeyboard
                         formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
                         foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
                         { formatted_responce += " | " + ((string)item["member_caption"]); }
-                        formatted_responce += "\n\n Ответ: " + (string)responce["answer"]["formatted_response"];
+                        formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
+                        formatted_responce += "\nАктуальность ответа: 03.08.2017";
 
 
                     }

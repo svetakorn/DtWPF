@@ -69,18 +69,6 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Patagames.Pdf, Version=3.8.1.2704, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\Pdfium.Net.SDK.3.8.1\lib\net452\Patagames.Pdf.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Patagames.Pdf.WinForms, Version=3.8.1.0, Culture=neutral, PublicKeyToken=60fd6cf9b15941cf, processorArchitecture=MSIL">
-      <HintPath>..\packages\Pdfium.Net.SDK.3.8.1\lib\net452\Patagames.Pdf.WinForms.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Patagames.Pdf.Wpf, Version=3.8.1.0, Culture=neutral, PublicKeyToken=37f2796639c62e77, processorArchitecture=MSIL">
-      <HintPath>..\packages\Pdfium.Net.SDK.3.8.1\lib\net452\Patagames.Pdf.Wpf.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
