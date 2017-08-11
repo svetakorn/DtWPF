@@ -435,77 +435,103 @@ namespace OnScreenKeyboard
             try
             {
                 responce = JsonConvert.DeserializeObject(APIRESPONCE);
-            }
-            catch (Exception ex) { MessageBox.Show("JSON плагин упал. Это баг в плагине. Уже ищем другой."); throw new Exception(ex.Message); }
 
-            try
-            {
-                string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none";
-                int docsCount = 0, picsCount = 0, urlsCount = 0;
-                int vn1 = 0, vn2 = 1;
 
                 try
                 {
-                    type = responce["answer"]["type"].ToString();
-                    if (type.Equals("minfin"))
+                    string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none";
+                    int docsCount = 0, picsCount = 0, urlsCount = 0;
+                    int vn1 = 0, vn2 = 1;
+
+                    try
                     {
-
-                        string vns = ((string)(responce["answer"]["number"]));
-                        vn1 = int.Parse(vns.Substring(0, vns.IndexOf('.')));
-                        vn2 = int.Parse(vns.Substring(vns.IndexOf('.') + 1));
-
-                        //seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Visible;
-                        seeMore.Opacity = 1; attach_control.Opacity = 1;
-                        user_query = responce["answer"]["question"];
-                        formatted_responce = responce["answer"]["full_answer"];
-
-                        try
+                        type = responce["answer"]["type"].ToString();
+                        if (type.Equals("minfin"))
                         {
 
-                            int docCount = 0, picCount = 0, urlCount = 0;
+                            string vns = ((string)(responce["answer"]["number"]));
+                            vn1 = int.Parse(vns.Substring(0, vns.IndexOf('.')));
+                            vn2 = int.Parse(vns.Substring(vns.IndexOf('.') + 1));
 
-                            JArray attachments = responce["answer"]["attachments"];
-                            List<AttachClass> AL = new List<AttachClass>();
-                            foreach (dynamic item in attachments)
+                            //seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Visible;
+                            seeMore.Opacity = 1; attach_control.Opacity = 1;
+                            user_query = responce["answer"]["question"];
+                            formatted_responce = responce["answer"]["full_answer"];
+
+                            try
                             {
-                                AL.Add(new AttachClass((string)item["description"], (string)item["path"], (string)item["type"]));
-                                switch ((string)item["type"]) {
-                                    case "document":docCount++;break;
-                                    case "image":picCount++; break;
-                                    case "url":urlCount++; break;
+
+                                int docCount = 0, picCount = 0, urlCount = 0;
+
+                                JArray attachments = responce["answer"]["attachments"];
+                                List<AttachClass> AL = new List<AttachClass>();
+                                foreach (dynamic item in attachments)
+                                {
+                                    AL.Add(new AttachClass((string)item["description"], (string)item["path"], (string)item["type"]));
+                                    switch ((string)item["type"])
+                                    {
+                                        case "document": docCount++; break;
+                                        case "image": picCount++; break;
+                                        case "url": urlCount++; break;
+                                    }
+                                }
+
+                                attach_control.SetDocCount(docCount);
+                                docsCount = docCount;
+                                attach_control.SetPicCount(picCount);
+                                picsCount = picCount;
+                                attach_control.SetUrlCount(urlCount);
+                                urlsCount = urlCount;
+
+                                ListAttachments.SendAttachInfo(AL);
+                                ShowDocument.SendAttachInfo(AL);
+
+                                //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
+                            }
+                            catch
+                            {
+                                attach_control.SetDocCount(0);
+                                attach_control.SetPicCount(0);
+                                attach_control.SetUrlCount(0);
+                                //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
+                            }
+
+                            if (docsCount + picsCount + urlsCount == 0)
+                                attach_control.Opacity = 0.3;
+                            else
+                                attach_control.Opacity = 1;
+
+                            if (!recordedAnswers.Contains(vns))
+                            {
+                                try
+                                {
+                                    speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
+                                    SoundPlayer sp = new SoundPlayer();
+                                    sp.SoundLocation = "speechGenerated.wav";
+                                    sp.Load();
+                                    Task.Delay(1500).ContinueWith(_ =>
+                                    {
+                                        sp.Play();
+                                    });
+                                }
+                                catch (Exception ex)
+                                {
+                                    Debug.WriteLine(ex);
+                                    //MessageBox.Show("Голосовая запись ответа по кубу не создана");
                                 }
                             }
 
-                            attach_control.SetDocCount(docCount);
-                            docsCount = docCount;
-                            attach_control.SetPicCount(picCount);
-                            picsCount = picCount;
-                            attach_control.SetUrlCount(urlCount);
-                            urlsCount = urlCount;
-
-                            ListAttachments.SendAttachInfo(AL);
-                            ShowDocument.SendAttachInfo(AL);
-                            
-                            //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
-                        catch
+                        if (type.Equals("cube"))
                         {
-                            attach_control.SetDocCount(0);
-                            attach_control.SetPicCount(0);
-                            attach_control.SetUrlCount(0);
-                            //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
-                        }
+                            vn2 = 0;
 
-                        if (docsCount + picsCount + urlsCount == 0)
-                            attach_control.Opacity = 0.3;
-                        else
-                            attach_control.Opacity = 1;
-
-                        if (!recordedAnswers.Contains(vns))
-                        {
+                            //                        seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Hidden;
+                            seeMore.Opacity = 1; attach_control.Opacity = 0.3;
+                            user_query = responce["answer"]["feedback"]["user_request"];
                             try
                             {
-                                speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
+                                speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
                                 SoundPlayer sp = new SoundPlayer();
                                 sp.SoundLocation = "speechGenerated.wav";
                                 sp.Load();
@@ -519,107 +545,83 @@ namespace OnScreenKeyboard
                                 Debug.WriteLine(ex);
                                 //MessageBox.Show("Голосовая запись ответа по кубу не создана");
                             }
+
+                            formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
+                            foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
+                            { formatted_responce += " | " + ((string)item["member_caption"]); }
+                            formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
+                            formatted_responce += "\nАктуальность ответа: 03.08.2017";
+
+
                         }
-
-                    }
-                    if (type.Equals("cube"))
-                    {
-                        vn2 = 0;
-
-                        //                        seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Hidden;
-                        seeMore.Opacity = 1; attach_control.Opacity = 0.3;
-                        user_query = responce["answer"]["feedback"]["user_request"];
-                        try
+                        if (formatted_responce == null)
                         {
-                            speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
-                            SoundPlayer sp = new SoundPlayer();
-                            sp.SoundLocation = "speechGenerated.wav";
-                            sp.Load();
-                            Task.Delay(1500).ContinueWith(_ =>
-                            {
-                                sp.Play();
-                            });
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine(ex);
-                            //MessageBox.Show("Голосовая запись ответа по кубу не создана");
+                            formatted_responce = "Не найден ответ";
                         }
 
-                        formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
-                        foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
-                        { formatted_responce += " | " + ((string)item["member_caption"]); }
-                        formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
-                        formatted_responce += "\nАктуальность ответа: 03.08.2017";
-
-
                     }
-                    if (formatted_responce == null)
-                    {
-                        formatted_responce = "Не найден ответ";
-                    }
+                    catch { formatted_responce = "Не найден ответ"; }
 
-                }
-                catch { formatted_responce = "Не найден ответ"; }
+                    string[] seeMoreQuestions = new string[2];
 
-                string[] seeMoreQuestions = new string[2];
-
-                try
-                {
-                    seeMore.num3.Opacity = 0.3;
-                    seeMore.num4.Opacity = 0.3;
-
-                    JArray[] seeMoreQuestionsArrays = new JArray[2];
-                    int[] seeIndex = { 0, 0 };
-                    try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
-                    try { seeMoreQuestionsArrays[1] = responce["more_minfin_answers"]; } catch { }
-                    string order = responce["more_answers_order"];
-
-                    for (int i = 0; i < seeMoreQuestions.Length; i++)
-                    {
-                        try
-                        {
-                            seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["domain"];
-                            foreach (var item in seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["dims"])
-                            { seeMoreQuestions[i] += " | " + ((string)item["member_caption"]); }
-                            seeIndex[0]++;
-                        }
-                        catch { seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[1]]["question"]; seeIndex[1]++; }
-                    }
-                    seeMoreQ1 = seeMoreQuestions[0];
-                    seeMoreQ2 = seeMoreQuestions[1];
-
-                    if (seeMoreQ1 == "") seeMore.num1.Opacity = 0.3;
-                    if (seeMoreQ2 == "") seeMore.num2.Opacity = 0.3;
-                }
-                catch { }
-
-
-                if (networking.client.Connected)
-                {
-                    networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1.ToString(), vn2.ToString());
-                    if (needClean)
-                    {
-                        onScreenKeyboard.Text = "";
-                        textBox.Text = "";
-                    }
-
-                }
-                else
-                {
                     try
                     {
-                        networking.Reconnect();
-                        networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount);
+                        seeMore.num3.Opacity = 0.3;
+                        seeMore.num4.Opacity = 0.3;
+
+                        JArray[] seeMoreQuestionsArrays = new JArray[2];
+                        int[] seeIndex = { 0, 0 };
+                        try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
+                        try { seeMoreQuestionsArrays[1] = responce["more_minfin_answers"]; } catch { }
+                        string order = responce["more_answers_order"];
+
+                        for (int i = 0; i < seeMoreQuestions.Length; i++)
+                        {
+                            try
+                            {
+                                seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["domain"];
+                                foreach (var item in seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["dims"])
+                                { seeMoreQuestions[i] += " | " + ((string)item["member_caption"]); }
+                                seeIndex[0]++;
+                            }
+                            catch { seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[1]]["question"]; seeIndex[1]++; }
+                        }
+                        seeMoreQ1 = seeMoreQuestions[0];
+                        seeMoreQ2 = seeMoreQuestions[1];
+
+                        if (seeMoreQ1 == "") seeMore.num1.Opacity = 0.3;
+                        if (seeMoreQ2 == "") seeMore.num2.Opacity = 0.3;
                     }
-                    catch
+                    catch { }
+
+
+                    if (networking.client.Connected)
                     {
-                        onScreenKeyboard.Text = "";
-                        textBox.Text = "NO UNITY CONNECTED 1";
+                        networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1.ToString(), vn2.ToString());
+                        if (needClean)
+                        {
+                            onScreenKeyboard.Text = "";
+                            textBox.Text = "";
+                        }
+
+                    }
+                    else
+                    {
+                        try
+                        {
+                            networking.Reconnect();
+                            networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount);
+                        }
+                        catch
+                        {
+                            onScreenKeyboard.Text = "";
+                            textBox.Text = "NO UNITY CONNECTED 1";
+                        }
                     }
                 }
+                catch (Exception ex) { throw new Exception(ex.Message); }
             }
-            catch (Exception ex) { throw new Exception(ex.Message); }
+            catch () { MessageBox.Show("JSON плагин упал. Это баг в плагине. Уже ищем другой."); }
 
 
         }
