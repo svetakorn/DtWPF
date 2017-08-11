@@ -27,12 +27,24 @@ namespace OnScreenKeyboard
     {
         NetworkingSingleton networking = NetworkingSingleton.getInstance();
 
-       
+        static string path;
+        static string caption;
+
+        public static void SendUrl(string url)
+        {
+            path = url;
+        }
+
+        public static void SendCaption(string capt)
+        {
+            caption = capt;
+        }
 
         public ShowUrl()
         {
             InitializeComponent();
-        
+            browser.Address = path;
+            url_name.Text = caption;
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

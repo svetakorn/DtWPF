@@ -124,14 +124,16 @@ namespace OnScreenKeyboard
             NavigationService nav = NavigationService.GetNavigationService(this);
             nav.Navigate(new Uri("ShowUrl.xaml", UriKind.RelativeOrAbsolute));
             AttachElement control = (AttachElement)sender;
-            
 
-            string queryURL = ShowUrlViewModel.url[(int)control.Tag];
+
+            ShowUrl.SendUrl(attachments[(int)control.Tag].path);
+            ShowUrl.SendCaption(attachments[(int)control.Tag].caption);
 
             networking.tmr.Enabled = false;
+            string qwerty = "^U" + attachments[(int)control.Tag].path;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^U" + queryURL);
+                networking.SendMessage(qwerty);
             });
             Task.Delay(300).ContinueWith(_ =>
             {

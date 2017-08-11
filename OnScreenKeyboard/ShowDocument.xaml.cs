@@ -70,7 +70,7 @@ namespace OnScreenKeyboard
             pdfViewer.VerticalContentAlignment = VerticalAlignment.Center;
             pdfViewer.HorizontalContentAlignment = HorizontalAlignment.Center;
 
-            doc_name.Content = attachments[docNum].caption;
+            doc_name.Text = attachments[docNum].caption;
 
             pdfViewer.OpenFile("C:/xampp/htdocs/docs/doc/" + attachments[docNum].path);
             //MessageBox.Show(pdfViewer.TotalPages.ToString());

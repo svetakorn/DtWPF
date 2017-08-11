@@ -28,7 +28,7 @@
             <RowDefinition Height="7*" ></RowDefinition>
             <RowDefinition Height="64"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Name="doc_name" Content="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0,128,0"/>
+        <TextBlock Name="doc_name" Text="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Width="1200" HorizontalAlignment="Left" Height="96"/>
         <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
         <mpp:MoonPdfPanel Grid.Row="2" Grid.Column="1" Name="pdfViewer" ScrollViewer.ScrollChanged ="pdfViewer_ScrollChanged" MaxZoomFactor="0.65" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
 

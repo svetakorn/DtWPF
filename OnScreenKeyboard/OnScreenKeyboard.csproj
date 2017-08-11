@@ -113,15 +113,6 @@
     <Compile Include="ComplexNumber.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="FFTProcessor.cs" />
-    <Compile Include="ListDocument.xaml.cs">
-      <DependentUpon>ListDocument.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ListImage.xaml.cs">
-      <DependentUpon>ListImage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ListUrl.xaml.cs">
-      <DependentUpon>ListUrl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NetworkingSingleton.cs" />
     <Compile Include="NinePatchA.xaml.cs">
       <DependentUpon>NinePatchA.xaml</DependentUpon>
@@ -150,7 +141,6 @@
     <Compile Include="ShowUrl.xaml.cs">
       <DependentUpon>ShowUrl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShowUrlViewModel.cs" />
     <Page Include="AttachElement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,18 +158,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ListAttachments.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListDocument.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListImage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListUrl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

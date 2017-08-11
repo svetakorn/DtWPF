@@ -485,7 +485,8 @@ namespace OnScreenKeyboard
 
                                 ListAttachments.SendAttachInfo(AL);
                                 ShowDocument.SendAttachInfo(AL);
-
+                                
+                                
                                 //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                             }
                             catch
@@ -621,7 +622,7 @@ namespace OnScreenKeyboard
                 }
                 catch (Exception ex) { throw new Exception(ex.Message); }
             }
-            catch () { MessageBox.Show("JSON плагин упал. Это баг в плагине. Уже ищем другой."); }
+            catch (Exception ex) { MessageBox.Show("JSON плагин упал. Это баг в плагине. Уже ищем другой."); }
 
 
         }
