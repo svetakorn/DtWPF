@@ -33,6 +33,9 @@ namespace OnScreenKeyboard
         private int pastPage;
         static AttachClass[] attachments;
 
+        private static int page;
+        private static string path;
+
         public static void SendNum(int i)
         {
             docNum = i;
@@ -51,8 +54,8 @@ namespace OnScreenKeyboard
         public ShowDocument()
         {
             InitializeComponent();
-
-
+            page = 1;
+            browser.Navigate("http://localhost/?page=" + page + "&pdfpath=/docs/doc/" + attachments[docNum].path);
 
             //MessageBox.Show(docs[docNum]);
             /*
@@ -62,7 +65,7 @@ namespace OnScreenKeyboard
             pdfViewer1.ShowCurrentPageHighlight = false;
 
             pdfViewer1.CurrentPageChanged += PdfViewer1_CurrentPageChanged;
-            */
+            
 
             //byte[] bytes = File.ReadAllBytes(@"C:\Users\mvideo\Desktop\docs\doc\" + docs[docNum]);
             //var source = new MemorySource(bytes);
@@ -77,7 +80,7 @@ namespace OnScreenKeyboard
           
             pdfViewer.PageRowDisplay = PageRowDisplayType.ContinuousPageRows;
 
-            
+            */
 
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
@@ -121,6 +124,7 @@ namespace OnScreenKeyboard
 
         private void pdfViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
+            /*
             if (pdfViewer.IsLoaded)
             {
                 if (pdfViewer.GetCurrentPageNumber() != pastPage)
@@ -129,6 +133,7 @@ namespace OnScreenKeyboard
                     networking.SendMessage("^t" + pastPage.ToString());
                 }
             }
+            */
             
         }
     }
