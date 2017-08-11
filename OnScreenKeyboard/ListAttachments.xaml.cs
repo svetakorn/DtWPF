@@ -109,6 +109,9 @@ namespace OnScreenKeyboard
             nav.Navigate(new Uri("ShowImage.xaml", UriKind.RelativeOrAbsolute));
             AttachImageElement control = (AttachImageElement)sender;
             ShowDocument.SendNum((int)control.Tag);
+
+            ShowImage.SendImage(attachments[(int)control.Tag].path);
+            ShowImage.SendCaption(attachments[(int)control.Tag].caption);
         }
 
         private void docElement_MouseDown(object sender, MouseButtonEventArgs e)

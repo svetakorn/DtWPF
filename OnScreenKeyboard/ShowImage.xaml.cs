@@ -24,17 +24,17 @@ namespace OnScreenKeyboard
     {
         NetworkingSingleton networking = NetworkingSingleton.getInstance();
 
-        private static int imgNum;
-        private static string[] img;
+        static string path;
+        static string caption;
 
-        public static void SendNum(int i)
+        public static void SendImage(string url)
         {
-            imgNum = i;
+            path = url;
         }
 
-        public static void SendImgs(List<string> d)
+        public static void SendCaption(string capt)
         {
-            img = d.ToArray();
+            caption = capt;
         }
 
         public ShowImage()
@@ -43,7 +43,7 @@ namespace OnScreenKeyboard
 
             BitmapImage imgFile = new BitmapImage();
             imgFile.BeginInit();
-            imgFile.UriSource = new Uri(@"C:\xampp\htdocs\docs\img\" + img[imgNum]);
+            imgFile.UriSource = new Uri(@"C:\xampp\htdocs\docs\img\" + path);
             imgFile.EndInit();
 
             image.Source = imgFile;
@@ -51,15 +51,17 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^I" + "/docs/img/" + img[imgNum]);
+                networking.SendMessage("^I" + "/docs/img/" + path);
             });
             Task.Delay(300).ContinueWith(_ =>
             {
                 networking.tmr.Enabled = true;
             });
+
+            pic_name.Text = caption;
         }
 
-        private void backBut_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
             networking.tmr.Enabled = false;

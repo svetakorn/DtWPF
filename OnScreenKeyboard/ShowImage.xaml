@@ -5,18 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnScreenKeyboard"
       mc:Ignorable="d" 
-      d:DesignHeight="535" Width="668" MaxWidth="668"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="ShowImage">
 
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="background.png"/>
         </Grid.Background>
-        <Image x:Name="image" Margin="0,76,0,0" Source="background.png"/>
-        <Image Name="backBut" HorizontalAlignment="Left" Height="27" Margin="606,27,0,0" VerticalAlignment="Top" Width="24" Source="back.png" MouseDown="backBut_MouseDown">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="back.png"/>
-            </Image.OpacityMask>
-        </Image>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="7*" ></RowDefinition>
+            <RowDefinition Height="64"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock TextWrapping="Wrap" Name="pic_name" Text="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="0,0,120,0" HorizontalAlignment="Left" Height="80"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
+
+        <Image Name="image" Grid.Row="2" Grid.Column="1"></Image>
     </Grid>
 </Page>
