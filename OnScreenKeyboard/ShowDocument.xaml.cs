@@ -31,10 +31,16 @@ namespace OnScreenKeyboard
         private static int docNum;
         private static string[] docs;
         private int pastPage;
+        static AttachClass[] attachments;
 
         public static void SendNum(int i)
         {
             docNum = i;
+        }
+
+        public static void SendAttachInfo(List<AttachClass> attachs)
+        {
+            attachments = attachs.ToArray();
         }
 
         public static void SendDocs(List<string> d)
@@ -63,10 +69,10 @@ namespace OnScreenKeyboard
 
             pdfViewer.VerticalContentAlignment = VerticalAlignment.Center;
             pdfViewer.HorizontalContentAlignment = HorizontalAlignment.Center;
-            
 
+            doc_name.Content = attachments[docNum].caption;
 
-            pdfViewer.OpenFile("C:/xampp/htdocs/docs/doc/" + docs[docNum]);
+            pdfViewer.OpenFile("C:/xampp/htdocs/docs/doc/" + attachments[docNum].path);
             //MessageBox.Show(pdfViewer.TotalPages.ToString());
           
             pdfViewer.PageRowDisplay = PageRowDisplayType.ContinuousPageRows;
@@ -76,7 +82,7 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^D"+"/docs/doc/" + docs[docNum]);
+                networking.SendMessage("^D"+"/docs/doc/" + attachments[docNum].path);
             });
             Task.Delay(300).ContinueWith(_ =>
             {
@@ -99,7 +105,7 @@ namespace OnScreenKeyboard
             
         }
 
-        private void backBut_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             networking.SendMessage("^X");
             NavigationService.GoBack();

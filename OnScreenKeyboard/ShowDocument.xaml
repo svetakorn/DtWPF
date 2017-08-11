@@ -7,7 +7,7 @@
       
       xmlns:mpp="clr-namespace:MoonPdfLib;assembly=MoonPdfLib"
       mc:Ignorable="d" 
-      d:DesignHeight="535" Width="668"
+      d:DesignWidth="1920" d:DesignHeight="1080"
       Title="ShowDocument">
     <Page.Resources>
     
@@ -17,14 +17,22 @@
         <Grid.Background>
             <ImageBrush ImageSource="background.png"/>
         </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="7*" ></RowDefinition>
+            <RowDefinition Height="64"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Name="doc_name" Content="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0,128,0"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
+        <mpp:MoonPdfPanel Grid.Row="2" Grid.Column="1" Name="pdfViewer" ScrollViewer.ScrollChanged ="pdfViewer_ScrollChanged" MaxZoomFactor="0.65" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
 
-        <mpp:MoonPdfPanel Margin="35,84,38,31" Name="pdfViewer" ScrollViewer.ScrollChanged ="pdfViewer_ScrollChanged" MaxZoomFactor="0.65" ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
-
-        <Image Name="backBut" HorizontalAlignment="Left" Height="27" Margin="606,27,0,0" VerticalAlignment="Top" Width="24" Source="back.png" MouseDown="backBut_MouseDown">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="back.png"/>
-            </Image.OpacityMask>
-        </Image>
+        
     </Grid>
     
     

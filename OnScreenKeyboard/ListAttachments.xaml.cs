@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Datatron.Networking;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace OnScreenKeyboard
     /// </summary>
     public partial class ListAttachments : Page
     {
-
+        NetworkingSingleton networking = NetworkingSingleton.getInstance();
         static AttachClass[] attachments;
         public ListAttachments()
         {
@@ -52,6 +53,8 @@ namespace OnScreenKeyboard
                     if ((i == attachments.Length - 1)&&(current_slot % 2 == 1))
                         foreach (dynamic element in elements)
                             element.SetValue(Grid.ColumnProperty, 1 - element.GetValue(Grid.ColumnProperty));
+
+                    elements[i].MouseDown += new MouseButtonEventHandler(imageElement_MouseDown);
                 }
                 else
                 {
@@ -70,8 +73,18 @@ namespace OnScreenKeyboard
                     elements[i].Tag = i;
                     switch (attachments[i].type)
                     {
-                        case "document":elements[i].icon.Source = BitmapFrame.Create(new Uri("pack://application:,,,/doc_only_icon.png"));break;
-                        case "url":     elements[i].icon.Source = BitmapFrame.Create(new Uri("pack://application:,,,/url_only_icon.png"));break;
+                        case "document":
+                            {
+                                elements[i].icon.Source = BitmapFrame.Create(new Uri("pack://application:,,,/doc_only_icon.png"));
+                                elements[i].MouseDown += new MouseButtonEventHandler(docElement_MouseDown);
+                                break;
+                            }
+                        case "url":
+                            {
+                                elements[i].icon.Source = BitmapFrame.Create(new Uri("pack://application:,,,/url_only_icon.png"));
+                                elements[i].MouseDown += new MouseButtonEventHandler(urlElement_MouseDown);
+                                break;
+                            }
                     }
                 }
 
@@ -88,6 +101,46 @@ namespace OnScreenKeyboard
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void imageElement_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("ShowImage.xaml", UriKind.RelativeOrAbsolute));
+            AttachImageElement control = (AttachImageElement)sender;
+            ShowDocument.SendNum((int)control.Tag);
+        }
+
+        private void docElement_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("ShowDocument.xaml", UriKind.RelativeOrAbsolute));
+            AttachElement control = (AttachElement)sender;
+            ShowDocument.SendNum((int)control.Tag);
+        }
+
+        private void urlElement_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService nav = NavigationService.GetNavigationService(this);
+            nav.Navigate(new Uri("ShowUrl.xaml", UriKind.RelativeOrAbsolute));
+            AttachElement control = (AttachElement)sender;
+            
+
+            string queryURL = ShowUrlViewModel.url[(int)control.Tag];
+
+            networking.tmr.Enabled = false;
+            Task.Delay(150).ContinueWith(_ =>
+            {
+                networking.SendMessage("^U" + queryURL);
+            });
+            Task.Delay(300).ContinueWith(_ =>
+            {
+                networking.tmr.Enabled = true;
+            });
+            Task.Delay(9000).ContinueWith(_ =>
+            {
+                networking.SendMessage("^X");
+            });
         }
     }
 }

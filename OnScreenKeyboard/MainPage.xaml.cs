@@ -484,6 +484,8 @@ namespace OnScreenKeyboard
                             urlsCount = urlCount;
 
                             ListAttachments.SendAttachInfo(AL);
+                            ShowDocument.SendAttachInfo(AL);
+                            
                             //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
                         catch

@@ -7,18 +7,32 @@
       xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
       xmlns:viewModels="clr-namespace:OnScreenKeyboard"
       mc:Ignorable="d" 
-      d:DesignHeight="535" Width="668" MaxWidth="668"
+      d:DesignWidth="1920" d:DesignHeight="1080"
       Title="ShowUrl">
     
     <Grid>
+
         <Grid.Background>
             <ImageBrush ImageSource="background.png"/>
         </Grid.Background>
-        <cefSharp:ChromiumWebBrowser
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="64"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"></RowDefinition>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="7*" ></RowDefinition>
+            <RowDefinition Height="64"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Name="url_name" Content="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0,128,0"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
+        <cefSharp:ChromiumWebBrowser Grid.Column="1" Grid.Row="2"
       Address="{Binding Address, Mode=TwoWay}"
       Title="{Binding Title, Mode=OneWayToSource}"
       AllowDrop="True"
-      WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}" Margin="0,74,0,0">
+      WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}" >
             <FrameworkElement.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Back" Command="{Binding WebBrowser.BackCommand}" />
@@ -40,10 +54,6 @@
                 </ContextMenu>
             </FrameworkElement.ContextMenu>
         </cefSharp:ChromiumWebBrowser>
-        <Image Name="backBut" HorizontalAlignment="Left" Height="27" Margin="606,27,0,0" VerticalAlignment="Top" Width="24" Source="back.png" MouseDown="backBut_MouseDown">
-            <Image.OpacityMask>
-                <ImageBrush ImageSource="back.png"/>
-            </Image.OpacityMask>
-        </Image>
+        
     </Grid>
 </Page>

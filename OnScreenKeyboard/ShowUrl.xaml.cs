@@ -27,7 +27,7 @@ namespace OnScreenKeyboard
     {
         NetworkingSingleton networking = NetworkingSingleton.getInstance();
 
-        
+       
 
         public ShowUrl()
         {
@@ -35,7 +35,7 @@ namespace OnScreenKeyboard
         
         }
 
-        private void backBut_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.GoBack();
         }
