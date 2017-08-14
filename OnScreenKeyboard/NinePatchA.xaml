@@ -18,7 +18,8 @@
                 <ColumnDefinition Width=" 16 "/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="1" Grid.Column="0" RenderTransformOrigin="0.5,0.5" >
+			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#01000000" />
+			<Grid Grid.Row="1" Grid.Column="0" RenderTransformOrigin="0.5,0.5" >
                 <Grid.Background>
                     <ImageBrush ImageSource="a_9/a9_22.png" TileMode="FlipXY" 
                        Stretch="Uniform"

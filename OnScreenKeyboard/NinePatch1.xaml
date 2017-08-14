@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="32"/>
             </Grid.ColumnDefinitions>
-
+			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#01000000" />
             <Grid Grid.Row="1" Grid.Column="0" >
                 <Grid.Background>
                     <ImageBrush ImageSource="w_9/glow_gray9_ml.png" TileMode="FlipXY" 
