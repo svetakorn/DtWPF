@@ -1056,12 +1056,64 @@ namespace OnScreenKeyboard
         }
 
         int speechMode = 0;
-        static double animationsTimespan = 0.45;
+        static double animationsTimespan = 0.34;
         static double atsp_r = 0.3;
         static double adelay = animationsTimespan / 6;
 
         private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            speechButtonFillSize.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+            {
+                From = 1,
+                To = 0.9,
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
+            speechButtonFillSize.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+            {
+                From = 1,
+                To = 0.9,
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
+            speechButtonBorderSize.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+            {
+                From = 1,
+                To = 0.9,
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
+            speechButtonBorderSize.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+            {
+                From = 1,
+                To = 0.9,
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
+            speechButtonFill.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation()
+            {
+                To = Color.FromArgb(140, 100, 49, 234),
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
+            speechButtonBorder.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation()
+            {
+                To = Color.FromArgb(120, 255, 255, 255),
+                AutoReverse = true,
+                DecelerationRatio = 0.7,
+                AccelerationRatio = 0.1,
+                Duration = TimeSpan.FromSeconds(animationsTimespan),
+            });
             switch (speechMode)
             {
                 case 0:

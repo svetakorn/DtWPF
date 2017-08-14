@@ -41,7 +41,18 @@
 					</Grid.RowDefinitions>
 
 
-					<Rectangle Grid.Row="1" Grid.Column="1" Fill="#CC6431EA" Margin="0">
+					<Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechButtonFillSize" ScaleX="1" ScaleY="1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<SolidColorBrush x:Name="speechButtonFill" Color="#CC6431EA"></SolidColorBrush>
+						</Rectangle.Fill>
 						<Rectangle.OpacityMask>
 							<RadialGradientBrush>
 								<GradientStop Color="White" Offset="0.98"/>
@@ -49,7 +60,18 @@
 							</RadialGradientBrush>
 						</Rectangle.OpacityMask>
 					</Rectangle>
-					<Rectangle Grid.Row="1" Grid.Column="1" Fill="White" Margin="0">
+					<Rectangle Grid.Row="1" Grid.Column="1" Margin="0" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechButtonBorderSize" ScaleX="1" ScaleY="1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<SolidColorBrush x:Name="speechButtonBorder" Color="#eeffffff"></SolidColorBrush>
+						</Rectangle.Fill>
 						<Rectangle.OpacityMask>
 							<RadialGradientBrush>
 								<GradientStop Color="#00000000" Offset="0.95"/>
