@@ -342,6 +342,8 @@
     <Resource Include="b_9\a9_1.png" />
     <Resource Include="b_9\a9_2.png" />
     <Resource Include="b_9\a9_22.png" />
+    <Resource Include="microphone-of-voice.png" />
+    <Resource Include="white_square.png" />
     <Content Include="x64\pdfium.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

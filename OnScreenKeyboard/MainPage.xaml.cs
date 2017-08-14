@@ -780,7 +780,7 @@ namespace OnScreenKeyboard
             }
         }
 
-        private void image_MouseDown(object sender, MouseButtonEventArgs e)
+        private void startListening()
         {
             try
             {
@@ -809,30 +809,40 @@ namespace OnScreenKeyboard
             { MessageBox.Show(ex.Message); }
 
 
-            image.Visibility = Visibility.Hidden;
-            image2.Visibility = Visibility.Visible;
+           
         }
 
-        private void image2_MouseDown(object sender, MouseButtonEventArgs e)
+        private string stopListening()
         {
+            string res = "";
             if (waveIn != null)
             {
                 StopRecording();
             }
-            image2.Visibility = Visibility.Hidden;
-            image.Visibility = Visibility.Visible;
+            
 
             string voicetext = "";
+            try
+            {
+                SoundPlayer spsp = new SoundPlayer();
+                spsp.SoundLocation = "speechStop.wav";
+                spsp.Load();
+                spsp.Play();
+            }
+            catch { }
+
             voicetext = speechKit.Program.speech_to_text(outputFilename);
+//            Grid_MouseDown(null, null);
             if (!voicetext.Equals("Извините, я не понимаю, попробуйте повторить запрос"))
             {
-                textBox.Text = voicetext;
-                proceedRequest(textBox.Text, false);
+                res = voicetext;
+                //proceedRequest(textBox.Text, false);
             }
             else
             {
                 playTTS(voicetext);
             }
+            return res;
         }
 
         static void playTTS(string ttsquery)
@@ -1043,6 +1053,158 @@ namespace OnScreenKeyboard
             {
                 networking.tmr.Enabled = true;
             });
+        }
+
+        int speechMode = 0;
+        static double animationsTimespan = 0.45;
+        static double atsp_r = 0.3;
+        static double adelay = animationsTimespan / 6;
+
+        private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            switch (speechMode)
+            {
+                case 0:
+                    startListening();
+                    textBox.Text = "Слушаю...";
+                    speechMode0Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 135,
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode1Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = -135,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode = 1;
+                    break;
+                case 1:
+                    textBox.Text = "Идёт распознавание...";
+                    speechMode = -1;
+                    speechMode1Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 135,
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode2Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = -135,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode2Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode2Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    var slowTask = Task<string>.Factory.StartNew(() => stopListening());
+                    await slowTask;
+                    speechMode2Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 135,
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode2Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode2Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode0Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = -135,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    textBox.Text = slowTask.Result.ToString();
+                    if (!textBox.Text.Equals(""))
+                        proceedRequest(textBox.Text, false);
+                    speechMode = 0;
+                    break;
+                default:
+                    break;
+            }
         }
 
         string[] questions = {
