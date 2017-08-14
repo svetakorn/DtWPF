@@ -60,11 +60,11 @@
             </Grid>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
                     <ColumnDefinition Width="4*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown"/>
+                <local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown" Opacity="0.3"/>
                 <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16"></local:SeeMore>
                 <Grid Grid.Column="2" Margin="16">
                     <Grid.RowDefinitions>
@@ -72,8 +72,10 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <local:NinePatchA Grid.RowSpan="2"></local:NinePatchA>
-                    <Image Source="up_arrow.png" VerticalAlignment="Center" Grid.Row="0" Height="12"></Image>
+					<Image Source="up_arrow.png" VerticalAlignment="Center" Grid.Row="0" Height="12"></Image>
                     <Image Source="down_arrow.png" VerticalAlignment="Center" Grid.Row="1" Height="12"></Image>
+					<Rectangle Grid.Row="0" Name="PressAnswerScrollUp" MouseDown="PressAnswerScrollUp_MouseDown" Fill="#02FFFFFF"/>
+					<Rectangle Grid.Row="1" Name="PressAnswerScrollDown" MouseDown="PressAnswerScrollDown_MouseDown" Fill="#02FFFFFF"/>
                 </Grid>
             </Grid>
             <Grid Grid.Row="3" MouseDown="canvas_MouseDown">

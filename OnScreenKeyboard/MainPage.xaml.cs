@@ -281,6 +281,106 @@ namespace OnScreenKeyboard
             "22.16",
             "22.17",
             "22.18",
+            "23.1",
+            "23.2",
+            "23.3",
+            "23.4",
+            "23.5",
+            "23.6",
+            "23.7",
+            "23.8",
+            "23.9",
+            "23.10",
+            "23.11",
+            "23.12",
+            "23.13",
+            "23.14",
+            "23.15",
+            "23.16",
+            "23.17",
+            "23.18",
+            "23.19",
+            "23.20",
+            "23.21",
+            "23.22",
+            "23.23",
+            "23.24",
+            "23.25",
+            "23.27",
+            "23.28",
+            "23.29",
+            "23.30",
+            "23.31",
+            "23.32",
+            "23.33",
+            "23.34",
+            "23.35",
+            "23.36",
+            "23.37",
+            "23.38",
+            "23.39",
+            "23.40",
+            "23.41",
+            "23.42",
+            "23.43",
+            "23.44",
+            "23.45",
+            "23.46",
+            "23.47",
+            "23.48",
+            "23.49",
+            "23.50",
+            "23.51",
+            "23.52",
+            "23.53",
+            "23.54",
+            "23.55",
+            "23.56",
+            "23.57",
+            "23.58",
+            "23.59",
+            "23.60",
+            "23.61",
+            "23.62",
+            "23.63",
+            "23.64",
+            "23.65",
+            "23.66",
+            "23.67",
+            "23.68",
+            "23.69",
+            "23.70",
+            "23.71",
+            "23.72",
+            "23.73",
+            "23.74",
+            "23.75",
+            "23.76",
+            "23.77",
+            "23.78",
+            "23.79",
+            "23.80",
+            "23.81",
+            "23.82",
+            "23.83",
+            "23.84",
+            "23.85",
+            "23.86",
+            "23.87",
+            "23.88",
+            "23.89",
+            "23.90",
+            "23.91",
+            "23.92",
+            "23.93",
+            "23.94",
+            "23.95",
+            "23.96",
+            "23.97",
+            "23.98",
+            "23.99",
+            "23.100",
+            "23.101",
             "24.1",
             "24.2",
             "24.3",
@@ -567,9 +667,7 @@ namespace OnScreenKeyboard
 
                     try
                     {
-                        seeMore.num3.Opacity = 0.3;
-                        seeMore.num4.Opacity = 0.3;
-
+                        
                         JArray[] seeMoreQuestionsArrays = new JArray[2];
                         int[] seeIndex = { 0, 0 };
                         try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
@@ -696,7 +794,7 @@ namespace OnScreenKeyboard
                 //Прикрепляем обработчик завершения записи
                 waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
                 //Формат wav-файла - принимает параметры - частоту дискретизации и количество каналов(здесь mono)
-                waveIn.WaveFormat = new WaveFormat(8000, 1);
+                waveIn.WaveFormat = new WaveFormat(8000, 2);
                 //Инициализируем объект WaveFileWriter
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
                 //Начало записи
@@ -909,6 +1007,32 @@ namespace OnScreenKeyboard
                 Debug.WriteLine("KEK");
 
             }
+        }
+
+        private void PressAnswerScrollDown_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            networking.tmr.Enabled = false;
+            Task.Delay(150).ContinueWith(_ =>
+            {
+                networking.SendMessage("AD");
+            });
+            Task.Delay(300).ContinueWith(_ =>
+            {
+                networking.tmr.Enabled = true;
+            });
+        }
+
+        private void PressAnswerScrollUp_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            networking.tmr.Enabled = false;
+            Task.Delay(150).ContinueWith(_ =>
+            {
+                networking.SendMessage("AU");
+            });
+            Task.Delay(300).ContinueWith(_ =>
+            {
+                networking.tmr.Enabled = true;
+            });
         }
 
         string[] questions = {

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:OnScreenKeyboard"
              
              mc:Ignorable="d" 
-             d:DesignHeight="292.712" d:DesignWidth="617.81" >
+             d:DesignHeight="209.991" d:DesignWidth="845.871" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0"></RowDefinition>
@@ -33,7 +33,7 @@
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/doc_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="doc_label" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Margin="66,147,38,49"  ></Label>
+                <TextBlock Name="doc_label" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Text="0" Margin="148,138,120,11" Height="61" ></TextBlock>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -42,7 +42,7 @@
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/pic_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="pic_label" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Margin="82,145,22,51" ></Label>
+                <TextBlock Name="pic_label" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Text="0" Margin="164,136,104,11" Height="63" ></TextBlock>
             </Grid>
 
             <Grid Grid.Column="2">
@@ -51,7 +51,7 @@
                         <ImageBrush ImageSource="/OnScreenKeyboard;component/url_icon.png"/>
                     </Image.OpacityMask>
                 </Image>
-                <Label Name="url_label"  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Content="0" Margin="74,147,30,49"></Label>
+                <TextBlock Name="url_label"  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="28" Text="0" Margin="156,138,112,0" Height="72"></TextBlock>
             </Grid>
 
 
