@@ -253,10 +253,6 @@
       <Project>{f88738e1-dfc4-4e97-90bd-9dee77e1d96e}</Project>
       <Name>speechKit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TermControls\TermControls.csproj">
-      <Project>{4D17507C-6002-49C6-976C-649588A2677F}</Project>
-      <Name>TermControls</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="background.png" />

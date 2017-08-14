@@ -799,6 +799,11 @@ namespace OnScreenKeyboard
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
                 //Начало записи
                 waveIn.StartRecording();
+
+                SoundPlayer spst = new SoundPlayer();
+                spst.SoundLocation = "speechStart.wav";
+                spst.Load();
+                spst.Play();
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
@@ -826,15 +831,20 @@ namespace OnScreenKeyboard
             }
             else
             {
+                playTTS(voicetext);
+            }
+        }
+
+        static void playTTS(string ttsquery)
+        {
                 Debug.WriteLine("TTS START");
-                speechKit.Program.text_to_speech("Извините, я не понимаю, попробуйте повторить запрос");
+                speechKit.Program.text_to_speech(ttsquery);
                 Debug.WriteLine("TTS STOP");
                 SoundPlayer sp = new SoundPlayer();
                 sp.SoundLocation = "speechGenerated.wav";
                 sp.Load();
                 sp.Play();
                 Debug.WriteLine("PLAY STOP");
-            }
         }
 
         #endregion
