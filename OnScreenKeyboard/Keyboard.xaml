@@ -8,205 +8,323 @@
              d:DesignHeight="351" d:DesignWidth="1120" Tag="{Binding Path=Text, ElementName=KeyboardResult, Mode=TwoWay}"
              Name="usercontrol">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Row="0" Grid.Column="0"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="Q"   Content="Q" Tag=     "qQйЙ1" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="1"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="W"   Content="W" Tag=     "wWцЦ2" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="2"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="E"   Content="E" Tag=     "eEуУ3" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="3"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="R"   Content="R" Tag=     "rRкК4" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="4"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="T"   Content="T" Tag=     "tTеЕ5" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="5"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="Y"   Content="Y" Tag=     "yYнН6" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="6"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="U"   Content="U" Tag=     "uUгГ7" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="7"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="I"   Content="I" Tag=     "iIшШ8" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="8"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="O"   Content="O" Tag=     "oOщЩ9" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="9"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="P"   Content="P" Tag=     "pPзЗ0" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="0"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="A"   Content="A" Tag=     "aAфФ!" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="1"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="S"   Content="S" Tag=     "sSыЫ@" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="2"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="D"   Content="D" Tag=     "dDвВ#" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="3"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="F"   Content="F" Tag=     "fFаА$" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="4"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="G"   Content="G" Tag=     "gGпП%" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="5"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="H"   Content="H" Tag=     "hHрР^" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="6"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="J"   Content="J" Tag= "jJоО&amp;" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="7"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="K"   Content="K" Tag=     "kKлЛ*" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="8"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="L"   Content="L" Tag=     "lLдД(" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="2"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="Z"   Content="Z" Tag=     "zZяЯ|" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="3"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="X"   Content="X" Tag=     "xXчЧ№" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="4"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="C"   Content="C" Tag=     "cCсС;" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="5"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="V"   Content="V" Tag=     "vVмМ:" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="6"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="B"   Content="B" Tag=     "bBиИ?" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="7"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="N"   Content="N" Tag=     "nNтТ_" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="8"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="M"   Content="M" Tag=     "mMьЬ`" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="10" Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="p1"  Content="[" Tag=   "{}[}хХ-" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="11" Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="p2"  Content="]" Tag=   "{}]}ъЪ=" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="9"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="l1"  Content=";" Tag=     ";:жЖ)" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="10" Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="l2"  Content="'" Tag="'&quot;эЭ+" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="9"  Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="m1"  Content="," Tag=  ",&lt;бБ~" Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="10" Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="m2"  Content="." Tag=  ".&gt;юЮ." Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="11" Margin="3.5">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSmall}"  Name="m3"  Content="/" Tag=     "/?.,," Click="KeyClick"   />
+		</Grid>
+		<Grid Grid.Row="0" Grid.Column="12" Margin="3.5" Grid.ColumnSpan="2">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonMedium}" Content="←"      Click="BackspaceClick" Name="Backspace"            />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="0"  Margin="3.5" Grid.ColumnSpan="2">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonMedium}" Content="↑"      Click="ShiftClick"     Name="Shift1"     Tag="0"   />
+		</Grid>
+		<Grid Grid.Row="2" Grid.Column="12" Margin="3.5" Grid.ColumnSpan="2">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonMedium}" Content="↑"      Click="ShiftClick"     Name="Shift2"               />
+		</Grid>
+		<Grid Grid.Row="3" Grid.Column="3"  Margin="3.5" Grid.ColumnSpan="8">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonSpace}"  Content=" "      Click="SpaceClick"     Name="Space"                />
+		</Grid>
+		<Grid Grid.Row="1" Grid.Column="11" Margin="3.5" Grid.ColumnSpan="3">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonBig}"    Content="ENTER"                         Name="Enter"                />
+		</Grid>
+		<Grid Grid.Row="3" Grid.Column="0"  Margin="3.5" Grid.ColumnSpan="3">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonBig}"    Content="%?123"  Click="ToggleSym"      Name="SymBtn"     Tag="0"   />
+		</Grid>
+		<Grid Grid.Row="3" Grid.Column="11" Margin="3.5" Grid.ColumnSpan="3">
+			<local:NinePatchBtn/>
+			<Button Style="{DynamicResource KeyButtonBig}"    Content=" 🌐 "   Click="ToggleLang"     Name="LangBtn"    Tag="0"   />
+		</Grid>
 
-        <Button Grid.Row="0" Grid.Column="0"  Style="{DynamicResource KeyButtonSmall}"  Name="Q"   Content="Q" Tag=     "qQйЙ1" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="1"  Style="{DynamicResource KeyButtonSmall}"  Name="W"   Content="W" Tag=     "wWцЦ2" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="2"  Style="{DynamicResource KeyButtonSmall}"  Name="E"   Content="E" Tag=     "eEуУ3" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="3"  Style="{DynamicResource KeyButtonSmall}"  Name="R"   Content="R" Tag=     "rRкК4" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="4"  Style="{DynamicResource KeyButtonSmall}"  Name="T"   Content="T" Tag=     "tTеЕ5" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="5"  Style="{DynamicResource KeyButtonSmall}"  Name="Y"   Content="Y" Tag=     "yYнН6" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="6"  Style="{DynamicResource KeyButtonSmall}"  Name="U"   Content="U" Tag=     "uUгГ7" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="7"  Style="{DynamicResource KeyButtonSmall}"  Name="I"   Content="I" Tag=     "iIшШ8" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="8"  Style="{DynamicResource KeyButtonSmall}"  Name="O"   Content="O" Tag=     "oOщЩ9" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="9"  Style="{DynamicResource KeyButtonSmall}"  Name="P"   Content="P" Tag=     "pPзЗ0" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="0"  Style="{DynamicResource KeyButtonSmall}"  Name="A"   Content="A" Tag=     "aAфФ!" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="1"  Style="{DynamicResource KeyButtonSmall}"  Name="S"   Content="S" Tag=     "sSыЫ@" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="2"  Style="{DynamicResource KeyButtonSmall}"  Name="D"   Content="D" Tag=     "dDвВ#" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="3"  Style="{DynamicResource KeyButtonSmall}"  Name="F"   Content="F" Tag=     "fFаА$" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="4"  Style="{DynamicResource KeyButtonSmall}"  Name="G"   Content="G" Tag=     "gGпП%" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="5"  Style="{DynamicResource KeyButtonSmall}"  Name="H"   Content="H" Tag=     "hHрР^" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="6"  Style="{DynamicResource KeyButtonSmall}"  Name="J"   Content="J" Tag= "jJоО&amp;" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="7"  Style="{DynamicResource KeyButtonSmall}"  Name="K"   Content="K" Tag=     "kKлЛ*" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="8"  Style="{DynamicResource KeyButtonSmall}"  Name="L"   Content="L" Tag=     "lLдД(" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="2"  Style="{DynamicResource KeyButtonSmall}"  Name="Z"   Content="Z" Tag=     "zZяЯ|" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="3"  Style="{DynamicResource KeyButtonSmall}"  Name="X"   Content="X" Tag=     "xXчЧ№" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="4"  Style="{DynamicResource KeyButtonSmall}"  Name="C"   Content="C" Tag=     "cCсС;" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="5"  Style="{DynamicResource KeyButtonSmall}"  Name="V"   Content="V" Tag=     "vVмМ:" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="6"  Style="{DynamicResource KeyButtonSmall}"  Name="B"   Content="B" Tag=     "bBиИ?" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="7"  Style="{DynamicResource KeyButtonSmall}"  Name="N"   Content="N" Tag=     "nNтТ_" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="8"  Style="{DynamicResource KeyButtonSmall}"  Name="M"   Content="M" Tag=     "mMьЬ`" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="10" Style="{DynamicResource KeyButtonSmall}"  Name="p1"  Content="[" Tag=   "{}[}хХ-" Click="KeyClick"   />
-        <Button Grid.Row="0" Grid.Column="11" Style="{DynamicResource KeyButtonSmall}"  Name="p2"  Content="]" Tag=   "{}]}ъЪ=" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="9"  Style="{DynamicResource KeyButtonSmall}"  Name="l1"  Content=";" Tag=     ";:жЖ)" Click="KeyClick"   />
-        <Button Grid.Row="1" Grid.Column="10" Style="{DynamicResource KeyButtonSmall}"  Name="l2"  Content="'" Tag="'&quot;эЭ+" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="9"  Style="{DynamicResource KeyButtonSmall}"  Name="m1"  Content="," Tag=  ",&lt;бБ~" Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="10" Style="{DynamicResource KeyButtonSmall}"  Name="m2"  Content="." Tag=  ".&gt;юЮ." Click="KeyClick"   />
-        <Button Grid.Row="2" Grid.Column="11" Style="{DynamicResource KeyButtonSmall}"  Name="m3"  Content="/" Tag=     "/?.,," Click="KeyClick"   />
+	</Grid>
+	<UserControl.Resources>
+		<Style TargetType="local:Keyboard">
+			<Setter Property="Text" Value="{Binding Path=Text, Mode=TwoWay,ElementName=KeyboardResult, UpdateSourceTrigger=PropertyChanged}"/>
+		</Style>
+		<Style x:Key="KeyButtonSmall" TargetType="{x:Type Button}">
 
-        <Button Grid.Row="0" Grid.Column="12" Style="{DynamicResource KeyButtonMedium}" Content="←"      Click="BackspaceClick" Name="Backspace"            />
-        <Button Grid.Row="2" Grid.Column="0"  Style="{DynamicResource KeyButtonMedium}" Content="↑"      Click="ShiftClick"     Name="Shift1"     Tag="0"   />
-        <Button Grid.Row="2" Grid.Column="12" Style="{DynamicResource KeyButtonMedium}" Content="↑"      Click="ShiftClick"     Name="Shift2"               />
-        <Button Grid.Row="3" Grid.Column="3"  Style="{DynamicResource KeyButtonSpace}"  Content=" "      Click="SpaceClick"     Name="Space"                />
-        <Button Grid.Row="1" Grid.Column="11" Style="{DynamicResource KeyButtonBig}"    Content="ENTER"                         Name="Enter"                />
-        <Button Grid.Row="3" Grid.Column="0"  Style="{DynamicResource KeyButtonBig}"    Content="%?123"  Click="ToggleSym"      Name="SymBtn"     Tag="0"   />
-        <Button Grid.Row="3" Grid.Column="11" Style="{DynamicResource KeyButtonBig}"    Content=" 🌐 "   Click="ToggleLang"     Name="LangBtn"    Tag="0"   />
+			<Setter Property="UIElement.Focusable" Value="false" />
+			<Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
+			<Setter Property="FrameworkElement.Margin" Value="4" />
+			<!--Setter Property="Control.Background" Value="#336431EA" />
+            <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" /-->
+			<Setter Property="Control.Background" Value="#00000000" />
+			<Setter Property="Control.BorderBrush" Value="#00000000" />
+			<Setter Property="Control.Foreground" Value="White" />
+			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.Padding" Value="16" />
 
-    </Grid>
-    <UserControl.Resources>
-        <Style TargetType="local:Keyboard">
-            <Setter Property="Text" Value="{Binding Path=Text, Mode=TwoWay,ElementName=KeyboardResult, UpdateSourceTrigger=PropertyChanged}"/>
-        </Style>
-        <Style x:Key="KeyButtonSmall" TargetType="{x:Type Button}">
-
-            <Setter Property="UIElement.Focusable" Value="false" />
-            <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
-            <Setter Property="FrameworkElement.Margin" Value="4" />
-            <Setter Property="Control.Background" Value="#336431EA" />
-            <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="Control.FontSize" Value="32" />
-            <Setter Property="Control.Padding" Value="16" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" 
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" 
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+							<ContentPresenter HorizontalAlignment="Center" 
                                VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" 
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" 
                           Value="True">
-                                <Setter Property="Background" 
-                           Value="#996431EA"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+								<Setter Property="Background" 
+                           Value="#33ffffff"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<Style x:Key="KeyButtonMedium" TargetType="{x:Type Button}">
+			<Setter Property="UIElement.Focusable" Value="false" />
+			<Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
+			<Setter Property="FrameworkElement.Margin" Value="4" />
+			<Setter Property="Control.Background" Value="#00000000" />
+			<Setter Property="Control.BorderBrush" Value="#00000000" />
+			<Setter Property="Control.Foreground" Value="White" />
+			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.Padding" Value="16" />
+			<Setter Property="Grid.ColumnSpan" Value="2" />
 
-        </Style>
-        <Style x:Key="KeyButtonMedium" TargetType="{x:Type Button}">
-            <Setter Property="UIElement.Focusable" Value="false" />
-            <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
-            <Setter Property="FrameworkElement.Margin" Value="4" />
-            <Setter Property="Control.Background" Value="#336431EA" />
-            <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="Control.FontSize" Value="32" />
-            <Setter Property="Control.Padding" Value="16" />
-            <Setter Property="Grid.ColumnSpan" Value="2" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" 
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" 
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+							<ContentPresenter HorizontalAlignment="Center" 
                                VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" 
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" 
                           Value="True">
-                                <Setter Property="Background" 
-                           Value="#996431EA"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+								<Setter Property="Background" 
+                           Value="#33ffffff"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
 
-        </Style>
-        <Style x:Key="KeyButtonBig" TargetType="{x:Type Button}">
-            <Setter Property="UIElement.Focusable" Value="false" />
-            <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
-            <Setter Property="FrameworkElement.Margin" Value="4" />
-            <Setter Property="Control.Background" Value="#336431EA" />
-            <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="Control.FontSize" Value="32" />
-            <Setter Property="Control.Padding" Value="16" />
-            <Setter Property="Grid.ColumnSpan" Value="3" />
+		</Style>
+		<Style x:Key="KeyButtonBig" TargetType="{x:Type Button}">
+			<Setter Property="UIElement.Focusable" Value="false" />
+			<Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
+			<Setter Property="FrameworkElement.Margin" Value="4" />
+			<Setter Property="Control.Background" Value="#00000000" />
+			<Setter Property="Control.BorderBrush" Value="#00000000" />
+			<Setter Property="Control.Foreground" Value="White" />
+			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.Padding" Value="16" />
+			<Setter Property="Grid.ColumnSpan" Value="3" />
 
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" 
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" 
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+							<ContentPresenter HorizontalAlignment="Center" 
                                VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" 
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" 
                           Value="True">
-                                <Setter Property="Background" 
-                           Value="#996431EA"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+								<Setter Property="Background" 
+                           Value="#33ffffff"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
 
-        </Style>
-        <Style x:Key="KeyButtonSpace" TargetType="{x:Type Button}">
-            <Setter Property="UIElement.Focusable" Value="false" />
-            <Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
-            <Setter Property="FrameworkElement.Margin" Value="4" />
-            <Setter Property="Control.Background" Value="#336431EA" />
-            <Setter Property="Control.BorderBrush" Value="#CCFFFFFF" />
-            <Setter Property="Control.Foreground" Value="White" />
-            <Setter Property="Control.FontSize" Value="32" />
-            <Setter Property="Control.Padding" Value="16" />
-            <Setter Property="Grid.ColumnSpan" Value="8" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" 
+		</Style>
+		<Style x:Key="KeyButtonSpace" TargetType="{x:Type Button}">
+			<Setter Property="UIElement.Focusable" Value="false" />
+			<Setter Property="TextElement.FontFamily" Value="/OnScreenKeyboard;component/Fonts/#Univers Condensed" />
+			<Setter Property="FrameworkElement.Margin" Value="4" />
+			<Setter Property="Control.Background" Value="#00000000" />
+			<Setter Property="Control.BorderBrush" Value="#00000000" />
+			<Setter Property="Control.Foreground" Value="White" />
+			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.Padding" Value="16" />
+			<Setter Property="Grid.ColumnSpan" Value="8" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border Background="{TemplateBinding Background}" 
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center" 
+							<ContentPresenter HorizontalAlignment="Center" 
                                VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" 
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" 
                           Value="True">
-                                <Setter Property="Background" 
-                           Value="#996431EA"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+								<Setter Property="Background" 
+                           Value="#33ffffff"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
 
-        </Style>
-    </UserControl.Resources>
+		</Style>
+	</UserControl.Resources>
 
 </UserControl>
