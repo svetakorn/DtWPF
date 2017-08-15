@@ -495,7 +495,7 @@ namespace OnScreenKeyboard
                 string sLine = objReader.ReadLine();
                 return System.Text.RegularExpressions.Regex.Unescape(sLine);
             }
-            catch { textBox.Text = "NO INTERNET CONNECTION"; }
+            catch { }
 
             return "";
 
@@ -761,7 +761,11 @@ namespace OnScreenKeyboard
         void StopRecording()
         {
             waveIn.StopRecording();
-            writer.Close();
+            try
+            {
+                writer.Close();
+            }
+            catch { }
 
         }
         //Окончание записи
@@ -773,12 +777,16 @@ namespace OnScreenKeyboard
             }
             else
             {
-                waveIn.Dispose();
-                waveIn = null;
-                writer.Close();
-                writer = null;
-            }
+                try
+                {
+                    waveIn.Dispose();
+                    waveIn = null;
+                    writer.Close();
+                    writer = null;
+                }
+                catch { }
         }
+    }
 
         private void startListening()
         {

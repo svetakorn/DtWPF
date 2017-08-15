@@ -85,15 +85,15 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^D"+"/docs/doc/" + attachments[docNum].path);
+                networking.SendMessage("^N"+"/docs/doc/" + attachments[docNum].caption);
             });
             Task.Delay(300).ContinueWith(_ =>
             {
-                networking.SendMessage("^t1");
+                networking.SendMessage("^D"+"/docs/doc/" + attachments[docNum].path);
             });
             Task.Delay(450).ContinueWith(_ =>
             {
-                networking.tmr.Enabled = true;
+                networking.SendMessage("^t1");
             });
 
         }
@@ -115,10 +115,6 @@ namespace OnScreenKeyboard
             Task.Delay(150).ContinueWith(_ =>
             {
                 networking.SendMessage("^X");
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                networking.tmr.Enabled = true;
             });
         }
 
@@ -143,7 +139,7 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^B");
+                networking.SendMessage("^t"+page.ToString());
             });
             page_num.Content = "Страница" + page.ToString();
         }
@@ -154,7 +150,7 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^F");
+                networking.SendMessage("^t"+page.ToString());
             });
             page_num.Content = "Страница" + page.ToString();
         }

@@ -36,7 +36,8 @@
       Address="{Binding Address, Mode=TwoWay}"
       Title="{Binding Title, Mode=OneWayToSource}"
       AllowDrop="True"
-      WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}" >
+      WebBrowser="{Binding WebBrowser, Mode=OneWayToSource}" 
+        >
             <FrameworkElement.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Back" Command="{Binding WebBrowser.BackCommand}" />

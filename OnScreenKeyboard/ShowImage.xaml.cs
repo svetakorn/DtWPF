@@ -51,11 +51,11 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^I" + "/docs/img/" + path);
+                networking.SendMessage("^N" + caption);
             });
             Task.Delay(300).ContinueWith(_ =>
             {
-                networking.tmr.Enabled = true;
+                networking.SendMessage("^I" + "/docs/img/" + path);
             });
 
             pic_name.Text = caption;
@@ -68,10 +68,6 @@ namespace OnScreenKeyboard
             Task.Delay(150).ContinueWith(_ =>
             {
                 networking.SendMessage("^X");
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                networking.tmr.Enabled = true;
             });
         }
     
