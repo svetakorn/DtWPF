@@ -85,7 +85,7 @@ namespace OnScreenKeyboard
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^N"+"/docs/doc/" + attachments[docNum].caption);
+                networking.SendMessage("^N" + attachments[docNum].caption);
             });
             Task.Delay(300).ContinueWith(_ =>
             {
@@ -135,24 +135,26 @@ namespace OnScreenKeyboard
 
         private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
-            --page;
+            page = Math.Max(1, page-1);
+            browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
                 networking.SendMessage("^t"+page.ToString());
             });
-            page_num.Content = "Страница" + page.ToString();
+            page_num.Content = "Страница " + page.ToString();
         }
 
         private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
         {
             ++page;
+            browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
             networking.tmr.Enabled = false;
             Task.Delay(150).ContinueWith(_ =>
             {
                 networking.SendMessage("^t"+page.ToString());
             });
-            page_num.Content = "Страница" + page.ToString();
+            page_num.Content = "Страница " + page.ToString();
         }
     }
 }

@@ -26,8 +26,10 @@
             <RowDefinition Height="64"></RowDefinition>
             <RowDefinition Height="*" ></RowDefinition>
             <RowDefinition Height="7*" ></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="64"></RowDefinition>
+			<RowDefinition Height="64"></RowDefinition>
+			<RowDefinition Height="64"></RowDefinition>
+			
+			<RowDefinition Height="64"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="Wrap" Name="doc_name" Text="Это название документа, оно может быть оооооочень длинным" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="0,0,120,0" HorizontalAlignment="Left" Height="80"/>
         <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Source="back.png" Height="48" MouseDown="Image_MouseDown"/>
@@ -59,15 +61,15 @@
                 </ContextMenu>
             </FrameworkElement.ContextMenu>
         </cefSharp:ChromiumWebBrowser>
-        <Grid Grid.Column="1" Grid.Row="3">
+        <Grid Grid.Column="1" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="64"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="64"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="1" Source="prev_arrow.png" RenderTransformOrigin="0.5,0.5" Margin="12" MouseDown="Image_MouseDown_1">
+            <Image Grid.Column="1" Source="prev_arrow.png" RenderTransformOrigin="0.5,0.5" MouseDown="Image_MouseDown_1">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -77,7 +79,7 @@
                     </TransformGroup>
                 </Image.RenderTransform>
             </Image>
-            <Image Grid.Column="3" Source="prev_arrow.png" RenderTransformOrigin="0.5,0.5" Margin="12" MouseDown="Image_MouseDown_2">
+            <Image Grid.Column="3" Source="prev_arrow.png" RenderTransformOrigin="0.5,0.5" MouseDown="Image_MouseDown_2">
                 <Image.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
