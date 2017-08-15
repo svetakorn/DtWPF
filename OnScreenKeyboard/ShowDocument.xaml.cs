@@ -55,7 +55,7 @@ namespace OnScreenKeyboard
         {
             InitializeComponent();
             page = 1;
-            browser.Address = "http://localhost/?page=" + page + "&pdfpath=/docs/doc/" + attachments[docNum].path;
+            browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
             //browser.Address = "http://google.com";
             //MessageBox.Show(docs[docNum]);
             /*
@@ -135,6 +135,28 @@ namespace OnScreenKeyboard
             }
             */
             
+        }
+
+        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            --page;
+            networking.tmr.Enabled = false;
+            Task.Delay(150).ContinueWith(_ =>
+            {
+                networking.SendMessage("^B");
+            });
+            page_num.Content = "Страница" + page.ToString();
+        }
+
+        private void Image_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+            ++page;
+            networking.tmr.Enabled = false;
+            Task.Delay(150).ContinueWith(_ =>
+            {
+                networking.SendMessage("^F");
+            });
+            page_num.Content = "Страница" + page.ToString();
         }
     }
 }
