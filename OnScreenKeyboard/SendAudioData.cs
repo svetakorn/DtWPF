@@ -128,7 +128,7 @@ namespace Datatron.Networking
             {
                 if (networking.client.Connected)
                 {
-                    networking.SendMessage("L" + concatenated + "#");
+                    //networking.SendMessage("L" + concatenated + "#");
                 }
             }
             catch { }
@@ -191,7 +191,7 @@ namespace Datatron.Networking
                 waveInStream = new WaveIn();
                 waveInStream.NumberOfBuffers = 5;
                 waveInStream.BufferMilliseconds = 10;
-                waveInStream.WaveFormat = new WaveFormat(samplingFrequency, 1);
+                waveInStream.WaveFormat = new WaveFormat(samplingFrequency, 2);
                 waveInStream.DataAvailable += new EventHandler<WaveInEventArgs>(waveInStream_DataAvailable);
                 waveInStream.StartRecording();
                 networking.tmr.Elapsed += tick;

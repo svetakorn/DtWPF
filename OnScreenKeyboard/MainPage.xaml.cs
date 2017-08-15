@@ -529,7 +529,7 @@ namespace OnScreenKeyboard
         void proceedRequest(string requestString, bool needClean = true)
         {
             string APIRESPONCE = GetAPIanswer(requestString);
-
+            seeMore.Opacity = 1;
             Debug.WriteLine("RESPONCE: " + APIRESPONCE);
             dynamic responce;
             try
@@ -802,7 +802,7 @@ namespace OnScreenKeyboard
                 //Прикрепляем обработчик завершения записи
                 waveIn.RecordingStopped += new EventHandler<NAudio.Wave.StoppedEventArgs>(waveIn_RecordingStopped);
                 //Формат wav-файла - принимает параметры - частоту дискретизации и количество каналов(здесь mono)
-                waveIn.WaveFormat = new WaveFormat(8000, 2);
+                waveIn.WaveFormat = new WaveFormat(8000, 1);
                 //Инициализируем объект WaveFileWriter
                 writer = new WaveFileWriter(outputFilename, waveIn.WaveFormat);
                 //Начало записи

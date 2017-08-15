@@ -34,7 +34,7 @@ namespace Datatron.Networking
         //public void AppendToTimer(object a) { tmr.Elapsed += (ElapsedEventHandler)a; }
 
         public TcpClient client = new TcpClient();
-        private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 10000);
+        private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("192.168.38.122"), 10000);
 
         public void Reconnect() { try { client.Connect(serverEndPoint); } catch { } }
 

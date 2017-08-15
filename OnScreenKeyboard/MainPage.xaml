@@ -41,7 +41,7 @@
 					</Grid.RowDefinitions>
 
 
-					<Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                    <Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Width="128" Height="128">
 						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechButtonFillSize" ScaleX="1" ScaleY="1"/>
@@ -60,7 +60,7 @@
 							</RadialGradientBrush>
 						</Rectangle.OpacityMask>
 					</Rectangle>
-					<Rectangle Grid.Row="1" Grid.Column="1" Margin="0" RenderTransformOrigin="0.5,0.5">
+					<Rectangle Grid.Row="1" Grid.Column="1" Margin="0" RenderTransformOrigin="0.5,0.5" Width="128" Height="128">
 						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechButtonBorderSize" ScaleX="1" ScaleY="1"/>
@@ -213,7 +213,7 @@
 					<ColumnDefinition Width="1*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 				<local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown" Opacity="0.3"/>
-				<local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16"></local:SeeMore>
+                <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16" Opacity="0.3"></local:SeeMore>
 				<Grid Grid.Column="2" Margin="16">
 					<Grid.RowDefinitions>
 						<RowDefinition></RowDefinition>
