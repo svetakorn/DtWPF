@@ -134,9 +134,10 @@ namespace OnScreenKeyboard
 
             networking.tmr.Enabled = false;
             string qwerty = "^U" + attachments[(int)control.Tag].path;
+            string qwerty2 = "^N" + attachments[(int)control.Tag].caption;
             Task.Delay(150).ContinueWith(_ =>
             {
-                networking.SendMessage("^N"+ attachments[(int)control.Tag].caption);
+                networking.SendMessage(qwerty2);
             });
             Task.Delay(300).ContinueWith(_ =>
             {

@@ -54,6 +54,7 @@ namespace OnScreenKeyboard
         public ShowDocument()
         {
             InitializeComponent();
+            doc_name.Text = attachments[docNum].caption;
             page = 1;
             browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
             //browser.Address = "http://google.com";

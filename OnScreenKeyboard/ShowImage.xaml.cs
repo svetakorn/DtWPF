@@ -41,6 +41,8 @@ namespace OnScreenKeyboard
         {
             InitializeComponent();
 
+            pic_name.Text = caption;
+
             BitmapImage imgFile = new BitmapImage();
             imgFile.BeginInit();
             imgFile.UriSource = new Uri(@"C:\xampp\htdocs\docs\img\" + path);
