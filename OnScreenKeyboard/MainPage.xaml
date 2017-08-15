@@ -4,85 +4,235 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnScreenKeyboard"
-      xmlns:TermControls="clr-namespace:TermControls;assembly=TermControls"
       mc:Ignorable="d" 
       Title="MainPage" KeepAlive="True" d:DesignWidth="1920" d:DesignHeight="1080">
 
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="background.png"/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="64"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="64"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="6*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="1*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="256"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Image x:Name="image" Source="microphone1.png" Width="128" MouseDown="image_MouseDown">
-                    <Image.OpacityMask>
-                        <ImageBrush ImageSource="microphone1.png" Stretch="Uniform"/>
-                    </Image.OpacityMask>
-                </Image>
-                <Image x:Name="image2" Visibility="Hidden" Source="pause.png" Width="128" MouseDown="image2_MouseDown">
-                    <Image.OpacityMask>
-                        <ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
-                    </Image.OpacityMask>
-                </Image>
-                <Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#66FFFFFF" Foreground="#00000000" BorderThickness="4" />
-                <TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
-                    <TextBox.SelectionBrush>
-                        <SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
-                    </TextBox.SelectionBrush>
-                    <TextBox.Background>
-                        <SolidColorBrush Color="#FFBEBEBE" Opacity="0.13"/>
-                    </TextBox.Background>
-                </TextBox>
-                <Image x:Name="search" HorizontalAlignment="Right" Width="85" Grid.Column="1" Source="search_icon.png" Margin="50" MouseDown="search_MouseDown">
-                    <Image.OpacityMask>
-                        <ImageBrush ImageSource="search_icon.png" Stretch="Uniform"/>
-                    </Image.OpacityMask>
-                </Image>
-            </Grid>
-            <Grid Grid.Row="1">
-                <local:NinePatchPurple Margin="16"></local:NinePatchPurple>
-                <local:Keyboard Margin="48" x:Name="onScreenKeyboard"></local:Keyboard>
-            </Grid>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"></ColumnDefinition>
-                    <ColumnDefinition Width="4*"></ColumnDefinition>
-                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown"/>
-                <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16"></local:SeeMore>
-                <Grid Grid.Column="2" Margin="16">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <local:NinePatchA Grid.RowSpan="2"></local:NinePatchA>
-                    <Image Source="up_arrow.png" VerticalAlignment="Center" Grid.Row="0" Height="12"></Image>
-                    <Image Source="down_arrow.png" VerticalAlignment="Center" Grid.Row="1" Height="12"></Image>
-                </Grid>
-            </Grid>
-            <Grid Grid.Row="3" MouseDown="canvas_MouseDown">
-                <local:RunningText Margin="16, 0"></local:RunningText>
-                <Canvas Name="canvas">
-                    <TextBlock x:Name="_runningText" Margin="0,-18,0,0" MaxWidth="1600" Foreground="White" FontSize="32" VerticalAlignment="Center" Canvas.Left="64" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Canvas.Top="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"><Run/><Run Text="Какие документы стратегического планирования разрабатываются МинФином России?"/></TextBlock>
-                </Canvas>
-            </Grid>
-        </Grid>
-    </Grid>
+	<Grid>
+		<Grid.Background>
+			<ImageBrush ImageSource="background.png"/>
+		</Grid.Background>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="64"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+			<ColumnDefinition Width="64"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="3*"></RowDefinition>
+				<RowDefinition Height="6*"></RowDefinition>
+				<RowDefinition Height="3*"></RowDefinition>
+				<RowDefinition Height="1*"></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="256"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.5*"/>
+						<ColumnDefinition Width="1*"/>
+						<ColumnDefinition Width="0.5*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="0.5*"/>
+						<RowDefinition Height="1*"/>
+						<RowDefinition Height="0.5*"/>
+					</Grid.RowDefinitions>
+
+
+					<Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechButtonFillSize" ScaleX="1" ScaleY="1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<SolidColorBrush x:Name="speechButtonFill" Color="#CC6431EA"></SolidColorBrush>
+						</Rectangle.Fill>
+						<Rectangle.OpacityMask>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0.98"/>
+								<GradientStop Offset="0.98" Color="#00000000"/>
+							</RadialGradientBrush>
+						</Rectangle.OpacityMask>
+					</Rectangle>
+					<Rectangle Grid.Row="1" Grid.Column="1" Margin="0" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechButtonBorderSize" ScaleX="1" ScaleY="1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<SolidColorBrush x:Name="speechButtonBorder" Color="#eeffffff"></SolidColorBrush>
+						</Rectangle.Fill>
+						<Rectangle.OpacityMask>
+							<RadialGradientBrush>
+								<GradientStop Color="#00000000" Offset="0.95"/>
+								<GradientStop Offset="0.95" Color="White"/>
+								<GradientStop Color="White" Offset="0.99"/>
+								<GradientStop Color="#00000000" Offset="1"/>
+							</RadialGradientBrush>
+						</Rectangle.OpacityMask>
+					</Rectangle>
+					<Image Grid.Row="1" Grid.Column="1" Source="microphone-of-voice.png" Width="56" RenderTransformOrigin="0.5,0.5">
+						<Image.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechMode0Scale" ScaleX="1" ScaleY="1"/>
+								<SkewTransform/>
+								<RotateTransform x:Name="speechMode0Rotate" Angle="0"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Image.RenderTransform>
+					</Image>
+					<Image Grid.Row="1" Grid.Column="1" Width="40" Source="white_square.png" RenderTransformOrigin="0.5,0.5">
+						<Image.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechMode1Scale" ScaleX="0" ScaleY="0"/>
+								<SkewTransform/>
+								<RotateTransform x:Name="speechMode1Rotate" Angle="-135"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Image.RenderTransform>
+					</Image>
+					<Grid Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+						<Grid.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform x:Name="speechMode2Scale" ScaleX="0" ScaleY="0"/>
+								<SkewTransform/>
+								<RotateTransform x:Name="speechMode2Rotate" Angle="-135"/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Grid.RenderTransform>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+							<ColumnDefinition Width="*"></ColumnDefinition>
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="2*"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="2*"/>
+						</Grid.RowDefinitions>
+						<Rectangle Grid.Column="1" Grid.Row="1" Fill="#fff" Margin="8">
+							<Rectangle.OpacityMask>
+								<RadialGradientBrush>
+									<GradientStop Color="White" Offset="0.98"/>
+									<GradientStop Offset="0.98" Color="#00000000"/>
+								</RadialGradientBrush>
+							</Rectangle.OpacityMask>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.5" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Grid.Column="2" Grid.Row="1" Fill="#fff" Margin="8">
+							<Rectangle.OpacityMask>
+								<RadialGradientBrush>
+									<GradientStop Color="White" Offset="0.98"/>
+									<GradientStop Offset="0.98" Color="#00000000"/>
+								</RadialGradientBrush>
+							</Rectangle.OpacityMask>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.87"/>
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Grid.Column="3" Grid.Row="1" Fill="#fff" Margin="8">
+							<Rectangle.OpacityMask>
+								<RadialGradientBrush>
+									<GradientStop Color="White" Offset="0.98"/>
+									<GradientStop Offset="0.98" Color="#00000000"/>
+								</RadialGradientBrush>
+							</Rectangle.OpacityMask>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:1.07" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+					</Grid>
+
+				</Grid>
+
+				<!--Image x:Name="image" Width="128" MouseDown="image_MouseDown">
+					<Image.OpacityMask>
+						<ImageBrush ImageSource="microphone1.png" Stretch="Uniform"/>
+					</Image.OpacityMask>
+				</>
+				<Image x:Name="image2" Visibility="Hidden" Source="pause.png" Width="128" MouseDown="image2_MouseDown">
+					<Image.OpacityMask>
+						<ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
+					</Image.OpacityMask>
+				</Image-->
+				<Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#66FFFFFF" Foreground="#00000000" BorderThickness="4" />
+				<TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
+					<TextBox.SelectionBrush>
+						<SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
+					</TextBox.SelectionBrush>
+					<TextBox.Background>
+						<SolidColorBrush Color="#FFBEBEBE" Opacity="0.13"/>
+					</TextBox.Background>
+				</TextBox>
+				<Image x:Name="search" HorizontalAlignment="Right" Width="85" Grid.Column="1" Source="search_icon.png" Margin="50" MouseDown="search_MouseDown">
+					<Image.OpacityMask>
+						<ImageBrush ImageSource="search_icon.png" Stretch="Uniform"/>
+					</Image.OpacityMask>
+				</Image>
+			</Grid>
+			<Grid Grid.Row="1">
+				<local:NinePatchPurple Margin="16"></local:NinePatchPurple>
+				<local:Keyboard Margin="48" x:Name="onScreenKeyboard"></local:Keyboard>
+			</Grid>
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10*"></ColumnDefinition>
+					<ColumnDefinition Width="4*"></ColumnDefinition>
+					<ColumnDefinition Width="1*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown" Opacity="0.3"/>
+				<local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16"></local:SeeMore>
+				<Grid Grid.Column="2" Margin="16">
+					<Grid.RowDefinitions>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+					<local:NinePatchA Grid.RowSpan="2"></local:NinePatchA>
+					<Image Source="up_arrow.png" VerticalAlignment="Center" Grid.Row="0" Height="12"></Image>
+					<Image Source="down_arrow.png" VerticalAlignment="Center" Grid.Row="1" Height="12"></Image>
+					<Rectangle Grid.Row="0" Name="PressAnswerScrollUp" MouseDown="PressAnswerScrollUp_MouseDown" Fill="#02FFFFFF"/>
+					<Rectangle Grid.Row="1" Name="PressAnswerScrollDown" MouseDown="PressAnswerScrollDown_MouseDown" Fill="#02FFFFFF"/>
+				</Grid>
+			</Grid>
+			<Grid Grid.Row="3" MouseDown="canvas_MouseDown">
+				<local:RunningText Margin="16, 0"></local:RunningText>
+				<Canvas Name="canvas">
+					<TextBlock x:Name="_runningText" Margin="0,-18,0,0" MaxWidth="1600" Foreground="White" FontSize="32" VerticalAlignment="Center" Canvas.Left="64" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Canvas.Top="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"><Run/><Run Text="Какие документы стратегического планирования разрабатываются МинФином России?"/></TextBlock>
+				</Canvas>
+			</Grid>
+		</Grid>
+	</Grid>
 
 </Page>

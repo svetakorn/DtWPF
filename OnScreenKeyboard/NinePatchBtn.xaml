@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="OnScreenKeyboard.NinePatchA"
+﻿<UserControl x:Class="OnScreenKeyboard.NinePatchBtn"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,32 +8,32 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height=" 16 " />
+                <RowDefinition Height=" 6 " />
                 <RowDefinition Height="*"/>
-                <RowDefinition Height=" 16 "/>
+                <RowDefinition Height=" 6 "/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=" 16 "/>
+                <ColumnDefinition Width=" 6 "/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width=" 16 "/>
+                <ColumnDefinition Width=" 6 "/>
             </Grid.ColumnDefinitions>
 
-			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#01000000" />
+			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#336431ea" />
 			<Grid Grid.Row="1" Grid.Column="0" RenderTransformOrigin="0.5,0.5" >
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_22.png" TileMode="FlipXY" 
+                    <ImageBrush ImageSource="b_9/a9_22.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentX="Left"
-                       Viewport="0,0,3000, 16 "
+                       Viewport="0,0,3000, 6 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1" >
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_2.png" TileMode="FlipY" 
+                    <ImageBrush ImageSource="b_9/a9_2.png" TileMode="FlipY" 
                        Stretch="Uniform"
                        AlignmentY="Top"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -47,10 +47,10 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_22.png" TileMode="FlipX" 
+                    <ImageBrush ImageSource="b_9/a9_22.png" TileMode="FlipX" 
                        Stretch="Uniform"
                        AlignmentX="Right"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -64,10 +64,10 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_2.png" TileMode="FlipXY" 
+                    <ImageBrush ImageSource="b_9/a9_2.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentY="Bottom"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -76,23 +76,23 @@
 
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_1.png" TileMode="FlipXY"
+                    <ImageBrush ImageSource="b_9/a9_1.png" TileMode="FlipXY"
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Right"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
             </Grid>
             <Grid Grid.Row="0" Grid.Column="2">
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_1.png" TileMode="FlipXY"
+                    <ImageBrush ImageSource="b_9/a9_1.png" TileMode="FlipXY"
                                 
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Left"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"
                                 >
                         <ImageBrush.RelativeTransform>
@@ -116,11 +116,11 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_1.png" TileMode="FlipXY"
+                    <ImageBrush ImageSource="b_9/a9_1.png" TileMode="FlipXY"
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Right"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"
                                 >
 
@@ -137,11 +137,11 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <Grid.Background>
-                    <ImageBrush ImageSource="a_9/a9_1.png" TileMode="FlipXY"
+                    <ImageBrush ImageSource="b_9/a9_1.png" TileMode="FlipXY"
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Left"
-                       Viewport="0,0, 16 , 16 "
+                       Viewport="0,0, 6 , 6 "
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>

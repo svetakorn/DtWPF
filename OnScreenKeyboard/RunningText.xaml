@@ -15,8 +15,8 @@
         </Grid.RowDefinitions>
 
         <Rectangle Grid.Row="1" Fill="#1eFFFFFF" Margin="6"></Rectangle>
-        <Rectangle Grid.Row="1" Fill="#ddFFFFFF" Height="12" Width="12" VerticalAlignment="Center" HorizontalAlignment="left"></Rectangle>
-        <Rectangle Grid.Row="1" Fill="#ddFFFFFF" Height="12" Width="12" VerticalAlignment="Center" HorizontalAlignment="Right"></Rectangle>
+        <Rectangle Grid.Row="1" Fill="#eeFFFFFF" Height="12" Width="12" VerticalAlignment="Center" HorizontalAlignment="left"></Rectangle>
+        <Rectangle Grid.Row="1" Fill="#eeFFFFFF" Height="12" Width="12" VerticalAlignment="Center" HorizontalAlignment="Right"></Rectangle>
         <Rectangle Grid.Row="1" Fill="#88FFFFFF" Height="8" Width="8" VerticalAlignment="top" HorizontalAlignment="left" Margin="2"></Rectangle>
         <Rectangle Grid.Row="1" Fill="#88FFFFFF" Height="8" Width="8" VerticalAlignment="top" HorizontalAlignment="Right" Margin="2"></Rectangle>
         <Rectangle Grid.Row="1" Fill="#88FFFFFF" Height="8" Width="8" VerticalAlignment="bottom" HorizontalAlignment="left" Margin="2"></Rectangle>

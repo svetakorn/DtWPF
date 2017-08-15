@@ -142,10 +142,7 @@ namespace OnScreenKeyboard
             {
                 networking.tmr.Enabled = true;
             });
-            Task.Delay(9000).ContinueWith(_ =>
-            {
-                networking.SendMessage("^X");
-            });
+            
         }
     }
 }

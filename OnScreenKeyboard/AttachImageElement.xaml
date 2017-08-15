@@ -24,7 +24,9 @@
 
         <local:NinePatchPurple Grid.ColumnSpan="4" Grid.RowSpan="4" ></local:NinePatchPurple>
         <Image Name="icon" Grid.Column="1" Grid.Row="1" Source="pic_only_icon.png" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBlock Name="caption" Grid.Column="2" Grid.Row="1" Text="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Stretch"  FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0"/>
-        <Image Name="image" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Source="p_9/glow_purple9_tl.png" />
+		<Grid Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="80">
+			<TextBlock x:Name="caption" Foreground="White" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"  FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32,0"><Run Text="QWER TYUIOPOIGF FYJG FYG FUY "/><LineBreak/><Run Text="IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg"/></TextBlock>
+		</Grid>
+		<Image Name="image" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" Source="p_9/glow_purple9_tl.png" />
     </Grid>
 </UserControl>

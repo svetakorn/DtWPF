@@ -28,17 +28,17 @@ namespace OnScreenKeyboard
         public void SetDocCount(int count)
         {
             docLabel = count;
-            doc_label.Content = docLabel;
+            doc_label.Text = docLabel.ToString();
         }
         public void SetPicCount(int count)
         {
             picLabel = count;
-            pic_label.Content = picLabel;
+            pic_label.Text = picLabel.ToString();
         }
         public void SetUrlCount(int count)
         {
             urlLabel = count;
-            url_label.Content = urlLabel;
+            url_label.Text = urlLabel.ToString();
         }
 
         public int DocLabel
@@ -66,9 +66,9 @@ namespace OnScreenKeyboard
 
         public void UpdateCounts ()
         {
-            doc_label.Content = docLabel;
-            pic_label.Content = picLabel;
-            url_label.Content = urlLabel;
+            doc_label.Text = docLabel.ToString();
+            pic_label.Text = picLabel.ToString();
+            url_label.Text = urlLabel.ToString();
         }
         
    //     private void doc_rec_MouseDown(object sender, MouseButtonEventArgs e)

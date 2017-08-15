@@ -8,22 +8,23 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="16" />
+                <RowDefinition Height="48" />
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="16"/>
+                <RowDefinition Height="48"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="48"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="48"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Row="1" Grid.Column="0" >
+			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#01000000" />
+			<Grid Grid.Row="1" Grid.Column="0" >
                 <Grid.Background>
                     <ImageBrush ImageSource="p_9/glow_purple9_ml.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentX="Left"
-                       Viewport="0,0,3000,10.85"
+                       Viewport="0,0,3000,48"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -32,7 +33,7 @@
                     <ImageBrush ImageSource="p_9/glow_purple9_tc.png" TileMode="FlipY" 
                        Stretch="Uniform"
                        AlignmentY="Top"
-                       Viewport="0,0,10.85,3000"
+                       Viewport="0,0,48,3000"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -41,7 +42,7 @@
                     <ImageBrush ImageSource="p_9/glow_purple9_mr.png" TileMode="FlipX" 
                        Stretch="Uniform"
                        AlignmentX="Right"
-                       Viewport="0,0,16.275,10.85"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -50,7 +51,7 @@
                     <ImageBrush ImageSource="p_9/glow_purple9_bc.png" TileMode="FlipY" 
                        Stretch="Uniform"
                        AlignmentY="Bottom"
-                       Viewport="0,0,10.85,16.275"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -63,7 +64,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Right"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -74,7 +75,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Left"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -85,7 +86,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Right"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -96,7 +97,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Left"
-                       Viewport="0,0,16,16"
+                       Viewport="0,0,48,48"
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>

@@ -42,22 +42,13 @@
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+					<ColumnDefinition Width="0.5*"></ColumnDefinition>
+					<ColumnDefinition Width="1*"></ColumnDefinition>
+					<ColumnDefinition Width="1*"></ColumnDefinition>
+					<ColumnDefinition Width="0.5*"></ColumnDefinition>
 
 
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"></RowDefinition>
-                        <RowDefinition Height="2*"></RowDefinition>
-                        <RowDefinition Height="1*"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Image x:Name="num1" Grid.Row="1" Source="Images/num1.png" MouseDown="num1_MouseDown" VerticalAlignment="top"/>
-                </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -65,7 +56,7 @@
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                <Image x:Name="num2" Grid.Row="1" Source="Images/num2.png" MouseDown="num2_MouseDown" VerticalAlignment="top"/>
+                    <Image x:Name="num1" Grid.Row="1" Source="Images/num1.png" MouseDown="num1_MouseDown" VerticalAlignment="top" MouseUp="num1_MouseUp"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -74,8 +65,17 @@
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                <Image x:Name="num3" Grid.Row="1" Source="Images/num3.png" MouseDown="num3_MouseDown" VerticalAlignment="top"/>
+                <Image x:Name="num2" Grid.Row="1" Source="Images/num2.png" MouseDown="num2_MouseDown" VerticalAlignment="top" MouseUp="num2_MouseUp"/>
                 </Grid>
+                <!--Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                <Image x:Name="num3" Grid.Row="1" Source="Images/num3.png" MouseDown="num3_MouseDown" VerticalAlignment="top"/>
+                </>
                 <Grid Grid.Column="3">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
@@ -84,7 +84,7 @@
                     </Grid.RowDefinitions>
 
                 <Image x:Name="num4" Grid.Row="1" Source="Images/num4.png" MouseDown="num4_MouseDown" VerticalAlignment="top"/>
-                </Grid>
+                </Grid-->
             </Grid>
 
 
