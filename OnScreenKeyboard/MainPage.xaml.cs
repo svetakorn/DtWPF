@@ -720,7 +720,7 @@ namespace OnScreenKeyboard
                 }
                 catch (Exception ex) { throw new Exception(ex.Message); }
             }
-            catch (Exception ex) { MessageBox.Show("JSON плагин упал. Это баг в плагине. Уже ищем другой."); }
+            catch (Exception ex) {  }
 
 
         }
@@ -800,15 +800,17 @@ namespace OnScreenKeyboard
                 //Начало записи
                 waveIn.StartRecording();
 
+            }
+            catch (Exception ex)
+            { }
+            try
+            {
                 SoundPlayer spst = new SoundPlayer();
                 spst.SoundLocation = "speechStart.wav";
                 spst.Load();
                 spst.Play();
             }
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
-
-
+            catch { }
            
         }
 
