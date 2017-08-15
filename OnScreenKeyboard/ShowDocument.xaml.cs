@@ -55,8 +55,8 @@ namespace OnScreenKeyboard
         {
             InitializeComponent();
             page = 1;
-            browser.Navigate("http://localhost/?page=" + page + "&pdfpath=/docs/doc/" + attachments[docNum].path);
-
+            browser.Address = "http://localhost/?page=" + page + "&pdfpath=/docs/doc/" + attachments[docNum].path;
+            //browser.Address = "http://google.com";
             //MessageBox.Show(docs[docNum]);
             /*
             pdfViewer1.LoadDocument(@"C:\Users\mvideo\Desktop\docs\doc\" + docs[docNum]);
