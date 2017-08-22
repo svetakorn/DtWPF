@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OnScreenKeyboard"
       mc:Ignorable="d" 
-      Title="MainPage" KeepAlive="True" d:DesignWidth="1920" d:DesignHeight="1080">
+      Title="MainPage" KeepAlive="True" d:DesignWidth="1600" d:DesignHeight="900">
 
 	<Grid>
 		<Grid.Background>
@@ -16,51 +16,112 @@
 			<ColumnDefinition Width="*"></ColumnDefinition>
 			<ColumnDefinition Width="64"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
+		<Grid Grid.ColumnSpan="3">
+			<Rectangle Fill="White" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,39,0,0" RenderTransformOrigin="0.5,0.5" Opacity="0.6">
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="1"/>
+						<GradientStop Color="#00000000" Offset="1"/>
+						<GradientStop Color="#FFEDEDED" Offset="0.98"/>
+						<GradientStop Color="#00D5D5D5" Offset="0.979"/>
+						<GradientStop Color="#00000000" Offset="0"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="wave_c1" ScaleX="1" ScaleY="1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Fill="White" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,39,0,0" RenderTransformOrigin="0.5,0.5" Opacity="0.4">
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="1"/>
+						<GradientStop Color="#00000000" Offset="1"/>
+						<GradientStop Color="#FFEDEDED" Offset="0.98"/>
+						<GradientStop Color="#00D5D5D5" Offset="0.979"/>
+						<GradientStop Color="#00000000" Offset="0"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="wave_c2" ScaleX="1" ScaleY="1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+			<Rectangle Fill="White" Width="120" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,39,0,0" RenderTransformOrigin="0.5,0.5" Opacity="0.2">
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="1"/>
+						<GradientStop Color="#00000000" Offset="1"/>
+						<GradientStop Color="#FFEDEDED" Offset="0.98"/>
+						<GradientStop Color="#00D5D5D5" Offset="0.979"/>
+						<GradientStop Color="#00000000" Offset="0"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="wave_c3" ScaleX="1" ScaleY="1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+			</Rectangle>
+		</Grid>
 		<Grid Grid.Column="1">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="3*"></RowDefinition>
+				<RowDefinition Height="4*"></RowDefinition>
 				<RowDefinition Height="6*"></RowDefinition>
 				<RowDefinition Height="3*"></RowDefinition>
-				<RowDefinition Height="1*"></RowDefinition>
 			</Grid.RowDefinitions>
-			<Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+			<Grid Grid.Row="0">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="256"></ColumnDefinition>
+					<ColumnDefinition Width="192"></ColumnDefinition>
 					<ColumnDefinition Width="*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<Grid>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="0.5*"/>
-						<ColumnDefinition Width="1*"/>
-						<ColumnDefinition Width="0.5*"/>
-					</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="2.5*"/>
+					<RowDefinition Height="*"/>
+				</Grid.RowDefinitions>
+				<Grid  MouseDown="Grid_MouseDown">
 					<Grid.RowDefinitions>
-						<RowDefinition Height="0.5*"/>
+						<RowDefinition Height="0.25*"/>
 						<RowDefinition Height="1*"/>
-						<RowDefinition Height="0.5*"/>
+						<RowDefinition Height="0.25*"/>
 					</Grid.RowDefinitions>
 
 
-                    <Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Width="128" Height="128">
+					<Rectangle Grid.Row="1" RenderTransformOrigin="0.5,0.5" Grid.Column="0" Width="128" Height="128">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FF9456F3" Offset="0.363"/>
+								<GradientStop Color="#FF7D39E4" Offset="1"/>
+								<GradientStop Color="#FFAD78FF"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
 						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechButtonFillSize" ScaleX="1" ScaleY="1"/>
 								<SkewTransform/>
-								<RotateTransform/>
+								<RotateTransform Angle="34.695"/>
 								<TranslateTransform/>
 							</TransformGroup>
 						</Rectangle.RenderTransform>
-						<Rectangle.Fill>
-							<SolidColorBrush x:Name="speechButtonFill" Color="#CC6431EA"></SolidColorBrush>
-						</Rectangle.Fill>
 						<Rectangle.OpacityMask>
 							<RadialGradientBrush>
-								<GradientStop Color="White" Offset="0.98"/>
-								<GradientStop Offset="0.98" Color="#00000000"/>
+								<GradientStop Color="White" Offset="0.95"/>
+								<GradientStop Offset="0.95" Color="#00000000"/>
 							</RadialGradientBrush>
 						</Rectangle.OpacityMask>
 					</Rectangle>
-					<Rectangle Grid.Row="1" Grid.Column="1" Margin="0" RenderTransformOrigin="0.5,0.5" Width="128" Height="128">
+					<Rectangle Grid.Row="1" Grid.Column="0" Margin="0" RenderTransformOrigin="0.5,0.5" Width="128" Height="128">
 						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechButtonBorderSize" ScaleX="1" ScaleY="1"/>
@@ -70,104 +131,202 @@
 							</TransformGroup>
 						</Rectangle.RenderTransform>
 						<Rectangle.Fill>
-							<SolidColorBrush x:Name="speechButtonBorder" Color="#eeffffff"></SolidColorBrush>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop x:Name="speechButtonBorder" Color="#FF7D39E4"/>
+								<GradientStop Color="#FF9456F3" Offset="0.637"/>
+								<GradientStop Color="#FFAD78FF" Offset="1"/>
+							</LinearGradientBrush>
 						</Rectangle.Fill>
 						<Rectangle.OpacityMask>
 							<RadialGradientBrush>
 								<GradientStop Color="#00000000" Offset="0.95"/>
-								<GradientStop Offset="0.95" Color="White"/>
-								<GradientStop Color="White" Offset="0.99"/>
+								<GradientStop Color="White" Offset="0.95"/>
 								<GradientStop Color="#00000000" Offset="1"/>
 							</RadialGradientBrush>
 						</Rectangle.OpacityMask>
 					</Rectangle>
-					<Image Grid.Row="1" Grid.Column="1" Source="microphone-of-voice.png" Width="56" RenderTransformOrigin="0.5,0.5">
-						<Image.RenderTransform>
+					<Rectangle Grid.Row="1" Grid.Column="0" Width="80" RenderTransformOrigin="0.5,0.5" Fill="#fff">
+						<Rectangle.OpacityMask>
+							<ImageBrush Stretch="Uniform" ImageSource="microphone-of-voice.png"/>
+						</Rectangle.OpacityMask>
+						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechMode0Scale" ScaleX="1" ScaleY="1"/>
 								<SkewTransform/>
 								<RotateTransform x:Name="speechMode0Rotate" Angle="0"/>
 								<TranslateTransform/>
 							</TransformGroup>
-						</Image.RenderTransform>
-					</Image>
-					<Image Grid.Row="1" Grid.Column="1" Width="40" Source="white_square.png" RenderTransformOrigin="0.5,0.5">
-						<Image.RenderTransform>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle Grid.Row="1" Grid.Column="0" Width="72" RenderTransformOrigin="0.5,0.5" Fill="#fff">
+						<Rectangle.OpacityMask>
+							<ImageBrush Stretch="Uniform" ImageSource="search_icon.png"/>
+						</Rectangle.OpacityMask>
+						<Rectangle.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechMode1Scale" ScaleX="0" ScaleY="0"/>
 								<SkewTransform/>
 								<RotateTransform x:Name="speechMode1Rotate" Angle="-135"/>
 								<TranslateTransform/>
 							</TransformGroup>
-						</Image.RenderTransform>
-					</Image>
-					<Grid Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Grid Grid.Row="1" Grid.Column="0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" HorizontalAlignment="Center" Width="128" Height="128">
 						<Grid.RenderTransform>
 							<TransformGroup>
 								<ScaleTransform x:Name="speechMode2Scale" ScaleX="0" ScaleY="0"/>
 								<SkewTransform/>
 								<RotateTransform x:Name="speechMode2Rotate" Angle="-135"/>
-								<TranslateTransform/>
+								<TranslateTransform Y="-3" X="0"/>
 							</TransformGroup>
 						</Grid.RenderTransform>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="*"></ColumnDefinition>
-							<ColumnDefinition Width="*"></ColumnDefinition>
-							<ColumnDefinition Width="*"></ColumnDefinition>
-							<ColumnDefinition Width="*"></ColumnDefinition>
-							<ColumnDefinition Width="*"></ColumnDefinition>
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="2*"/>
-							<RowDefinition Height="*"/>
-							<RowDefinition Height="2*"/>
-						</Grid.RowDefinitions>
-						<Rectangle Grid.Column="1" Grid.Row="1" Fill="#fff" Margin="8">
-							<Rectangle.OpacityMask>
-								<RadialGradientBrush>
-									<GradientStop Color="White" Offset="0.98"/>
-									<GradientStop Offset="0.98" Color="#00000000"/>
-								</RadialGradientBrush>
-							</Rectangle.OpacityMask>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="-45"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
 							<Rectangle.Triggers>
 								<EventTrigger RoutedEvent="Loaded">
 									<BeginStoryboard>
 										<Storyboard>
-											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.5" />
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:0.0" />
 										</Storyboard>
 									</BeginStoryboard>
 								</EventTrigger>
 							</Rectangle.Triggers>
 						</Rectangle>
-						<Rectangle Grid.Column="2" Grid.Row="1" Fill="#fff" Margin="8">
-							<Rectangle.OpacityMask>
-								<RadialGradientBrush>
-									<GradientStop Color="White" Offset="0.98"/>
-									<GradientStop Offset="0.98" Color="#00000000"/>
-								</RadialGradientBrush>
-							</Rectangle.OpacityMask>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="0"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
 							<Rectangle.Triggers>
 								<EventTrigger RoutedEvent="Loaded">
 									<BeginStoryboard>
 										<Storyboard>
-											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.87"/>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:0.2" />
 										</Storyboard>
 									</BeginStoryboard>
 								</EventTrigger>
 							</Rectangle.Triggers>
 						</Rectangle>
-						<Rectangle Grid.Column="3" Grid.Row="1" Fill="#fff" Margin="8">
-							<Rectangle.OpacityMask>
-								<RadialGradientBrush>
-									<GradientStop Color="White" Offset="0.98"/>
-									<GradientStop Offset="0.98" Color="#00000000"/>
-								</RadialGradientBrush>
-							</Rectangle.OpacityMask>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="45"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
 							<Rectangle.Triggers>
 								<EventTrigger RoutedEvent="Loaded">
 									<BeginStoryboard>
 										<Storyboard>
-											<ThicknessAnimation Storyboard.TargetProperty="Margin" To="4,4,4,4" AccelerationRatio="0.4" DecelerationRatio="0.4" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:1.07" />
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:0.4" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="90"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:0.6" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="135"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:0.8" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="180"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:1.0" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="225"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:1.2" />
+										</Storyboard>
+									</BeginStoryboard>
+								</EventTrigger>
+							</Rectangle.Triggers>
+						</Rectangle>
+						<Rectangle Fill="#fff" Width="6" Height="18" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,2">
+							<Rectangle.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform/>
+									<SkewTransform/>
+									<RotateTransform Angle="270"/>
+									<TranslateTransform Y="-24"/>
+								</TransformGroup>
+							</Rectangle.RenderTransform>
+							<Rectangle.Triggers>
+								<EventTrigger RoutedEvent="Loaded">
+									<BeginStoryboard>
+										<Storyboard>
+											<DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.5" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:0.8" BeginTime="0:0:1.4" />
 										</Storyboard>
 									</BeginStoryboard>
 								</EventTrigger>
@@ -187,8 +346,8 @@
 						<ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
 					</Image.OpacityMask>
 				</Image-->
-				<Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#66FFFFFF" Foreground="#00000000" BorderThickness="4" />
-				<TextBox Padding="32, 16, 108, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
+				<Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#FFFFFF" Foreground="#00000000" BorderThickness="4, 4, 128, 4" />
+				<TextBox Padding="32, 16, 132, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
 					<TextBox.SelectionBrush>
 						<SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
 					</TextBox.SelectionBrush>
@@ -196,11 +355,19 @@
 						<SolidColorBrush Color="#FFBEBEBE" Opacity="0.13"/>
 					</TextBox.Background>
 				</TextBox>
-				<Image x:Name="search" HorizontalAlignment="Right" Width="85" Grid.Column="1" Source="search_icon.png" Margin="50" MouseDown="search_MouseDown">
-					<Image.OpacityMask>
-						<ImageBrush ImageSource="search_icon.png" Stretch="Uniform"/>
-					</Image.OpacityMask>
-				</Image>
+
+				<Rectangle HorizontalAlignment="Right" Width="128" Grid.Column="1" Margin="0,35,16,35" Fill="#FF7D39E4" MouseDown="search_MouseDown">
+					<Rectangle.OpacityMask>
+						<ImageBrush ImageSource="search_icon.png" Stretch="None"/>
+					</Rectangle.OpacityMask>
+				</Rectangle>
+
+
+				<TextBlock Grid.Row="1" Margin="16,0" Foreground="White" FontSize="24" Width="128" VerticalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" ><Run Text="ПОПРОБУЙТЕ"/><LineBreak/><Run Text="СПРОСИТЬ"/></TextBlock>
+				<Grid Grid.Row="1" Grid.Column="1" MouseDown="canvas_MouseDown">
+					<local:RunningText Margin="16, 0"></local:RunningText>
+					<TextBlock Grid.Row="1" Grid.Column="1" x:Name="_runningText" TextWrapping="Wrap" Margin="0,0,0,0" Width="1160" Foreground="White" FontSize="32" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Text="{Binding Tag, ElementName=_runningText}" Height="40" LineHeight="40"/>
+				</Grid>
 			</Grid>
 			<Grid Grid.Row="1">
 				<local:NinePatchPurple Margin="16"></local:NinePatchPurple>
@@ -213,7 +380,7 @@
 					<ColumnDefinition Width="1*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
 				<local:Attach x:Name="attach_control" Grid.Column="0" Margin="16" MouseDown="attach_control_MouseDown" Opacity="0.3"/>
-                <local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16" Opacity="0.3"></local:SeeMore>
+				<local:SeeMore x:Name="seeMore" Grid.Column="1" Margin="16" Opacity="0.3"></local:SeeMore>
 				<Grid Grid.Column="2" Margin="16">
 					<Grid.RowDefinitions>
 						<RowDefinition></RowDefinition>
@@ -225,12 +392,6 @@
 					<Rectangle Grid.Row="0" Name="PressAnswerScrollUp" MouseDown="PressAnswerScrollUp_MouseDown" Fill="#02FFFFFF"/>
 					<Rectangle Grid.Row="1" Name="PressAnswerScrollDown" MouseDown="PressAnswerScrollDown_MouseDown" Fill="#02FFFFFF"/>
 				</Grid>
-			</Grid>
-			<Grid Grid.Row="3" MouseDown="canvas_MouseDown">
-				<local:RunningText Margin="16, 0"></local:RunningText>
-				<Canvas Name="canvas">
-					<TextBlock x:Name="_runningText" Margin="0,-18,0,0" MaxWidth="1600" Foreground="White" FontSize="32" VerticalAlignment="Center" Canvas.Left="64" ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Center" Canvas.Top="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed"><Run/><Run Text="Какие документы стратегического планирования разрабатываются МинФином России?"/></TextBlock>
-				</Canvas>
 			</Grid>
 		</Grid>
 	</Grid>

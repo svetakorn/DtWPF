@@ -8,14 +8,14 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height=" 6 " />
+                <RowDefinition Height=" 12 " />
                 <RowDefinition Height="*"/>
-                <RowDefinition Height=" 6 "/>
+                <RowDefinition Height=" 12 "/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=" 6 "/>
+                <ColumnDefinition Width=" 12 "/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width=" 6 "/>
+                <ColumnDefinition Width=" 12 "/>
             </Grid.ColumnDefinitions>
 
 			<Rectangle Grid.Row="1" Grid.Column="1" Fill="#336431ea" />
@@ -24,7 +24,7 @@
                     <ImageBrush ImageSource="b_9/a9_22.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentX="Left"
-                       Viewport="0,0,3000, 6 "
+                       Viewport="0,0,3000, 12 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -33,7 +33,7 @@
                     <ImageBrush ImageSource="b_9/a9_2.png" TileMode="FlipY" 
                        Stretch="Uniform"
                        AlignmentY="Top"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -50,7 +50,7 @@
                     <ImageBrush ImageSource="b_9/a9_22.png" TileMode="FlipX" 
                        Stretch="Uniform"
                        AlignmentX="Right"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -67,7 +67,7 @@
                     <ImageBrush ImageSource="b_9/a9_2.png" TileMode="FlipXY" 
                        Stretch="Uniform"
                        AlignmentY="Bottom"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"/>
                 </Grid.Background>
             </Grid>
@@ -80,7 +80,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Right"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>
@@ -92,7 +92,7 @@
                        Stretch="Uniform"
                        AlignmentY="Bottom"
                        AlignmentX="Left"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"
                                 >
                         <ImageBrush.RelativeTransform>
@@ -120,7 +120,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Right"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"
                                 >
 
@@ -141,7 +141,7 @@
                        Stretch="Uniform"
                        AlignmentY="Top"
                        AlignmentX="Left"
-                       Viewport="0,0, 6 , 6 "
+                       Viewport="0,0, 12 , 12 "
                        ViewportUnits="Absolute"
                                 />
                 </Grid.Background>

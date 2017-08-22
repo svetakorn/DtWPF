@@ -50,11 +50,7 @@ namespace OnScreenKeyboard
 
             image.Source = imgFile;
 
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^N" + caption);
-            });
+            networking.SendMessage("^N" + caption);
             Task.Delay(300).ContinueWith(_ =>
             {
                 networking.SendMessage("^I" + "/docs/img/" + path);
@@ -65,12 +61,8 @@ namespace OnScreenKeyboard
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            networking.SendMessage("^X");
             NavigationService.GoBack();
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^X");
-            });
         }
     
     }

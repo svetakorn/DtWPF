@@ -83,12 +83,8 @@ namespace OnScreenKeyboard
 
             */
 
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^N" + attachments[docNum].caption);
-            });
-            Task.Delay(300).ContinueWith(_ =>
+            networking.SendMessage("^N" + attachments[docNum].caption);
+            Task.Delay(225).ContinueWith(_ =>
             {
                 networking.SendMessage("^D"+"/docs/doc/" + attachments[docNum].path);
             });
@@ -111,12 +107,8 @@ namespace OnScreenKeyboard
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            networking.SendMessage("^X");
             NavigationService.GoBack();
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^X");
-            });
         }
 
         private void pdfViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
@@ -138,11 +130,7 @@ namespace OnScreenKeyboard
         {
             page = Math.Max(1, page-1);
             browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^t"+page.ToString());
-            });
+            networking.SendMessage("^t"+page.ToString());
             page_num.Content = "Страница " + page.ToString();
         }
 
@@ -150,11 +138,7 @@ namespace OnScreenKeyboard
         {
             ++page;
             browser.Address = "http://localhost/?page=" + page + "&pdfPath=/docs/doc/" + attachments[docNum].path;
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^t"+page.ToString());
-            });
+            networking.SendMessage("^t"+page.ToString());
             page_num.Content = "Страница " + page.ToString();
         }
     }

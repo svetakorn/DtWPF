@@ -1,0 +1,305 @@
+﻿<UserControl x:Class="OnScreenKeyboard.wavesCircles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OnScreenKeyboard"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1600">
+    <Grid>
+		<Grid Height="256" Width="256" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="32,-32,0,0">
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_0" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="0"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_1" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="20"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_2" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="40"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_3" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="60"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_4" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="80"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_5" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="100"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_6" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="120"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_7" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="140"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_8" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="160"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<!--Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_9" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="180"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_10" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="200"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_11" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="220"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_12" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="240"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_13" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="260"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_14" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="280"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_15" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="300"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_16" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="320"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle>
+			<Rectangle Width="60" Height="60" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White" RenderTransformOrigin="0.5,0.5">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform x:Name="waveRec_17" ScaleY="0" ScaleX="2"/>
+						<SkewTransform/>
+						<RotateTransform Angle="340"/>
+      <TranslateTransform Y="16"/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.OpacityMask>
+					<RadialGradientBrush>
+						<GradientStop Color="White" Offset="0.95"/>
+						<GradientStop Offset="0.95" Color="#00000000"/>
+					</RadialGradientBrush>
+				</Rectangle.OpacityMask>
+			</Rectangle-->
+
+		</Grid>
+
+	</Grid>
+</UserControl>

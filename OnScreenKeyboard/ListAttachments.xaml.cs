@@ -100,6 +100,7 @@ namespace OnScreenKeyboard
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            networking.SendMessage("^X");
             NavigationService.GoBack();
         }
 

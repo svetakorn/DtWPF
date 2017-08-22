@@ -122,7 +122,7 @@ namespace speechKit
             {
                 if (resp.StatusCode == (HttpStatusCode)200)
                 {
-                	var bArray = new byte[500000];
+                	var bArray = new byte[1000000];
                 	var ms = new MemoryStream();
                 	dataStream.CopyTo(ms);
                 	bArray = ms.ToArray();

@@ -102,6 +102,8 @@ namespace Datatron.Networking
 
         }
 
+        public double[] wavesScaling = new double[18];
+
         private void tick(Object source, ElapsedEventArgs e)
         {
             //            if (comboboxDevices.SelectedItem != null)
@@ -111,27 +113,26 @@ namespace Datatron.Networking
             NAudio.CoreAudioApi.MMDevice defaultDevice = devEnum.GetDefaultAudioEndpoint(NAudio.CoreAudioApi.DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia);
             float loudness = defaultDevice.AudioMeterInformation.MasterPeakValue * 255;
             transformedData = FFT(transformedData);
-            int bandWidth = transformedData.Length / 27;
-            int[] loudBandData = new int[27];
-            for (int i = 0; i < 27; i++)
+            int bandWidth = transformedData.Length / 18;
+            for (int i = 0; i < 18; i++)
             {
                 double sum = 0;
                 for (int j = 0; j < bandWidth; j++)
                 {
-                    sum += transformedData[j * 27 + i];
+                    sum += transformedData[j * 18 + i];
                 }
-                loudBandData[i] = (int)Math.Truncate(sum + 0.51);
+                wavesScaling[i] = sum;
             }
-            string concatenated = string.Join("#", loudBandData);
+            //string concatenated = string.Join("#", loudBandData);
 
-            try
-            {
-                if (networking.client.Connected)
-                {
+            //try
+            //{
+              //  if (networking.client.Connected)
+                //{
                     //networking.SendMessage("L" + concatenated + "#");
-                }
-            }
-            catch { }
+                //}
+            //}
+            //catch { }
 
         }
 

@@ -165,7 +165,7 @@
 		</Grid>
 		<Grid Grid.Row="0" Grid.Column="12" Margin="3.5" Grid.ColumnSpan="2">
 			<local:NinePatchBtn/>
-			<Button Style="{DynamicResource KeyButtonMedium}" Content="←"      Click="BackspaceClick" Name="Backspace"            />
+			<Button Style="{DynamicResource KeyButtonMedium}" Content="←"      Click="BackspaceClick2" Name="Backspace"            />
 		</Grid>
 		<Grid Grid.Row="2" Grid.Column="0"  Margin="3.5" Grid.ColumnSpan="2">
 			<local:NinePatchBtn/>
@@ -173,15 +173,15 @@
 		</Grid>
 		<Grid Grid.Row="2" Grid.Column="12" Margin="3.5" Grid.ColumnSpan="2">
 			<local:NinePatchBtn/>
-			<Button Style="{DynamicResource KeyButtonMedium}" Content="↑"      Click="ShiftClick"     Name="Shift2"               />
+			<Button Style="{DynamicResource KeyButtonMedium}" Content="ОЧИСТИТЬ" FontSize="24"      Click="BackspaceClick" Name="reset"            />
 		</Grid>
 		<Grid Grid.Row="3" Grid.Column="3"  Margin="3.5" Grid.ColumnSpan="8">
 			<local:NinePatchBtn/>
 			<Button Style="{DynamicResource KeyButtonSpace}"  Content=" "      Click="SpaceClick"     Name="Space"                />
 		</Grid>
 		<Grid Grid.Row="1" Grid.Column="11" Margin="3.5" Grid.ColumnSpan="3">
-			<local:NinePatchBtn/>
-			<Button Style="{DynamicResource KeyButtonBig}"    Content="ENTER"                         Name="Enter"                />
+			<local:NinePatchBtn />
+			<Button Style="{DynamicResource KeyButtonBig}"    Content="НАЙТИ"                         Name="Enter"                />
 		</Grid>
 		<Grid Grid.Row="3" Grid.Column="0"  Margin="3.5" Grid.ColumnSpan="3">
 			<local:NinePatchBtn/>
@@ -207,7 +207,7 @@
 			<Setter Property="Control.Background" Value="#00000000" />
 			<Setter Property="Control.BorderBrush" Value="#00000000" />
 			<Setter Property="Control.Foreground" Value="White" />
-			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.FontSize" Value="38" />
 			<Setter Property="Control.Padding" Value="16" />
 
 			<Setter Property="Template">
@@ -237,7 +237,7 @@
 			<Setter Property="Control.Background" Value="#00000000" />
 			<Setter Property="Control.BorderBrush" Value="#00000000" />
 			<Setter Property="Control.Foreground" Value="White" />
-			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.FontSize" Value="38" />
 			<Setter Property="Control.Padding" Value="16" />
 			<Setter Property="Grid.ColumnSpan" Value="2" />
 
@@ -269,7 +269,7 @@
 			<Setter Property="Control.Background" Value="#00000000" />
 			<Setter Property="Control.BorderBrush" Value="#00000000" />
 			<Setter Property="Control.Foreground" Value="White" />
-			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.FontSize" Value="38" />
 			<Setter Property="Control.Padding" Value="16" />
 			<Setter Property="Grid.ColumnSpan" Value="3" />
 
@@ -301,7 +301,7 @@
 			<Setter Property="Control.Background" Value="#00000000" />
 			<Setter Property="Control.BorderBrush" Value="#00000000" />
 			<Setter Property="Control.Foreground" Value="White" />
-			<Setter Property="Control.FontSize" Value="32" />
+			<Setter Property="Control.FontSize" Value="38" />
 			<Setter Property="Control.Padding" Value="16" />
 			<Setter Property="Grid.ColumnSpan" Value="8" />
 			<Setter Property="Template">

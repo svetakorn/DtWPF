@@ -481,7 +481,7 @@ namespace OnScreenKeyboard
             search_MouseDown(null, null);
         }
 
-        private string RemoveEndingBrackets(string rawLine) { Debug.WriteLine("raw: " + rawLine); return rawLine.Substring(1, rawLine.Length - 2); }
+        private string RemoveEndingBrackets(string rawLine) {return rawLine.Substring(1, rawLine.Length - 2); }
 
         private string GetAPIanswer(string query)
         {
@@ -495,7 +495,7 @@ namespace OnScreenKeyboard
                 string sLine = objReader.ReadLine();
                 return System.Text.RegularExpressions.Regex.Unescape(sLine);
             }
-            catch { }
+            catch (Exception ex) { Debug.WriteLine("111!!!%!  "+ex.Message); }
 
             return "";
 
@@ -526,202 +526,351 @@ namespace OnScreenKeyboard
         }
         string seeMoreQ1 = "", seeMoreQ2 = "";
 
-        void proceedRequest(string requestString, bool needClean = true)
+        static string json_reescape(string input)
         {
-            string APIRESPONCE = GetAPIanswer(requestString);
-            seeMore.Opacity = 1;
-            Debug.WriteLine("RESPONCE: " + APIRESPONCE);
-            dynamic responce;
-            try
+            string output = "";
+            string[] special_words = {
+                "confidence",
+                "status",
+                "more_answers_order",
+                "more_cube_answers",
+                "more_minfin_answers",
+                "short_answer",
+                "full_answer",
+                "message",
+                "question",
+                "number",
+                "attachments",
+                "user_request",
+                "type",
+                "answer",
+                "formatted_response",
+                "response",
+                "feedback",
+                "formal",
+                "dims",
+                "dim",
+                "val",
+                "cube",
+                "measure",
+                "verbal",
+                "member_caption",
+                "dimension_caption",
+                "domain",
+                "measure",
+                "pretty_feedback",
+                "path",
+                "description" };
+            foreach (string word in special_words)
             {
-                responce = JsonConvert.DeserializeObject(APIRESPONCE);
+//                for (int i = 1; i < input.Length - word.Length - 4; i++)
+//                {
+//                    if (input.Substring(i).StartsWith("\\" + "\"" + word + "\\" + "\"")) {
+//                        output += "\",\"qwe\": ";
+//                    }
+//                    output += input.Substring(i, 1);
+//                }
+            }
+            int i = 0;
+//            for (int i = 1; i < input.Length; i++)
+            while (i < input.Length)
+            {
+                bool captured = false;
+                foreach (string word in special_words)
+                {
+                    if (input.Substring(i).StartsWith("\\" + "\"" + ", " + "\\" + "\"" + word + "\\" + "\"" + ": " + "\\" + "\"")) //   ", "word": "
+                    {
+                        output += "\", \"" + word + "\": \"";
+                        i += word.Length + 12;
+                        captured = true;
+                    }
+                    if (input.Substring(i).StartsWith("\\" + "\"" + ", " + "\\" + "\"" + word + "\\" + "\"" + ": ")) //   ", "word": 
+                    {
+                        output += "\", \"" + word + "\": ";
+                        i += word.Length + 10;
+                        captured = true;
+                    }
+                    if (input.Substring(i).StartsWith("\\" + "\"" + word + "\\" + "\"" + ": " + "\\" + "\"")) //   "word": "
+                    {
+                        output += "\"" + word + "\": \"";
+                        i += word.Length + 8;
+                        captured = true;
+                    }
+                    if (input.Substring(i).StartsWith("\\" + "\"" + word + "\\" + "\"" + ": " + "{")) //   "word": {
+                    {
+                        output += "\"" + word + "\": {";
+                        i += word.Length + 7;
+                        captured = true;
+                    }
+                    if (input.Substring(i).StartsWith("\\" + "\"" + word + "\\" + "\"" + ": ")) //   "word": 
+                    {
+                        output += "\"" + word + "\": ";
+                        i += word.Length + 6;
+                        captured = true;
+                    }
 
+                }
+                if (input.Substring(i).StartsWith("\\" + "\"" + "}")) //   "}
+                {
+                    output += "\"}";
+                    i += 3;
+                    captured = true;
+                }
+                if (!captured)
+                {
+                    output += input.Substring(i, 1);
+                    i++;
+                }
+            }
+            return output;
+        }
+
+        void proceedRequest_body(dynamic responce, bool needClean)
+        {
+            //try
+            {
+                string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none";
+                int docsCount = 0, picsCount = 0, urlsCount = 0;
+                string vn1s = "0", vn2s = "1";
+                attach_control.SetDocCount(0);
+                attach_control.SetPicCount(0);
+                attach_control.SetUrlCount(0);
 
                 try
                 {
-                    string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none";
-                    int docsCount = 0, picsCount = 0, urlsCount = 0;
-                    int vn1 = 0, vn2 = 1;
-
-                    try
+                    type = responce["answer"]["type"].ToString();
+                    if (type.Equals("minfin"))
                     {
-                        type = responce["answer"]["type"].ToString();
-                        if (type.Equals("minfin"))
-                        {
 
-                            string vns = ((string)(responce["answer"]["number"]));
-                            vn1 = int.Parse(vns.Substring(0, vns.IndexOf('.')));
-                            vn2 = int.Parse(vns.Substring(vns.IndexOf('.') + 1));
+                        string vns = ((string)(responce["answer"]["number"]));
+                        vn1s = (vns.Substring(0, vns.IndexOf('.')));
+                        vn2s = vns.Substring(vns.IndexOf('.') + 1);
 
-                            //seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Visible;
-                            seeMore.Opacity = 1; attach_control.Opacity = 1;
-                            user_query = responce["answer"]["question"];
-                            formatted_responce = responce["answer"]["full_answer"];
+                        seeMore.Opacity = 1; attach_control.Opacity = 1;
+                        //seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Visible;
+                        user_query = responce["answer"]["user_request"];
+                        //user_query = responce["answer"]["question"];
+                        formatted_responce = responce["answer"]["question"] + "\n\n" + responce["answer"]["full_answer"];
 
-                            try
-                            {
-
-                                int docCount = 0, picCount = 0, urlCount = 0;
-
-                                JArray attachments = responce["answer"]["attachments"];
-                                List<AttachClass> AL = new List<AttachClass>();
-                                foreach (dynamic item in attachments)
-                                {
-                                    AL.Add(new AttachClass((string)item["description"], (string)item["path"], (string)item["type"]));
-                                    switch ((string)item["type"])
-                                    {
-                                        case "document": docCount++; break;
-                                        case "image": picCount++; break;
-                                        case "url": urlCount++; break;
-                                    }
-                                }
-
-                                attach_control.SetDocCount(docCount);
-                                docsCount = docCount;
-                                attach_control.SetPicCount(picCount);
-                                picsCount = picCount;
-                                attach_control.SetUrlCount(urlCount);
-                                urlsCount = urlCount;
-
-                                ListAttachments.SendAttachInfo(AL);
-                                ShowDocument.SendAttachInfo(AL);
-                                
-                                
-                                //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
-                            }
-                            catch
-                            {
-                                attach_control.SetDocCount(0);
-                                attach_control.SetPicCount(0);
-                                attach_control.SetUrlCount(0);
-                                //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
-                            }
-
-                            if (docsCount + picsCount + urlsCount == 0)
-                                attach_control.Opacity = 0.3;
-                            else
-                                attach_control.Opacity = 1;
-
-                            if (!recordedAnswers.Contains(vns))
-                            {
-                                try
-                                {
-                                    speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
-                                    SoundPlayer sp = new SoundPlayer();
-                                    sp.SoundLocation = "speechGenerated.wav";
-                                    sp.Load();
-                                    Task.Delay(1500).ContinueWith(_ =>
-                                    {
-                                        sp.Play();
-                                    });
-                                }
-                                catch (Exception ex)
-                                {
-                                    Debug.WriteLine(ex);
-                                    //MessageBox.Show("Голосовая запись ответа по кубу не создана");
-                                }
-                            }
-
-                        }
-                        if (type.Equals("cube"))
-                        {
-                            vn2 = 0;
-
-                            //                        seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Hidden;
-                            seeMore.Opacity = 1; attach_control.Opacity = 0.3;
-                            user_query = responce["answer"]["feedback"]["user_request"];
-                            try
-                            {
-                                speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
-                                SoundPlayer sp = new SoundPlayer();
-                                sp.SoundLocation = "speechGenerated.wav";
-                                sp.Load();
-                                Task.Delay(1500).ContinueWith(_ =>
-                                {
-                                    sp.Play();
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-                                Debug.WriteLine(ex);
-                                //MessageBox.Show("Голосовая запись ответа по кубу не создана");
-                            }
-
-                            formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
-                            foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
-                            { formatted_responce += " | " + ((string)item["member_caption"]); }
-                            formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
-                            formatted_responce += "\nАктуальность ответа: 03.08.2017";
-
-
-                        }
-                        if (formatted_responce == null)
-                        {
-                            formatted_responce = "Не найден ответ";
-                        }
-
-                    }
-                    catch { formatted_responce = "Не найден ответ"; }
-
-                    string[] seeMoreQuestions = new string[2];
-
-                    try
-                    {
-                        
-                        JArray[] seeMoreQuestionsArrays = new JArray[2];
-                        int[] seeIndex = { 0, 0 };
-                        try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
-                        try { seeMoreQuestionsArrays[1] = responce["more_minfin_answers"]; } catch { }
-                        string order = responce["more_answers_order"];
-
-                        for (int i = 0; i < seeMoreQuestions.Length; i++)
-                        {
-                            try
-                            {
-                                seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["domain"];
-                                foreach (var item in seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["dims"])
-                                { seeMoreQuestions[i] += " | " + ((string)item["member_caption"]); }
-                                seeIndex[0]++;
-                            }
-                            catch { seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[1]]["question"]; seeIndex[1]++; }
-                        }
-                        seeMoreQ1 = seeMoreQuestions[0];
-                        seeMoreQ2 = seeMoreQuestions[1];
-
-                        if (seeMoreQ1 == "") seeMore.num1.Opacity = 0.3;
-                        if (seeMoreQ2 == "") seeMore.num2.Opacity = 0.3;
-                    }
-                    catch { }
-
-
-                    if (networking.client.Connected)
-                    {
-                        networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1.ToString(), vn2.ToString());
-                        if (needClean)
-                        {
-                            onScreenKeyboard.Text = "";
-                            textBox.Text = "";
-                        }
-
-                    }
-                    else
-                    {
                         try
                         {
-                            networking.Reconnect();
-                            networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount);
+
+                            int docCount = 0, picCount = 0, urlCount = 0;
+
+                            JArray attachments = responce["answer"]["attachments"];
+                            List<AttachClass> AL = new List<AttachClass>();
+                            foreach (dynamic item in attachments)
+                            {
+                                AL.Add(new AttachClass((string)item["description"], (string)item["path"], (string)item["type"]));
+                                switch ((string)item["type"])
+                                {
+                                    case "document": docCount++; break;
+                                    case "image": picCount++; break;
+                                    case "url": urlCount++; break;
+                                }
+                            }
+
+                            attach_control.SetDocCount(docCount);
+                            docsCount = docCount;
+                            attach_control.SetPicCount(picCount);
+                            picsCount = picCount;
+                            attach_control.SetUrlCount(urlCount);
+                            urlsCount = urlCount;
+
+                            ListAttachments.SendAttachInfo(AL);
+                            ShowDocument.SendAttachInfo(AL);
+
+
+                            //if (urls.Count == 0) attach_control.url_img.Opacity = 0.3; else attach_control.url_img.Opacity = 1;
                         }
                         catch
                         {
-                            onScreenKeyboard.Text = "";
-                            textBox.Text = "NO UNITY CONNECTED 1";
+                            attach_control.SetDocCount(0);
+                            attach_control.SetPicCount(0);
+                            attach_control.SetUrlCount(0);
+                            //attach_control.SetUrlCount(0); attach_control.url_img.Opacity = 0.3;
                         }
+
+                        if (docsCount + picsCount + urlsCount == 0)
+                            attach_control.Opacity = 0.3;
+                        else
+                            attach_control.Opacity = 1;
+
+                        if (!recordedAnswers.Contains(vn1s))
+                        {
+                            NetworkingSingletonSK.getInstance().SendMessage((string)responce["answer"]["short_answer"]);
+                            //                                try
+                            //                                {
+                            //                                    speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
+                            //                                    SoundPlayer sp = new SoundPlayer();
+                            //                                    sp.SoundLocation = "speechGenerated.wav";
+                            //                                    sp.Load();
+                            //                                    Task.Delay(1500).ContinueWith(_ =>
+                            //                                    {
+                            //                                        sp.Play();
+                            //                                    });
+                            //                                }
+                            //                                catch (Exception ex)
+                            //                                {
+                            //                                    Debug.WriteLine(ex);
+                            //                                    //MessageBox.Show("Голосовая запись ответа по кубу не создана");
+                            //                                }
+                        } else
+                        {
+                            NetworkingSingletonSK.getInstance().SendMessage("&");
+                        }
+
+                    }
+                    if (type.Equals("cube"))
+                    {
+                        attach_control.SetDocCount(0);
+                        attach_control.SetPicCount(0);
+                        attach_control.SetUrlCount(0);
+
+                        seeMore.Opacity = 1;
+
+                        vn2s = "0";
+
+                        //                        seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Hidden;
+                        seeMore.Opacity = 1; attach_control.Opacity = 0.3;
+                        user_query = responce["answer"]["feedback"]["user_request"];
+                        try
+                        {
+                            NetworkingSingletonSK.getInstance().SendMessage((string)responce["answer"]["formatted_response"]);
+                            //                                speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
+                            //                                SoundPlayer sp = new SoundPlayer();
+                            //                                sp.SoundLocation = "speechGenerated.wav";
+                            //                                sp.Load();
+                            //                                Task.Delay(1500).ContinueWith(_ =>
+                            //                                {
+                            //                                    sp.Play();
+                            //                                });
+                        }
+                        catch (Exception ex)
+                        {
+                            Debug.WriteLine(ex.Message);
+                            //MessageBox.Show("Голосовая запись ответа по кубу не создана");
+                        }
+
+//                        formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
+                        formatted_responce = (string)responce["answer"]["feedback"]["pretty_feedback"];
+//                        foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
+//                        { formatted_responce += " | " + ((string)item["member_caption"]); }
+                        formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
+                        if (((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("CLDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("INDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("EXDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("CLDO02"))
+                            formatted_responce += "\nАктуальность ответа: 03.08.2017";
+
+
+                    }
+                    if (formatted_responce == null)
+                    {
+                        formatted_responce = "Не найден ответ";
+                    }
+
+                    if (((bool)responce["confidence"]) == false)
+                    {
+                            formatted_responce = "Возможно, вы хотели узнать:\n" + formatted_responce;
+                    } else
+                    {
+                        formatted_responce = "Datatron понял ваш вопрос как: \n" + formatted_responce;
                     }
                 }
-                catch (Exception ex) { throw new Exception(ex.Message); }
-            }
-            catch (Exception ex) {  }
+                //catch (Exception ex) { throw ex; }
+                //catch (Exception ex) { Debug.WriteLine("222!!!%!  "+ex.Message); }
+                catch { Debug.WriteLine("&&&&&&&&"); formatted_responce = "Не найден ответ"; }
 
+
+
+                string[] seeMoreQuestions = new string[2];
+
+                try
+                {
+
+                    JArray[] seeMoreQuestionsArrays = new JArray[2];
+                    int[] seeIndex = { 0, 0 };
+                    try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
+                    try { seeMoreQuestionsArrays[1] = responce["more_minfin_answers"]; } catch { }
+                    string order = responce["more_answers_order"];
+
+                    for (int i = 0; i < seeMoreQuestions.Length; i++)
+                    {
+                        try
+                        {
+                            seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["pretty_feedback"];
+                            //seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["domain"];
+                            //foreach (var item in seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["dims"])
+                            //{ seeMoreQuestions[i] += " | " + ((string)item["member_caption"]); }
+                            seeIndex[0]++;
+                        }
+                        catch { seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[1]]["question"]; seeIndex[1]++; }
+                    }
+                    seeMoreQ1 = seeMoreQuestions[0];
+                    seeMoreQ2 = seeMoreQuestions[1];
+
+                    if (seeMoreQ1 == "") seeMore.num1.Opacity = 0.3;
+                    if (seeMoreQ2 == "") seeMore.num2.Opacity = 0.3;
+                }
+                catch (Exception ex) { Debug.WriteLine("333!!!%!  " + ex.Message); }
+                //                    catch { }
+
+
+                if (networking.client.Connected)
+                {
+                    Task.Delay(200).ContinueWith(_ =>
+                    {
+                        networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1s, vn2s);
+                    });
+                    if (needClean)
+                    {
+                        onScreenKeyboard.Text = "";
+                        textBox.Text = "";
+                    }
+
+                }
+                else
+                {
+                    try
+                    {
+                        networking.Reconnect();
+                        Task.Delay(200).ContinueWith(_ =>
+                        {
+                            networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1s, vn2s);
+                        });
+                    }
+                    catch
+                    {
+                        onScreenKeyboard.Text = "";
+                        textBox.Text = "NO UNITY CONNECTED 1";
+                    }
+                }
+            }
+//            catch (Exception ex) { throw ex; }
+        }
+
+        async void proceedRequest(string requestString, bool needClean = true)
+        {
+            if (needClean) onScreenKeyboard.Text = "";
+            var slowTask2 = Task<string>.Factory.StartNew(() => GetAPIanswer(requestString));
+            await slowTask2;
+            string APIRESPONCE = slowTask2.Result.ToString();
+            dynamic responce;
+            try
+            {
+                //Debug.WriteLine("\n\n%%%\n\n");
+                //Debug.WriteLine(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE)));
+                //Debug.WriteLine("\n\n%%%\n\n");
+                //Debug.WriteLine(json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
+                //Debug.WriteLine("\n\n%%%\n\n");
+                responce = JsonConvert.DeserializeObject(APIRESPONCE);
+                proceedRequest_body(responce, needClean);
+            }
+            catch (Exception ex) {
+                var slowTask = Task<string>.Factory.StartNew(() => json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
+                await slowTask;
+                responce = JsonConvert.DeserializeObject(slowTask.Result.ToString());
+                proceedRequest_body(responce, needClean);
+            }
+            
 
         }
 
@@ -858,36 +1007,41 @@ namespace OnScreenKeyboard
         static void playTTS(string ttsquery)
         {
                 Debug.WriteLine("TTS START");
-                speechKit.Program.text_to_speech(ttsquery);
-                Debug.WriteLine("TTS STOP");
-                SoundPlayer sp = new SoundPlayer();
-                sp.SoundLocation = "speechGenerated.wav";
-                sp.Load();
-                sp.Play();
-                Debug.WriteLine("PLAY STOP");
+                NetworkingSingletonSK.getInstance().SendMessage(ttsquery);
+                //speechKit.Program.text_to_speech(ttsquery);
+                //Debug.WriteLine("TTS STOP");
+                //SoundPlayer sp = new SoundPlayer();
+                //sp.SoundLocation = "speechGenerated.wav";
+                //sp.Load();
+                //sp.Play();
+                //Debug.WriteLine("PLAY STOP");
         }
 
         #endregion
 
         DoubleAnimation animation;
+        ThicknessAnimation animation3;
         ColorAnimation animation2;
         //double speed = 2;
+
 
         private void Page_Loaded()
         {
             // Центрируем строку в канвасе
-            Canvas.SetBottom(_runningText, (canvas.ActualHeight - _runningText.ActualHeight) / 2);
+            //Canvas.SetBottom(_runningText, (canvas.ActualHeight - _runningText.ActualHeight) / 2);
 
             animation = new DoubleAnimation();
+            animation3 = new ThicknessAnimation();
             animation2 = new ColorAnimation();
             animation.Duration = TimeSpan.FromSeconds(0.05);
+            animation3.Duration = TimeSpan.FromSeconds(0.05);
             animation2.Duration = TimeSpan.FromSeconds(0.05);
 
             // При завершении анимации, запускаем функцию MyAnimation снова
             // (указано в обработчике)
-            animation.Completed += myanim_Completed;
+            animation3.Completed += myanim_Completed;
 
-            MyAnimation(Canvas.GetTop(_runningText), Canvas.GetTop(_runningText));
+            MyAnimation(_runningText.Margin.Top, _runningText.Margin.Top);
         }
 
         bool isRollNeed = true;
@@ -897,28 +1051,20 @@ namespace OnScreenKeyboard
         {
             // Если строка вышла за пределы канваса (отриц. Canvas.Left)
             // то возвращаем с другой стороны
-            if (Canvas.GetTop(_runningText) >= 40)
+            if (_runningText.Margin.Top >= 40)
             {
-                qIndex = (qIndex + 1) % questions.Length;
-                _runningText.Text = "\n" + questions[qIndex];
-                animation.From = -40;
-                animation.To = -40;
-                _runningText.BeginAnimation(Canvas.TopProperty, animation);
+                qIndex = new Random().Next(questions.Length);
+                _runningText.Tag = questions[qIndex];
+                animation3.From = new Thickness(0,-40,0,0);
+                animation3.To = new Thickness(0, -40, 0, 0);
+                _runningText.BeginAnimation(MarginProperty, animation3);
 
-                networking.tmr.Enabled = false;
-                Task.Delay(150).ContinueWith(_ =>
-                {
-                    networking.SendMessage("I" + questions[qIndex]);
-                });
-                Task.Delay(300).ContinueWith(_ =>
-                {
-                    networking.tmr.Enabled = true;
-                });
+                networking.SendMessage("I" + questions[qIndex]);
             }
             else
             {
-                //  Debug.WriteLine(Canvas.GetTop(_runningText));
-                //   if (Canvas.GetTop(_runningText) <= -1 && Canvas.GetTop(_runningText) >= -6)
+                //  Debug.WriteLine(_runningText.Margin.Top);
+                //   if (_runningText.Margin.Top <= -1 && _runningText.Margin.Top >= -6)
                 //   {
                 //       isRollNeed = false;
                 //       animation.From = from;
@@ -936,11 +1082,11 @@ namespace OnScreenKeyboard
                 //   }
                 //   if (isRollNeed)
                 //   {
-                animation.From = from;
-                animation.To = to;
+                animation3.From = new Thickness(0, from, 0, 0);
+                animation3.To = new Thickness(0, to, 0, 0);
                 animation2.From = Color.FromArgb((byte)(int)(255 * (1 - Math.Min(Math.Abs(from / 24), 1))), 0xFF, 0xFF, 0xFF);
                 animation2.To = Color.FromArgb((byte)(int)(255 * (1 - Math.Min(Math.Abs(to / 24), 1))), 0xFF, 0xFF, 0xFF);
-                _runningText.BeginAnimation(Canvas.TopProperty, animation);
+                _runningText.BeginAnimation(MarginProperty, animation3);
                 //_runningText.BeginAnimation(TextBlock.ForegroundProperty, animation2
                 PropertyPath colorTargetPath = new PropertyPath("Foreground.Color");
                 Storyboard CellBackgroundChangeStory = new Storyboard();
@@ -974,49 +1120,72 @@ namespace OnScreenKeyboard
 
         bool isRollNeedActivated = false;
         bool isRollNeedWaitsForActivation = false;
+        bool isRollWN = false;
 
         private void myanim_Completed(object sender, EventArgs e)
         {
-            //            MyAnimation(Canvas.GetTop(_runningText), Canvas.GetTop(_runningText) + 0.5 + (Canvas.GetTop(_runningText) / 16) * (Canvas.GetTop(_runningText) / 16));
+            if (speechMode == -2) { speechMode = 1; Grid_MouseDown(null, null); }
+           //waves_circles.waveRec_2 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
+           //waves_circles.waveRec_5 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
+           //waves_circles.waveRec_8 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
+            wave_c1.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            wave_c1.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            wave_c2.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            wave_c2.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            wave_c3.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            wave_c3.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(1, new Duration(TimeSpan.FromMilliseconds(100))));
+            if ( speechMode == 1)
+            {
+                //waves_circles.waveRec_0 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[0 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_1 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[1 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_2 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[2 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_3 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[3 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_4 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[4 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_5 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[5 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_6 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[6 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_7 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[7 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                //waves_circles.waveRec_8 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[8 ])), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c1.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[8])))), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c1.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[8])))), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c2.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(2*Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[12])))), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c2.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(Math.Sqrt(Math.Sqrt(2*Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[12])))), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c3.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(Math.Sqrt(2*Math.Sqrt(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[16])))), new Duration(TimeSpan.FromMilliseconds(100))));
+                wave_c3.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation(Math.Sqrt(2*Math.Sqrt(Math.Sqrt(Math.Sqrt(audioLoudness.wavesScaling[16])))), new Duration(TimeSpan.FromMilliseconds(100))));
+
+            }
+            //            MyAnimation(_runningText.Margin.Top, _runningText.Margin.Top + 0.5 + (_runningText.Margin.Top / 16) * (_runningText.Margin.Top / 16));
 
             if (isRollNeed)
             {
-                if (!isRollNeedActivated && Canvas.GetTop(_runningText) <= -1 && Canvas.GetTop(_runningText) >= -3)
+                if (!isRollWN && _runningText.Margin.Top <= -1 && _runningText.Margin.Top >= -8)
                 {
                     isRollNeed = false;
-                    MyAnimation(Canvas.GetTop(_runningText), -1);
+                    MyAnimation(_runningText.Margin.Top, -1);
                 }
                 else
                 {
-                    MyAnimation(Canvas.GetTop(_runningText), Canvas.GetTop(_runningText) + 2 * (2 + Math.Cos(Math.PI * (-Canvas.GetTop(_runningText) - 64) / 64)));
-                    if (isRollNeedActivated)
+                    MyAnimation(_runningText.Margin.Top, _runningText.Margin.Top + 2 * (2 + Math.Cos(Math.PI * (-_runningText.Margin.Top - 64) / 64)));
+                    if (!isRollNeedWaitsForActivation)
                     {
-                        networking.tmr.Enabled = false;
-                        Task.Delay(150).ContinueWith(_ =>
-                        {
-                            networking.SendMessage("IX");
-                        });
-                        Task.Delay(300).ContinueWith(_ =>
-                        {
-                            networking.tmr.Enabled = true;
-                        });
-                        isRollNeedActivated = false;
+                        networking.SendMessage("IX");
                     }
+                    isRollWN = false;
                 }
-                isRollNeedWaitsForActivation = false;
+                isRollNeedWaitsForActivation = true;
             }
             else
             {
-                if (!isRollNeedWaitsForActivation)
+                if (!isRollWN)
                 {
-                    isRollNeedWaitsForActivation = true;
+                    isRollWN = true;
                     Task.Delay(5000).ContinueWith(_ =>
                     {
-                        isRollNeedActivated = true;
+                        isRollWN = true;
                         isRollNeed = true;
+                        isRollNeedWaitsForActivation = false;
                     });
                 }
-                MyAnimation(Canvas.GetTop(_runningText), 0);
+                MyAnimation(_runningText.Margin.Top, -1);
             }
         }
 
@@ -1108,14 +1277,6 @@ namespace OnScreenKeyboard
                 AccelerationRatio = 0.1,
                 Duration = TimeSpan.FromSeconds(animationsTimespan),
             });
-            speechButtonFill.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation()
-            {
-                To = Color.FromArgb(140, 100, 49, 234),
-                AutoReverse = true,
-                DecelerationRatio = 0.7,
-                AccelerationRatio = 0.1,
-                Duration = TimeSpan.FromSeconds(animationsTimespan),
-            });
             speechButtonBorder.BeginAnimation(SolidColorBrush.ColorProperty, new ColorAnimation()
             {
                 To = Color.FromArgb(120, 255, 255, 255),
@@ -1127,8 +1288,9 @@ namespace OnScreenKeyboard
             switch (speechMode)
             {
                 case 0:
+                    playTTS("&");
                     startListening();
-                    textBox.Text = "Слушаю...";
+                    textBox.Text = "Слушаю...\nНажмите на кнопку снова, чтобы подтвердить запрос";
                     speechMode0Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
                     {
                         From = 0,
@@ -1171,6 +1333,11 @@ namespace OnScreenKeyboard
                         DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
                     });
                     speechMode = 1;
+                    Task.Delay(13000).ContinueWith(_ =>
+                    {
+                        if (speechMode == 1)
+                            speechMode = -2;
+                    });
                     break;
                 case 1:
                     textBox.Text = "Идёт распознавание...";

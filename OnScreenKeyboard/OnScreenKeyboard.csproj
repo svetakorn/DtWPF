@@ -113,6 +113,7 @@
     <Compile Include="ComplexNumber.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="FFTProcessor.cs" />
+    <Compile Include="NetworkingSingletonSK.cs" />
     <Compile Include="NetworkingSingleton.cs" />
     <Compile Include="NinePatchBtn.xaml.cs">
       <DependentUpon>NinePatchBtn.xaml</DependentUpon>
@@ -143,6 +144,9 @@
     </Compile>
     <Compile Include="ShowUrl.xaml.cs">
       <DependentUpon>ShowUrl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="wavesCircles.xaml.cs">
+      <DependentUpon>wavesCircles.xaml</DependentUpon>
     </Compile>
     <Page Include="AttachElement.xaml">
       <SubType>Designer</SubType>
@@ -212,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowUrl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="wavesCircles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

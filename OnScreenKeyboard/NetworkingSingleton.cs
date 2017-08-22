@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -34,7 +35,7 @@ namespace Datatron.Networking
         //public void AppendToTimer(object a) { tmr.Elapsed += (ElapsedEventHandler)a; }
 
         public TcpClient client = new TcpClient();
-        private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("192.168.38.122"), 10000);
+        private IPEndPoint serverEndPoint;
 
         public void Reconnect() { try { client.Connect(serverEndPoint); } catch { } }
 
@@ -43,10 +44,12 @@ namespace Datatron.Networking
             byte[] buffer = System.Text.Encoding.UTF8.GetBytes(msg);
             try
             {
+                Debug.WriteLine("kek11 : " + msg.Substring(0,Math.Min(14, msg.Length)));
                 NetworkStream clientStream = client.GetStream();
                 clientStream.Flush();
                 clientStream.Write(buffer, 0, buffer.Length);
                 clientStream.Flush();
+                Debug.WriteLine("kek22");
             }
             catch { Debug.WriteLine("CANT SEND DATA"); }
         }
@@ -84,6 +87,16 @@ namespace Datatron.Networking
 
         private NetworkingSingleton()
         {
+            string line = "127.0.0.1";
+            try
+            {
+                using (StreamReader sr = new StreamReader("config.txt"))
+                {
+                    line = sr.ReadToEnd();
+                }
+            }
+            catch { }
+            serverEndPoint = new IPEndPoint(IPAddress.Parse(line), 10000);
             try { client.Connect(serverEndPoint); } catch { }
             tmr = new Timer(100);
             tmr.AutoReset = true;

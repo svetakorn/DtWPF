@@ -49,16 +49,8 @@ namespace OnScreenKeyboard
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            networking.SendMessage("^X");
             NavigationService.GoBack();
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
-                networking.SendMessage("^X");
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                networking.tmr.Enabled = true;
-            });
         }
     }
 }

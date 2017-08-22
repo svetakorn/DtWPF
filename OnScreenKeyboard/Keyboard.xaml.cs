@@ -29,7 +29,7 @@ namespace OnScreenKeyboard
             UpdateContents();
         }
 
-        int shiftState = 1;
+        int shiftState = 0;
         int langState = 1;
         int symState = 0;
 
@@ -86,8 +86,16 @@ namespace OnScreenKeyboard
 
         private void BackspaceClick(object sender, RoutedEventArgs e)
         {
+            //if (usercontrol.Text.Length > 0)
+            //    usercontrol.Text = usercontrol.Text.Substring(0, usercontrol.Text.Length - 1);
+            usercontrol.Text = "";
+        }
+
+        private void BackspaceClick2(object sender, RoutedEventArgs e)
+        {
             if (usercontrol.Text.Length > 0)
                 usercontrol.Text = usercontrol.Text.Substring(0, usercontrol.Text.Length - 1);
+            //usercontrol.Text = "";
         }
 
         private void SpaceClick(object sender, RoutedEventArgs e)
