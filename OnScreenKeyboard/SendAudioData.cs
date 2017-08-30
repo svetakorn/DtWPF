@@ -103,15 +103,16 @@ namespace Datatron.Networking
         }
 
         public double[] wavesScaling = new double[18];
+        public float loudness = 0;
 
-        private void tick(Object source, ElapsedEventArgs e)
+        public void tick(Object source, ElapsedEventArgs e)
         {
             //            if (comboboxDevices.SelectedItem != null)
             //          {
             //        var device = (MMDevice)comboboxDevices.SelectedItem;
             NAudio.CoreAudioApi.MMDeviceEnumerator devEnum = new NAudio.CoreAudioApi.MMDeviceEnumerator();
             NAudio.CoreAudioApi.MMDevice defaultDevice = devEnum.GetDefaultAudioEndpoint(NAudio.CoreAudioApi.DataFlow.Render, NAudio.CoreAudioApi.Role.Multimedia);
-            float loudness = defaultDevice.AudioMeterInformation.MasterPeakValue * 255;
+            loudness = defaultDevice.AudioMeterInformation.MasterPeakValue * 255;
             transformedData = FFT(transformedData);
             int bandWidth = transformedData.Length / 18;
             for (int i = 0; i < 18; i++)
@@ -195,7 +196,7 @@ namespace Datatron.Networking
                 waveInStream.WaveFormat = new WaveFormat(samplingFrequency, 2);
                 waveInStream.DataAvailable += new EventHandler<WaveInEventArgs>(waveInStream_DataAvailable);
                 waveInStream.StartRecording();
-                networking.tmr.Elapsed += tick;
+//                networking.tmr2.Elapsed += tick;
             }
             catch (Exception ex) { Debug.WriteLine(ex); }
         }

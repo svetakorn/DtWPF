@@ -51,11 +51,8 @@ namespace OnScreenKeyboard
             image.Source = imgFile;
 
             networking.SendMessage("^N" + caption);
-            Task.Delay(300).ContinueWith(_ =>
-            {
                 networking.SendMessage("^I" + "/docs/img/" + path);
-            });
-
+            
             pic_name.Text = caption;
         }
 

@@ -16,6 +16,6 @@
 
         <local:NinePatchPurple Grid.ColumnSpan="4" ></local:NinePatchPurple>
         <Image Name="icon" Grid.Column="1" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBlock Name="caption" Grid.Column="2" Text="QWER TYUIOPOIGF FYJG FYG FUY IGUY K GKUYF UFU uhfvuirhvui uigfiu fiuwg figfuwegfiu wfg" Foreground="White" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="80" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32"/>
+        <TextBlock Name="caption" Grid.Column="2" Text="QWEbhjhvj guhg yugyug gyhgdkic iurfhgfbieu fiuehg fiewuhg fiu fgiug fig ef w eifgiuf g fg ewgfiue gfiue gfbksj ygjhvb" Foreground="White" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" FontSize="32" Margin="32" MaxHeight="80"/>
     </Grid>
 </UserControl>

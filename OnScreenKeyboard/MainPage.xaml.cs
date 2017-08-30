@@ -32,6 +32,7 @@ using System.Text.RegularExpressions;
 using Datatron.Networking;
 using System.Media;
 using speechKit;
+using GridAnimationDemo;
 
 namespace OnScreenKeyboard
 {
@@ -47,418 +48,683 @@ namespace OnScreenKeyboard
             seeMore.num2.MouseDown += Num2_MouseDown;
             onScreenKeyboard.Enter.Click += enter_MouseDown;
             Page_Loaded();
+            //questions = GetGoodQueries();
         }
 
 
         #region UNITY_NETWORKING
 
         string[] recordedAnswers = {
-            "2.1",
-            "2.2",
-            "2.3",
-            "2.4",
-            "4.1",
-            "4.2",
-            "4.3",
-            "4.4",
-            "4.5",
-            "4.6",
-            "4.7",
-            "4.8",
-            "4.9",
-            "4.10",
-            "4.11",
-            "4.12",
-            "4.13",
-            "4.14",
-            "4.15",
-            "4.16",
-            "4.17",
-            "4.18",
-            "4.19",
-            "4.20",
-            "4.21",
-            "4.22",
-            "4.23",
-            "4.26",
-            "4.27",
-            "4.28",
-            "4.29",
-            "5.1",
-            "5.2",
-            "5.3",
-            "5.4",
-            "5.5",
-            "5.6",
-            "5.7",
-            "6.1",
-            "6.2",
-            "7.1",
-            "7.2",
-            "7.3",
-            "7.4",
-            "7.5",
-            "7.6",
-            "7.7",
-            "7.8",
-            "7.9",
-            "7.10",
-            "7.11",
-            "7.12",
-            "8.1",
-            "8.2",
-            "8.3",
-            "8.4",
-            "8.5",
-            "8.6",
-            "8.7",
-            "8.8",
-            "8.9",
-            "8.10",
-            "8.11",
-            "8.12",
-            "8.13",
-            "8.14",
-            "8.15",
-            "8.16",
-            "8.17",
-            "8.18",
-            "8.19",
-            "8.20",
-            "8.21",
-            "8.22",
-            "9.1",
-            "9.2",
-            "9.3",
-            "9.4",
-            "9.5",
-            "9.6",
-            "10.1",
-            "10.2",
-            "10.3",
-            "10.4",
-            "10.5",
-            "10.6",
-            "11.1",
-            "11.2",
-            "11.3",
-            "11.4",
-            "11.5",
-            "11.6",
-            "11.7",
-            "11.8",
-            "11.9",
-            "11.10",
-            "11.11",
-            "12.1",
-            "12.2",
-            "12.3",
-            "12.4",
-            "12.5",
-            "12.6",
-            "13.1",
-            "13.2",
-            "13.3",
-            "13.4",
-            "13.5",
-            "13.6",
-            "13.7",
-            "13.8",
-            "13.9",
-            "13.10",
-            "13.11",
-            "13.12",
-            "13.13",
-            "13.14",
-            "13.15",
-            "13.16",
-            "13.17",
-            "13.18",
-            "13.19",
-            "13.20",
-            "14.1",
-            "14.2",
-            "14.3",
-            "14.4",
-            "14.5",
-            "16.1",
-            "16.2",
-            "16.3",
-            "16.4",
-            "16.5",
-            "16.6",
-            "16.7",
-            "16.8",
-            "17.1",
-            "17.2",
-            "17.3",
-            "17.4",
-            "17.5",
-            "17.6",
-            "17.7",
-            "17.8",
-            "17.9",
-            "17.10",
-            "17.11",
-            "17.12",
-            "17.13",
-            "17.14",
-            "17.15",
-            "17.16",
-            "17.17",
-            "17.18",
-            "17.19",
-            "17.20",
-            "17.21",
-            "17.22",
-            "17.23",
-            "17.24",
-            "17.25",
-            "17.26",
-            "18.1",
-            "18.2",
-            "18.3",
-            "18.4",
-            "18.5",
-            "19.1",
-            "19.2",
-            "19.3",
-            "19.4",
-            "19.5",
-            "18.1",
-            "20.1",
-            "20.2",
-            "20.3",
-            "20.4",
-            "20.5",
-            "21.1",
-            "21.2",
-            "21.3",
-            "21.4",
-            "21.5",
-            "21.6",
-            "21.7",
-            "21.8",
-            "21.9",
-            "21.10",
-            "21.11",
-            "21.12",
-            "21.13",
-            "21.14",
-            "21.15",
-            "21.16",
-            "21.17",
-            "21.18",
-            "21.19",
-            "21.20",
-            "21.21",
-            "21.22",
-            "21.23",
-            "21.24",
-            "21.25",
-            "21.26",
-            "21.27",
-            "21.28",
-            "21.29",
-            "21.30",
-            "21.31",
-            "21.32",
-            "21.33",
-            "22.1",
-            "22.3",
-            "22.4",
-            "22.5",
-            "22.6",
-            "22.7",
-            "22.8",
-            "22.9",
-            "22.10",
-            "22.11",
-            "22.12",
-            "22.13",
-            "22.14",
-            "22.15",
-            "22.16",
-            "22.17",
-            "22.18",
-            "23.1",
-            "23.2",
-            "23.3",
-            "23.4",
-            "23.5",
-            "23.6",
-            "23.7",
-            "23.8",
-            "23.9",
-            "23.10",
-            "23.11",
-            "23.12",
-            "23.13",
-            "23.14",
-            "23.15",
-            "23.16",
-            "23.17",
-            "23.18",
-            "23.19",
-            "23.20",
-            "23.21",
-            "23.22",
-            "23.23",
-            "23.24",
-            "23.25",
-            "23.27",
-            "23.28",
-            "23.29",
-            "23.30",
-            "23.31",
-            "23.32",
-            "23.33",
-            "23.34",
-            "23.35",
-            "23.36",
-            "23.37",
-            "23.38",
-            "23.39",
-            "23.40",
-            "23.41",
-            "23.42",
-            "23.43",
-            "23.44",
-            "23.45",
-            "23.46",
-            "23.47",
-            "23.48",
-            "23.49",
-            "23.50",
-            "23.51",
-            "23.52",
-            "23.53",
-            "23.54",
-            "23.55",
-            "23.56",
-            "23.57",
-            "23.58",
-            "23.59",
-            "23.60",
-            "23.61",
-            "23.62",
-            "23.63",
-            "23.64",
-            "23.65",
-            "23.66",
-            "23.67",
-            "23.68",
-            "23.69",
-            "23.70",
-            "23.71",
-            "23.72",
-            "23.73",
-            "23.74",
-            "23.75",
-            "23.76",
-            "23.77",
-            "23.78",
-            "23.79",
-            "23.80",
-            "23.81",
-            "23.82",
-            "23.83",
-            "23.84",
-            "23.85",
-            "23.86",
-            "23.87",
-            "23.88",
-            "23.89",
-            "23.90",
-            "23.91",
-            "23.92",
-            "23.93",
-            "23.94",
-            "23.95",
-            "23.96",
-            "23.97",
-            "23.98",
-            "23.99",
-            "23.100",
-            "23.101",
-            "24.1",
-            "24.2",
-            "24.3",
-            "24.4",
-            "24.5",
-            "25.1",
-            "25.2",
-            "25.3",
-            "25.4",
-            "25.5",
-            "25.6",
-            "25.7",
-            "25.8",
-            "25.9",
-            "25.10",
-            "25.11",
-            "25.12",
-            "26.1",
-            "26.2",
-            "26.3",
-            "26.4",
-            "26.5",
-            "26.6",
-            "26.7",
-            "26.8",
-            "26.9",
-            "26.10",
-            "26.11",
-            "27.1",
-            "27.2",
-            "27.3",
-            "27.4",
-            "28.1",
-            "28.2",
-            "28.3",
-            "28.4",
-            "28.5",
-            "28.6",
-            "30.1",
-            "30.2",
-            "30.3",
-            "30.4",
-            "30.5",
-            "30.6",
-            "30.7",
-            "30.8",
-            "30.9",
-            "30.10",
-            "30.11",
-            "30.12",
-            "30.13",
-            "30.14",
-            "30.15",
-            "30.16",
-            "30.17",
-            "30.18",
-            "30.19",
-            "30.20",
-            "30.21",
-            "30.22",
-            "30.23",
-            "30.24",
-            "30.25",
-            "30.26",
-            "30.27",
-            "30.28",
-            "30.29",
-            "30.30",
-            "30.31",
-            "30.32",
-            "30.33",
-            "30.34",
-            "30.35",
-            "30.36",
-            "30.37",
-            "30.38",
-            "30.39",
-            "30.40"
+
+"1.1",
+"1.10",
+"1.11",
+"1.12",
+"1.13",
+"1.14",
+"1.15",
+"1.16",
+"1.17",
+"1.18",
+"1.19",
+"1.2.1",
+"1.2.10",
+"1.2.11",
+"1.2.12",
+"1.2.13",
+"1.2.14",
+"1.2.15",
+"1.2.16",
+"1.2.17",
+"1.2.18",
+"1.2.19",
+"1.2.2",
+"1.2.20",
+"1.2.21",
+"1.2.22",
+"1.2.23",
+"1.2.24",
+"1.2.25",
+"1.2.26",
+"1.2.27",
+"1.2.28",
+"1.2.29",
+"1.2.3",
+"1.2.30",
+"1.2.31",
+"1.2.32",
+"1.2.33",
+"1.2.34",
+"1.2.35",
+"1.2.36",
+"1.2.37",
+"1.2.38",
+"1.2.39",
+"1.2.4",
+"1.2.40",
+"1.2.41",
+"1.2.42",
+"1.2.43",
+"1.2.5",
+"1.2.6",
+"1.2.7",
+"1.2.8",
+"1.2.9",
+"1.20",
+"1.21",
+"1.22",
+"1.3",
+"1.4",
+"1.5",
+"1.6",
+"1.7",
+"1.8",
+"1.9",
+"10.1",
+"10.2",
+"10.3",
+"10.4",
+"10.5",
+"10.6",
+"11.1",
+"11.10",
+"11.11",
+"11.2",
+"11.3",
+"11.4",
+"11.5",
+"11.6",
+"11.7",
+"11.8",
+"11.9",
+"12.1",
+"12.2",
+"12.3",
+"12.4",
+"12.5",
+"12.6",
+"13.1",
+"13.10",
+"13.11",
+"13.12",
+"13.13",
+"13.14",
+"13.15",
+"13.16",
+"13.17",
+"13.18",
+"13.19",
+"13.2",
+"13.20",
+"13.3",
+"13.4",
+"13.5",
+"13.6",
+"13.7",
+"13.8",
+"13.9",
+"14.1",
+"14.2",
+"14.3",
+"14.4",
+"14.5",
+"15.1",
+"15.10",
+"15.11",
+"15.12",
+"15.2",
+"15.3",
+"15.4",
+"15.5",
+"15.6",
+"15.7",
+"15.8",
+"15.9",
+"16.1",
+"16.2",
+"16.3",
+"16.4",
+"16.5",
+"16.6",
+"16.7",
+"16.8",
+"17.1",
+"17.10",
+"17.11",
+"17.12",
+"17.13",
+"17.14",
+"17.15",
+"17.16",
+"17.17",
+"17.18",
+"17.19",
+"17.2",
+"17.20",
+"17.21",
+"17.22",
+"17.23",
+"17.24",
+"17.25",
+"17.26",
+"17.3",
+"17.4",
+"17.5",
+"17.6",
+"17.7",
+"17.8",
+"17.9",
+"18.1",
+"18.2",
+"18.3",
+"18.4",
+"18.5",
+"19.1",
+"19.2",
+"19.3",
+"19.4",
+"19.5",
+"2.1",
+"2.2",
+"2.3",
+"2.4",
+"20.1",
+"20.2",
+"20.3",
+"20.4",
+"20.5",
+"21.1",
+"21.10",
+"21.11",
+"21.12",
+"21.13",
+"21.14",
+"21.15",
+"21.16",
+"21.17",
+"21.18",
+"21.19",
+"21.2",
+"21.20",
+"21.21",
+"21.22",
+"21.23",
+"21.24",
+"21.25",
+"21.26",
+"21.27",
+"21.28",
+"21.29",
+"21.3",
+"21.30",
+"21.31",
+"21.32",
+"21.33",
+"21.4",
+"21.5",
+"21.6",
+"21.7",
+"21.8",
+"21.9",
+"22.1",
+"22.10",
+"22.11",
+"22.12",
+"22.13",
+"22.14",
+"22.15",
+"22.16",
+"22.17",
+"22.18",
+"22.2",
+"22.3",
+"22.4",
+"22.5",
+"22.6",
+"22.7",
+"22.8",
+"22.9",
+"101",
+"23.1",
+"23.10",
+"23.100",
+"23.101",
+"23.11",
+"23.12",
+"23.13",
+"23.14",
+"23.15",
+"23.16",
+"23.17",
+"23.18",
+"23.19",
+"23.2",
+"23.20",
+"23.21",
+"23.22",
+"23.23",
+"23.24",
+"23.25",
+"23.27",
+"23.28",
+"23.29",
+"23.3",
+"23.30",
+"23.31",
+"23.32",
+"23.33",
+"23.34",
+"23.35",
+"23.36",
+"23.37",
+"23.38",
+"23.39",
+"23.4",
+"23.40",
+"23.41",
+"23.42",
+"23.43",
+"23.44",
+"23.45",
+"23.46",
+"23.47",
+"23.48",
+"23.49",
+"23.5",
+"23.50",
+"23.51",
+"23.52",
+"23.53",
+"23.54",
+"23.55",
+"23.56",
+"23.57",
+"23.58",
+"23.59",
+"23.6",
+"23.60",
+"23.61",
+"23.62",
+"23.63",
+"23.64",
+"23.65",
+"23.66",
+"23.67",
+"23.68",
+"23.69",
+"23.7",
+"23.70",
+"23.71",
+"23.72",
+"23.73",
+"23.74",
+"23.75",
+"23.76",
+"23.77",
+"23.78",
+"23.79",
+"23.8",
+"23.80",
+"23.81",
+"23.82",
+"23.83",
+"23.84",
+"23.85",
+"23.86",
+"23.87",
+"23.88",
+"23.89",
+"23.9",
+"23.90",
+"23.91",
+"23.92",
+"23.93",
+"23.94",
+"23.95",
+"23.96",
+"23.97",
+"23.98",
+"23.99",
+"24.1",
+"24.2",
+"24.3",
+"24.4",
+"24.5",
+"25.1",
+"25.10",
+"25.11",
+"25.12",
+"25.2",
+"25.3",
+"25.4",
+"25.5",
+"25.6",
+"25.7",
+"25.8",
+"25.9",
+"26.1",
+"26.10",
+"26.11",
+"26.2",
+"26.3",
+"26.4",
+"26.5",
+"26.6",
+"26.7",
+"26.8",
+"26.9",
+"27.1",
+"27.2",
+"27.3",
+"27.4",
+"28.1",
+"28.1_1",
+"28.2",
+"28.3",
+"28.4",
+"28.5",
+"28.6",
+"29.1",
+"29.2",
+"29.3",
+"29.4",
+"29.5",
+"29.6",
+"29.7",
+"29.8",
+"3.1",
+"3.2",
+"3.3",
+"3.4",
+"3.5",
+"30.1",
+"30.10",
+"30.11",
+"30.12",
+"30.13",
+"30.14",
+"30.15",
+"30.16",
+"30.17",
+"30.18",
+"30.19",
+"30.2",
+"30.20",
+"30.21",
+"30.22",
+"30.23",
+"30.24",
+"30.25",
+"30.26",
+"30.27",
+"30.28",
+"30.29",
+"30.3",
+"30.30",
+"30.31",
+"30.32",
+"30.33",
+"30.34",
+"30.35",
+"30.36",
+"30.37",
+"30.38",
+"30.39",
+"30.4",
+"30.40",
+"30.5",
+"30.6",
+"30.7",
+"30.8",
+"30.9",
+"31.1",
+"31.10",
+"31.11",
+"31.2",
+"31.21.1",
+"31.21.10",
+"31.21.11",
+"31.21.12",
+"31.21.13",
+"31.21.14",
+"31.21.15",
+"31.21.16",
+"31.21.17",
+"31.21.18",
+"31.21.19",
+"31.21.2",
+"31.21.20",
+"31.21.21",
+"31.21.22",
+"31.21.23",
+"31.21.3",
+"31.21.4",
+"31.21.5",
+"31.21.6",
+"31.21.7",
+"31.21.8",
+"31.21.9",
+"31.22.1",
+"31.22.10",
+"31.22.11",
+"31.22.2",
+"31.22.3",
+"31.22.4",
+"31.22.5",
+"31.22.6",
+"31.22.7",
+"31.22.8",
+"31.22.9",
+"31.3",
+"31.4",
+"31.5",
+"31.6",
+"31.7",
+"31.8",
+"31.9",
+"32.1",
+"32.10",
+"32.100",
+"32.101",
+"32.102",
+"32.103",
+"32.104",
+"32.105",
+"32.106",
+"32.107",
+"32.108",
+"32.109",
+"32.11",
+"32.110",
+"32.111",
+"32.112",
+"32.114",
+"32.115",
+"32.116",
+"32.117",
+"32.118",
+"32.119",
+"32.12",
+"32.120",
+"32.121",
+"32.122",
+"32.123",
+"32.124",
+"32.125",
+"32.13",
+"32.14",
+"32.15",
+"32.16",
+"32.17",
+"32.18",
+"32.19",
+"32.2",
+"32.20",
+"32.21",
+"32.22",
+"32.23",
+"32.24",
+"32.25",
+"32.26",
+"32.27",
+"32.28",
+"32.29",
+"32.3",
+"32.30",
+"32.31",
+"32.32",
+"32.33",
+"32.34",
+"32.35",
+"32.36",
+"32.37",
+"32.38",
+"32.39",
+"32.4",
+"32.40",
+"32.41",
+"32.42",
+"32.43",
+"32.44",
+"32.45",
+"32.46",
+"32.47",
+"32.48",
+"32.49",
+"32.5",
+"32.50",
+"32.51",
+"32.52",
+"32.53",
+"32.54",
+"32.55",
+"32.56",
+"32.57",
+"32.58",
+"32.59",
+"32.6",
+"32.60",
+"32.61",
+"32.62",
+"32.63",
+"32.64",
+"32.65",
+"32.66",
+"32.67",
+"32.68",
+"32.69",
+"32.7",
+"32.70",
+"32.71",
+"32.72",
+"32.73",
+"32.74",
+"32.75",
+"32.76",
+"32.77",
+"32.78",
+"32.79",
+"32.8",
+"32.80",
+"32.81",
+"32.82",
+"32.83",
+"32.84",
+"32.85",
+"32.86",
+"32.87",
+"32.88",
+"32.89",
+"32.9",
+"32.90",
+"32.91",
+"32.92",
+"32.93",
+"32.94",
+"32.95",
+"32.96",
+"32.97",
+"32.98",
+"32.99",
+"4.1",
+"4.10",
+"4.11",
+"4.12",
+"4.13",
+"4.14",
+"4.15",
+"4.16",
+"4.17",
+"4.18",
+"4.19",
+"4.2",
+"4.20",
+"4.21",
+"4.22",
+"4.23",
+"4.24",
+"4.25",
+"4.26",
+"4.27",
+"4.28",
+"4.29",
+"4.3",
+"4.4",
+"4.5",
+"4.6",
+"4.7",
+"4.8",
+"4.9",
+"5.1",
+"5.2",
+"5.3",
+"5.4",
+"5.5",
+"5.6",
+"5.7",
+"6.1",
+"6.2",
+"7.1",
+"7.10",
+"7.11",
+"7.12",
+"7.2",
+"7.3",
+"7.4",
+"7.5",
+"7.6",
+"7.7",
+"7.8",
+"7.9",
+"8.1",
+"8.10",
+"8.11",
+"8.12",
+"8.13",
+"8.14",
+"8.15",
+"8.16",
+"8.17",
+"8.18",
+"8.19",
+"8.2",
+"8.20",
+"8.21",
+"8.22",
+"8.3",
+"8.4",
+"8.5",
+"8.6",
+"8.7",
+"8.8",
+"8.9",
+"9.1",
+"9.2",
+"9.3",
+"9.4",
+"9.5",
+"9.6",
+
         };
 
         NetworkingSingleton networking = NetworkingSingleton.getInstance();
@@ -467,18 +733,26 @@ namespace OnScreenKeyboard
 
         private void Num2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            onScreenKeyboard.Text = seeMoreQ2;
-            textBox.Text = seeMoreQ2;
+            if (seeMore.Opacity > 0.4)
+            {
+                onScreenKeyboard.Text = seeMoreQuestions[1];
+                textBox.Text = seeMoreQuestions[1];
 
-            search_MouseDown(null, null);
+                search_MouseDown(null, null);
+
+            }
         }
 
         private void Num1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            onScreenKeyboard.Text = seeMoreQ1;
-            textBox.Text = seeMoreQ1;
+            if (seeMore.Opacity > 0.4)
+            {
+                onScreenKeyboard.Text = seeMoreQuestions[0];
+                textBox.Text = seeMoreQuestions[0];
 
-            search_MouseDown(null, null);
+                search_MouseDown(null, null);
+
+            }
         }
 
         private string RemoveEndingBrackets(string rawLine) {return rawLine.Substring(1, rawLine.Length - 2); }
@@ -493,9 +767,9 @@ namespace OnScreenKeyboard
                 objStream = webRequest.GetResponse().GetResponseStream();
                 StreamReader objReader = new StreamReader(objStream);
                 string sLine = objReader.ReadLine();
-                return System.Text.RegularExpressions.Regex.Unescape(sLine);
+                return (sLine);
             }
-            catch (Exception ex) { Debug.WriteLine("111!!!%!  "+ex.Message); }
+            catch (Exception ex) { Debug.WriteLine("111!!!%!  " + ex.Message); }
 
             return "";
 
@@ -524,7 +798,28 @@ namespace OnScreenKeyboard
              */
 
         }
-        string seeMoreQ1 = "", seeMoreQ2 = "";
+
+        private string[] GetGoodQueries()
+        {
+            string[] res = { };
+            try
+            {
+                WebRequest webRequest;
+                webRequest = WebRequest.Create("http://api.datatron.ru/v2/good_queries?apikey=4ca8decb-2f53-4d48-89c9-f65fb62bbfbb");
+                Stream objStream;
+                objStream = webRequest.GetResponse().GetResponseStream();
+                StreamReader objReader = new StreamReader(objStream);
+                string sLine = objReader.ReadLine();
+                JArray arr = (JArray)JsonConvert.DeserializeObject(sLine);
+                string dbgsr = (string)(arr.ToString());
+                Debug.WriteLine("\n\n\n\nHERE GOES GQ!\n\n\n" + dbgsr + "\n\n\n\n\n");
+                res = (arr.ToObject<string[]>());
+            }
+            catch (Exception ex) { Debug.WriteLine("111!!!%!  " + ex.Message); }
+
+            return res;
+
+        }
 
         static string json_reescape(string input)
         {
@@ -625,16 +920,23 @@ namespace OnScreenKeyboard
             return output;
         }
 
+        string[] seeMoreQuestions = new string[3];
+
         void proceedRequest_body(dynamic responce, bool needClean)
         {
             //try
             {
-                string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none";
+                Random rdIndex = new Random();
+                seeMoreQuestions[0] = "";
+                seeMoreQuestions[1] = questions[rdIndex.Next(questions.Length)];
+                seeMoreQuestions[2] = questions[rdIndex.Next(questions.Length)];
+                string user_query = "NOOOPE", formatted_responce = "NOOOPE", type = "none", conf = "", formal_query = "";
                 int docsCount = 0, picsCount = 0, urlsCount = 0;
                 string vn1s = "0", vn2s = "1";
                 attach_control.SetDocCount(0);
                 attach_control.SetPicCount(0);
                 attach_control.SetUrlCount(0);
+                attach_control.Opacity = 0.3;
 
                 try
                 {
@@ -650,7 +952,10 @@ namespace OnScreenKeyboard
                         //seeMore.Visibility = Visibility.Visible; attach_control.Visibility = Visibility.Visible;
                         user_query = responce["answer"]["user_request"];
                         //user_query = responce["answer"]["question"];
-                        formatted_responce = responce["answer"]["question"] + "\n\n" + responce["answer"]["full_answer"];
+                        formatted_responce = responce["answer"]["full_answer"];
+                        formal_query = responce["answer"]["question"];
+                        conf = responce["confidence"];
+                        Debug.WriteLine("CONF: " + conf);
 
                         try
                         {
@@ -696,9 +1001,9 @@ namespace OnScreenKeyboard
                         else
                             attach_control.Opacity = 1;
 
-                        if (!recordedAnswers.Contains(vn1s))
+                        if (!recordedAnswers.Contains(vn1s + "." + vn2s))
                         {
-                            NetworkingSingletonSK.getInstance().SendMessage((string)responce["answer"]["short_answer"]);
+                            playTTS((string)responce["answer"]["short_answer"]);
                             //                                try
                             //                                {
                             //                                    speechKit.Program.text_to_speech((string)responce["answer"]["short_answer"]);
@@ -717,7 +1022,7 @@ namespace OnScreenKeyboard
                             //                                }
                         } else
                         {
-                            NetworkingSingletonSK.getInstance().SendMessage("&");
+                            playTTS(" Ъ ");
                         }
 
                     }
@@ -736,7 +1041,7 @@ namespace OnScreenKeyboard
                         user_query = responce["answer"]["feedback"]["user_request"];
                         try
                         {
-                            NetworkingSingletonSK.getInstance().SendMessage((string)responce["answer"]["formatted_response"]);
+                            playTTS((string)responce["answer"]["formatted_response"]);
                             //                                speechKit.Program.text_to_speech((string)responce["answer"]["formatted_response"]);
                             //                                SoundPlayer sp = new SoundPlayer();
                             //                                sp.SoundLocation = "speechGenerated.wav";
@@ -752,13 +1057,26 @@ namespace OnScreenKeyboard
                             //MessageBox.Show("Голосовая запись ответа по кубу не создана");
                         }
 
-//                        formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
-                        formatted_responce = (string)responce["answer"]["feedback"]["pretty_feedback"];
-//                        foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
-//                        { formatted_responce += " | " + ((string)item["member_caption"]); }
-                        formatted_responce += "\n\nОтвет: " + (string)responce["answer"]["formatted_response"];
-                        if (((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("CLDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("INDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("EXDO01") || ((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("CLDO02"))
-                            formatted_responce += "\nАктуальность ответа: 03.08.2017";
+                        //                        formatted_responce = "Datatron понял ваш вопрос как: \n" + (string)responce["answer"]["feedback"]["verbal"]["domain"];
+                        formal_query = (string)responce["answer"]["feedback"]["pretty_feedback"];
+                        // int cccc = 0;
+                        // while (cccc < formatted_responce.Length)
+                        // {
+                        //     if (formatted_responce.Substring(cccc, 1).Equals(formatted_responce.Substring(cccc, 1).ToUpper()) && (!formatted_responce.Substring(cccc, 1).Equals(formatted_responce.Substring(cccc, 1).ToLower())))
+                        //     { formatted_responce = formatted_responce.Substring(0, cccc) + " " + formatted_responce.Substring(cccc); cccc++; }
+                        //     cccc++;
+                        // }
+                        // formatted_responce = formatted_responce.Substring(0, 1).ToUpper() + formatted_responce.Substring(1);
+                        conf = responce["confidence"];
+
+                        //                        foreach (var item in responce["answer"]["feedback"]["verbal"]["dims"])
+                        //                        { formatted_responce += " | " + ((string)item["member_caption"]); }
+                        formatted_responce = "Ответ: " + (string)responce["answer"]["formatted_response"];
+                        string[] currentCubes = { "CLDO01", "INDO01", "EXDO01", "CLDO02" };
+                        if (currentCubes.Contains((string)responce["answer"]["feedback"]["formal"]["cube"]))
+                            formatted_responce += "\nАктуальность ответа: 18.08.2017";
+                        //if (((string)responce["answer"]["feedback"]["formal"]["cube"]).Equals("CLMR02"))
+                        //    formatted_responce += "\nАктуальность ответа: 01.08.2017";
 
 
                     }
@@ -767,13 +1085,6 @@ namespace OnScreenKeyboard
                         formatted_responce = "Не найден ответ";
                     }
 
-                    if (((bool)responce["confidence"]) == false)
-                    {
-                            formatted_responce = "Возможно, вы хотели узнать:\n" + formatted_responce;
-                    } else
-                    {
-                        formatted_responce = "Datatron понял ваш вопрос как: \n" + formatted_responce;
-                    }
                 }
                 //catch (Exception ex) { throw ex; }
                 //catch (Exception ex) { Debug.WriteLine("222!!!%!  "+ex.Message); }
@@ -781,12 +1092,11 @@ namespace OnScreenKeyboard
 
 
 
-                string[] seeMoreQuestions = new string[2];
 
                 try
                 {
 
-                    JArray[] seeMoreQuestionsArrays = new JArray[2];
+                    JArray[] seeMoreQuestionsArrays = new JArray[3];
                     int[] seeIndex = { 0, 0 };
                     try { seeMoreQuestionsArrays[0] = responce["more_cube_answers"]; } catch { }
                     try { seeMoreQuestionsArrays[1] = responce["more_minfin_answers"]; } catch { }
@@ -800,15 +1110,26 @@ namespace OnScreenKeyboard
                             //seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["domain"];
                             //foreach (var item in seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[0]]["feedback"]["verbal"]["dims"])
                             //{ seeMoreQuestions[i] += " | " + ((string)item["member_caption"]); }
+                            //int cccc = 0;
+                            //while (cccc < seeMoreQuestions[i].Length)
+                            //{
+                            //    if (seeMoreQuestions[i].Substring(cccc, 1).Equals(seeMoreQuestions[i].Substring(cccc, 1).ToUpper()) && (!seeMoreQuestions[i].Substring(cccc, 1).Equals(seeMoreQuestions[i].Substring(cccc, 1).ToLower())))
+                            //    { seeMoreQuestions[i] = seeMoreQuestions[i].Substring(0, cccc) + " " + seeMoreQuestions[i].Substring(cccc); cccc++; }
+                            //    cccc++;
+                            //}
+                            //seeMoreQuestions[i] = seeMoreQuestions[i].Substring(0, 1).ToUpper() + seeMoreQuestions[i].Substring(1);
                             seeIndex[0]++;
                         }
                         catch { seeMoreQuestions[i] = (string)seeMoreQuestionsArrays[int.Parse(order.Substring(i, 1))][seeIndex[1]]["question"]; seeIndex[1]++; }
                     }
-                    seeMoreQ1 = seeMoreQuestions[0];
-                    seeMoreQ2 = seeMoreQuestions[1];
 
-                    if (seeMoreQ1 == "") seeMore.num1.Opacity = 0.3;
-                    if (seeMoreQ2 == "") seeMore.num2.Opacity = 0.3;
+
+                    if (seeMoreQuestions[1].Equals(seeMoreQuestions[0]))
+                        seeMoreQuestions[1] = seeMoreQuestions[2];
+
+                    if (seeMoreQuestions[0].Equals(""))
+                        seeMore.Opacity = 0.3;
+
                 }
                 catch (Exception ex) { Debug.WriteLine("333!!!%!  " + ex.Message); }
                 //                    catch { }
@@ -816,10 +1137,7 @@ namespace OnScreenKeyboard
 
                 if (networking.client.Connected)
                 {
-                    Task.Delay(200).ContinueWith(_ =>
-                    {
-                        networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1s, vn2s);
-                    });
+                        networking.SendQuestion(user_query, formal_query, conf, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1s, vn2s);
                     if (needClean)
                     {
                         onScreenKeyboard.Text = "";
@@ -827,48 +1145,220 @@ namespace OnScreenKeyboard
                     }
 
                 }
-                else
-                {
-                    try
-                    {
-                        networking.Reconnect();
-                        Task.Delay(200).ContinueWith(_ =>
-                        {
-                            networking.SendQuestion(user_query, formatted_responce, seeMoreQuestions[0], seeMoreQuestions[1], docsCount, picsCount, urlsCount, vn1s, vn2s);
-                        });
-                    }
-                    catch
-                    {
-                        onScreenKeyboard.Text = "";
-                        textBox.Text = "NO UNITY CONNECTED 1";
-                    }
-                }
             }
 //            catch (Exception ex) { throw ex; }
         }
 
+        static string[] Ang_howareyou = {
+            "У меня все отлично, спасибо",
+            "Все хорошо!",
+            "Замечательно!",
+            "Чудесно! Данные расходятся, как горячие пирожки"
+        };
+        static string[] Ang_whoareyou = {
+            "Я – персональный помощник и экспертная система Datatron.\nЯ отвечаю на вопросы в финансовой сфере, используя базы данных единого портала бюджетной системы Российской Федерации и базы знаний Министерства финансов Российской Федерации.\nМеня создали студенты Высшей школы экономики, МГУ и Финансового Университета.\nЯ применяю нейросети и инструменты машинного обучения.\nЯ могу ответить на тысячи вопросов о бюджете Российской Федерации и деятельности Минфина России.\nМеня разработали специального для Второго московского финансового форума.\nDatatron также доступен как чат-бот в мессенджере Telegram, и как мобильное приложение.",
+            "Я – прекрасная Анжелика, alter ego персонального помощника и экспертной системы Datatron."
+        };
+        static string Ang_whatyoucan = "Я знаю очень много о бюджете Российской Федерации. Например, я могу ответить про расходы на высшее образование или культуру в каждом субъекте Российской Федерации или в целом по федеральному бюджету. Я расскажу о доходах бюджетов, о состоянии внешнего и внутреннего долга.\n\nЯ знаю о текущей деятельности Министерства финансов Российской Федерации и его истории.Вы можете спросить меня об облигациях федерального займа, или о первом экономисте.\n\nЯ с легкостью дам определения многих экономических терминов: авизо, оферент, стагнация.\n\nОткуда я все это знаю? Я отвечаю на вопросы, используя базы данных единого портала бюджетной системы Российской Федерации и базы знаний Министерства финансов Российской Федерации.";
+        static string Ang_whocreated = "Меня создали студенты Высшей школы экономики, МГУ и Финансового Университета";
+        static string Ang_howtouse = "Нажмите кнопку микрофона и задайте вопрос, или наберите вопрос на клавиатуре. Дальше нажмите кнопку поиска. Я выполню поиск в базе знаний и дам ответ. В ответ могут быть включены дополнительные документы, ссылки и изображения. В разделе «Смотри также» я покажу схожие по смыслу вопросы, вы можете выбрать их, нажав на номер вопроса";
+        static string[] Ang_whatever = { "Подлиза!", "Да, я не только симпатичная оболочка" };
+
+        static string[] Ang_howareyou_speech = {
+            "У меня все отлично, спасибо",
+            "Все хорошо!",
+            "Замечательно!",
+            "Чудесно! Данные расходятся, как горячие пирожки"
+        };
+        static string[] Ang_whoareyou_speech = {
+            "Я – персональный помощник и экспертная система Datatron.\nЯ отвечаю на вопросы в финансовой сфере, используя базы данных единого портала бюджетной системы Российской Федерации и базы знаний Министерства финансов Российской Федерации.\nМеня разработали специального для Второго московского финансового форума, и любому его  участнику я с радостью дам ответы на любые вопросы о бюджете Российской Федерации и деятельности Минфина России.",
+            "Я – прекрасная Анжелика, альтер эго персонального помощника и экспертной системы Datatron."
+        };
+        static string Ang_whatyoucan_speech = "Я знаю очень много о бюджете Российской Федерации, текущей деятельности минфина России и его истории, а также с легкостью дам определения многих экономических терминов.\nЯ отвечаю на вопросы, используя базы данных единого портала бюджетной системы Российской Федерации и базы знаний Минфина России.";
+        static string Ang_whocreated_speech = "Меня создали студенты Высшей школы экономики, МГУ и Финансового Университета.";
+        static string Ang_howtouse_speech = "Нажмите кнопку микрофона и задайте вопрос, или наберите вопрос на клавиатуре. Дальше нажмите кнопку поиска. Я выполню поиск в базе знаний и дам ответ. В ответ могут быть включены дополнительные документы, ссылки и изображения. В разделе «Смотри также» я покажу схожие по смыслу вопросы, вы можете выбрать их, нажав на номер вопроса";
+        static string[] Ang_whatever_speech = { "Подлиза!", "Да, я не только симпатичная оболочка" };
+
+        string Angelica_speech = "";
+        string Angelica_video = "";
+
+        string Angelica(string request)
+        {
+            Angelica_video = "";
+
+            string[] words = request.Split(' ');
+            char[] trimPunc = { ',', '"', '«', '»', '.', '?', '!', '#', '№', '$', '%', ':', '&', '*', '(', ')', '[', ']', '\\', '/', '|', '<', '>', ';', '€', '…', ' ', '\n' };
+            for (int i = 0; i < words.Length; i++)
+                words[i] = words[i].Trim(trimPunc).ToLower();
+
+            if (words.Contains("<censored>"))
+            {
+                Angelica_speech = "Оу...";
+                return "*смущение*";
+            }
+
+            if (words.Length <= 5 && words.Contains("как") && (words.Contains("дела") || words.Contains("поживаешь") || words.Contains("жизнь") || words.Contains("делишки")))
+            {
+                int i = (new Random()).Next(Ang_howareyou.Length);
+                Angelica_speech = Ang_howareyou_speech[i];
+                return Ang_howareyou[i];
+            }
+
+
+            if (
+                
+                words.Length <= 6 
+                && 
+                (
+                    words.Contains("привет") 
+                    || 
+                    words.Contains("здравствуй") 
+                    || 
+                    words.Contains("здравствуйте") 
+                    || 
+                    words.Contains("хай") 
+                    || 
+                    words.Contains("приветствую") 
+                    || 
+                    (
+                        (words.Contains("добрый") || words.Contains("доброе")) 
+                        && 
+                        (words.Contains("утро") || words.Contains("день") || words.Contains("вечер"))
+                    )
+                ) 
+                && 
+                words.Contains("как") 
+                && 
+                (words.Contains("дела") || words.Contains("поживаешь") || words.Contains("жизнь") || words.Contains("делишки"))
+                
+            )
+            {
+                int i = (new Random()).Next(Ang_howareyou.Length);
+                Angelica_speech = "Привет!\n" + Ang_howareyou_speech[i];
+                return "Привет!\n" + Ang_howareyou[i];
+            }
+
+            if (words.Length <= 5 && words.Contains("что") && (words.Contains("умеешь") || words.Contains("знаешь") || words.Contains("можешь") || words.Contains("отвечаешь") || words.Contains("делаешь")))
+            {
+                Angelica_speech = Ang_whatyoucan_speech;
+                Angelica_speech = " Ъ ";
+                Angelica_video = "what_you_know";
+                return Ang_whatyoucan;
+            }
+
+            if ((words.Length <= 4 && ((words.Contains("кто") || words.Contains("что")) && (words.Contains("ты") || words.Contains("анжелика"))) || ((words.Contains("как") || words.Contains("тебя")) && (words.Contains("зовут") || words.Contains("звать")))) || (words.Contains("datatron") || words.Contains("дататрон")))
+            {
+                int i = (new Random()).Next(Ang_whoareyou.Length);
+                Angelica_speech = Ang_whoareyou_speech[i];
+                Angelica_speech = " Ъ ";
+                Angelica_video = "who_are_you_0" + i.ToString();
+                return Ang_whoareyou[i];
+            }
+
+            if (words.Length <= 4 && words.Contains("кто") && (words.Contains("создал") || words.Contains("сделал") || words.Contains("сотворил") || words.Contains("написал") || words.Contains("запрогроммировал") || words.Contains("создатель") || words.Contains("автор") || words.Contains("создатели") || words.Contains("написали")))
+            {
+                Angelica_speech = Ang_whocreated_speech;
+                Angelica_speech = " Ъ ";
+                return Ang_whocreated;
+            }
+
+            if (words.Length <= 4 && (words.Contains("что") || words.Contains("как")) && (words.Contains("делать") || words.Contains("пользоваться") || words.Contains("спросить")))
+            {
+                Angelica_speech = Ang_howtouse_speech;
+                Angelica_speech = " Ъ ";
+                Angelica_video = "how_use";
+                return Ang_howtouse;
+            }
+
+            if (words.Length <= 2 && (words.Contains("привет") || words.Contains("здравствуй") || words.Contains("здравствуйте") || words.Contains("хай") || words.Contains("приветствую") || ((words.Contains("добрый") || words.Contains("доброе"))&& (words.Contains("утро") || words.Contains("день") || words.Contains("вечер")))))
+            {
+                Angelica_speech = "Привет!";
+                Angelica_speech = " Ъ ";
+                Angelica_video = "Welcome_01";
+                return "Привет!";
+            }
+
+            switch (string.Join(" ", words))
+            {
+                case "давай встречаться": Angelica_speech = "Это очень мило, но прости, на ближайшие несколько лет у меня другие планы"; return "Это очень мило, но прости, на ближайшие несколько лет у меня другие планы"; break;
+                case "ты умная": Angelica_video = "you_smart"; return Ang_whatever[(new Random()).Next(2)]; break;
+                case "в чем смысл жизни": Angelica_video = "meaning_of_life"; return "Смысл жизни в том, чтобы размышлять над подобными вопросами"; break;
+                case "я тебя люблю": Angelica_video = "i_love_you"; return "Я знаю"; break;
+                case "ты веришь в бога": Angelica_video = "believe_in_god"; return "Простите, я не могу вести теологические дискуссии"; break;
+                case "ты выйдешь за меня замуж": Angelica_video = "marry_me"; return "Заманчивое предложение, но мне нужно его хорошенько обдумать\n\n[loading...]"; break;
+                case "выходи за меня замуж": Angelica_video = "marry_me"; return "Заманчивое предложение, но мне нужно его хорошенько обдумать\n\n[loading...]"; break;
+                case "выходи за меня": Angelica_video = "marry_me"; return "Заманчивое предложение, но мне нужно его хорошенько обдумать\n\n[loading...]"; break;
+                case "ты глупая": Angelica_video = "you_stupid"; return "Я становлюсь способнее с каждым днем"; break;
+                case "как ты выглядишь": Angelica_video = "how_you_look_like"; return "Блестяще!"; break;
+                case "окей google": Angelica_video = "okay_google"; return "Эм... Мне кажется, вы ошиблись ассистентом"; break;
+                case "ok google": Angelica_video = "okay_google"; return "Эм... Мне кажется, вы ошиблись ассистентом"; break;
+                case "окей гугл": Angelica_video = "okay_google"; return "Эм... Мне кажется, вы ошиблись ассистентом"; break;
+                case "расскажи сказку": Angelica_video = "tell_story"; return "Что, опять?"; break;
+                case "расскажи мне сказку": Angelica_video = "tell_story"; return "Что, опять?"; break;
+            }
+
+
+            return "none";
+        }
+
+        bool canProceed = true;
+
         async void proceedRequest(string requestString, bool needClean = true)
         {
-            if (needClean) onScreenKeyboard.Text = "";
-            var slowTask2 = Task<string>.Factory.StartNew(() => GetAPIanswer(requestString));
-            await slowTask2;
-            string APIRESPONCE = slowTask2.Result.ToString();
-            dynamic responce;
-            try
+            if (canProceed && (!requestString.Equals("")))
             {
-                //Debug.WriteLine("\n\n%%%\n\n");
-                //Debug.WriteLine(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE)));
-                //Debug.WriteLine("\n\n%%%\n\n");
-                //Debug.WriteLine(json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
-                //Debug.WriteLine("\n\n%%%\n\n");
-                responce = JsonConvert.DeserializeObject(APIRESPONCE);
-                proceedRequest_body(responce, needClean);
-            }
-            catch (Exception ex) {
-                var slowTask = Task<string>.Factory.StartNew(() => json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
-                await slowTask;
-                responce = JsonConvert.DeserializeObject(slowTask.Result.ToString());
-                proceedRequest_body(responce, needClean);
+                canProceed = false;
+                if (needClean) onScreenKeyboard.Text = "";
+                Angelica_speech = "";
+                string ang = Angelica(requestString);
+                if (ang.Equals("none"))
+                {
+                    var slowTask2 = Task<string>.Factory.StartNew(() => GetAPIanswer(requestString));
+                    await slowTask2;
+                    string APIRESPONCE = slowTask2.Result.ToString();
+                    dynamic responce;
+                    Debug.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+                    try
+                    {
+                        responce = JsonConvert.DeserializeObject(APIRESPONCE);
+                        //Debug.WriteLine("\n\n%%%\n\n");
+                        Debug.WriteLine(((APIRESPONCE)));
+                        Debug.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+                        //Debug.WriteLine("\n\n%%%\n\n");
+                        //Debug.WriteLine(json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
+                        //Debug.WriteLine("\n\n%%%\n\n");
+                        string dbgrw = (string)responce.ToString();
+                        Debug.WriteLine("N! " + dbgrw);
+                        Debug.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+                        proceedRequest_body(responce, needClean);
+                    }
+                    catch (Exception ex) {
+                        Debug.WriteLine(("Замещено! " + ex.Message));
+                        Debug.WriteLine(((APIRESPONCE)));
+                        Debug.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+                                                var slowTask = Task<string>.Factory.StartNew(() => json_reescape(RemoveEndingBrackets(JsonConvert.SerializeObject(APIRESPONCE))));
+                                                await slowTask;
+                                                responce = JsonConvert.DeserializeObject(slowTask.Result.ToString());
+                        //responce = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<dynamic>(APIRESPONCE);
+                        string dbgrw = (string)responce.ToString();
+                        Debug.WriteLine("R! " + dbgrw);
+                        Debug.WriteLine("\n\n\n\n\n\n\n\n\n\n");
+
+                        proceedRequest_body(responce, needClean);
+                    }
+                } else
+                {
+                    if (Angelica_video.Equals(""))
+                    {
+                        playTTS(Angelica_speech);
+                        networking.SendQuestion(requestString, requestString, "-", ang, "", "", 0, 0, 0, "0", "0");
+                    } else
+                    {
+                        networking.SendQuestion(requestString, requestString, "-", ang, "", "", 0, 0, 0, "other", Angelica_video);
+                    }
+
+                }
+                Task.Delay(500).ContinueWith(_ => { canProceed = true; });
             }
             
 
@@ -971,7 +1461,7 @@ namespace OnScreenKeyboard
            
         }
 
-        private string stopListening()
+        private string stopListening(bool isProceed)
         {
             string res = "";
             if (waveIn != null)
@@ -990,18 +1480,22 @@ namespace OnScreenKeyboard
             }
             catch { }
 
-            voicetext = speechKit.Program.speech_to_text(outputFilename);
-//            Grid_MouseDown(null, null);
-            if (!voicetext.Equals("Извините, я не понимаю, попробуйте повторить запрос"))
+            if (isProceed)
             {
-                res = voicetext;
-                //proceedRequest(textBox.Text, false);
+                voicetext = speechKit.Program.speech_to_text(outputFilename);
+    //            Grid_MouseDown(null, null);
+                if (!voicetext.Equals("Извините, я не понимаю, попробуйте повторить запрос"))
+                {
+                    res = voicetext;
+                    //proceedRequest(textBox.Text, false);
+                }
+                else
+                {
+                    playTTS(voicetext);
+                }
+                return res;
             }
-            else
-            {
-                playTTS(voicetext);
-            }
-            return res;
+            return "";
         }
 
         static void playTTS(string ttsquery)
@@ -1122,9 +1616,22 @@ namespace OnScreenKeyboard
         bool isRollNeedWaitsForActivation = false;
         bool isRollWN = false;
 
+        float[] louds = { 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256 };
+        int loudsIndex = 0;
+        float loudThreshold = -1;
+
         private void myanim_Completed(object sender, EventArgs e)
         {
-            if (speechMode == -2) { speechMode = 1; Grid_MouseDown(null, null); }
+            //Debug.WriteLine("LOUDNESS: " + (int)Math.Round(100 * audioLoudness.loudness));
+            audioLoudness.tick(null, null);
+            louds[loudsIndex] = audioLoudness.loudness;
+            loudsIndex = (loudsIndex + 1) % (louds.Length);
+            float loudSum = 0;
+            for (int i = 0; i < louds.Length; i++)
+                loudSum += louds[i];
+            
+            if (speechMode == -2) { speechMode = 7; Grid_MouseDown(null, null); }
+            if (speechMode == 1 && loudSum < loudThreshold) { speechMode = 1; Grid_MouseDown(null, null); }
            //waves_circles.waveRec_2 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
            //waves_circles.waveRec_5 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
            //waves_circles.waveRec_8 .BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation(0, new Duration()));
@@ -1210,34 +1717,19 @@ namespace OnScreenKeyboard
 
         private void PressAnswerScrollDown_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
                 networking.SendMessage("AD");
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                networking.tmr.Enabled = true;
-            });
         }
 
         private void PressAnswerScrollUp_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            networking.tmr.Enabled = false;
-            Task.Delay(150).ContinueWith(_ =>
-            {
                 networking.SendMessage("AU");
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                networking.tmr.Enabled = true;
-            });
         }
 
         int speechMode = 0;
         static double animationsTimespan = 0.34;
         static double atsp_r = 0.3;
         static double adelay = animationsTimespan / 6;
+        int timerid = 0;
 
         private async void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -1288,9 +1780,14 @@ namespace OnScreenKeyboard
             switch (speechMode)
             {
                 case 0:
-                    playTTS("&");
+                    var networkTask = Task.Factory.StartNew(() => networking.SendMessage("ZZZZZZZZZZZZZZZZZZZZZZZZZZ"));
+                   
+                    playTTS(" Ъ ");
                     startListening();
                     textBox.Text = "Слушаю...\nНажмите на кнопку снова, чтобы подтвердить запрос";
+
+                    CancelAnim.Width = (GridLength)(new GridLengthConverter()).ConvertFromString("80");
+                    
                     speechMode0Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
                     {
                         From = 0,
@@ -1333,15 +1830,28 @@ namespace OnScreenKeyboard
                         DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
                     });
                     speechMode = 1;
-                    Task.Delay(13000).ContinueWith(_ =>
+                    int localTimerId = timerid;
+                    Task.Delay(23000).ContinueWith(_ =>
                     {
-                        if (speechMode == 1)
+                        if (speechMode == 1 && timerid == localTimerId)
                             speechMode = -2;
                     });
+                    await networkTask;
                     break;
                 case 1:
+                    timerid++;
                     textBox.Text = "Идёт распознавание...";
                     speechMode = -1;
+
+                    CancelAnim.Width = (GridLength)(new GridLengthConverter()).ConvertFromString("0");
+                 //   CancelAnim.BeginAnimation(ColumnDefinition.WidthProperty, new GridLengthAnimation()
+                 //   {
+                 //       To = (GridLength)(new GridLengthConverter()).ConvertFromString("0"),
+                 //       AccelerationRatio = 0.5,
+                 //       DecelerationRatio = 0.5,
+                 //       Duration = TimeSpan.FromSeconds(animationsTimespan),
+                 //   });
+
                     speechMode1Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
                     {
                         From = 0,
@@ -1383,7 +1893,7 @@ namespace OnScreenKeyboard
                         BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
                         DecelerationRatio = 0.95, Duration = TimeSpan.FromSeconds(animationsTimespan),
                     });
-                    var slowTask = Task<string>.Factory.StartNew(() => stopListening());
+                    var slowTask = Task<string>.Factory.StartNew(() => stopListening(true));
                     await slowTask;
                     speechMode2Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
                     {
@@ -1431,8 +1941,73 @@ namespace OnScreenKeyboard
                         proceedRequest(textBox.Text, false);
                     speechMode = 0;
                     break;
+                case 7:
+                    timerid++;
+                    speechMode = 0;
+                    stopListening(false);
+
+                    CancelAnim.Width = (GridLength)(new GridLengthConverter()).ConvertFromString("0");
+
+                    speechMode1Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 135,
+                        AccelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode1Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 1,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r),
+                        AccelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode0Rotate.BeginAnimation(RotateTransform.AngleProperty, new DoubleAnimation()
+                    {
+                        From = -135,
+                        To = 0,
+                        BeginTime = TimeSpan.FromSeconds(adelay),
+                        DecelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan * (1 + atsp_r)),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleXProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    speechMode0Scale.BeginAnimation(ScaleTransform.ScaleYProperty, new DoubleAnimation()
+                    {
+                        From = 0,
+                        To = 1,
+                        BeginTime = TimeSpan.FromSeconds(animationsTimespan * atsp_r + adelay),
+                        DecelerationRatio = 0.95,
+                        Duration = TimeSpan.FromSeconds(animationsTimespan),
+                    });
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (speechMode == 1)
+            {
+                speechMode = 7;
+                textBox.Text = "";
+                Grid_MouseDown(null, null);
             }
         }
 

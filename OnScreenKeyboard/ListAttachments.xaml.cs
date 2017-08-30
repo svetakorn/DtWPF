@@ -45,14 +45,14 @@ namespace OnScreenKeyboard
                     elements[i].SetValue(Grid.RowProperty, current_slot/2);
                     elements[i].SetValue(Grid.ColumnProperty, current_slot%2);
                     elements[i].SetValue(Grid.RowSpanProperty, 2);
-                    elements[i].image.SetValue(Image.SourceProperty, BitmapFrame.Create(new Uri(@"C:\xampp\htdocs\docs\img\"+attachments[i].path)));
+                    try { elements[i].image.SetValue(Image.SourceProperty, BitmapFrame.Create(new Uri(@"C:\xampp\htdocs\docs\img\" + attachments[i].path))); } catch { }
                     used_slots.Add(current_slot);
                     used_slots.Add(current_slot+2);
                     elements[i].Tag = i;
 
                     if ((i == attachments.Length - 1)&&(current_slot % 2 == 1))
-                        foreach (dynamic element in elements)
-                            element.SetValue(Grid.ColumnProperty, 1 - element.GetValue(Grid.ColumnProperty));
+                        for (int j = 0; j <= i; j++)
+                            elements[j].SetValue(Grid.ColumnProperty, 1 - elements[j].GetValue(Grid.ColumnProperty));
 
                     elements[i].MouseDown += new MouseButtonEventHandler(imageElement_MouseDown);
                 }
@@ -133,17 +133,10 @@ namespace OnScreenKeyboard
             ShowUrl.SendUrl(attachments[(int)control.Tag].path);
             ShowUrl.SendCaption(attachments[(int)control.Tag].caption);
 
-            networking.tmr.Enabled = false;
             string qwerty = "^U" + attachments[(int)control.Tag].path;
             string qwerty2 = "^N" + attachments[(int)control.Tag].caption;
-            Task.Delay(150).ContinueWith(_ =>
-            {
                 networking.SendMessage(qwerty2);
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
                 networking.SendMessage(qwerty);
-            });
         }
     }
 }

@@ -355,9 +355,9 @@ namespace speechKit
             string req = "";
             var doc = new XmlDocument();
             {
-                doc.LoadXml(text);
                 try
                 {
+                    doc.LoadXml(text);
                     foreach (XmlNode node in doc.SelectNodes("recognitionResults"))
                     {
                         req = node.FirstChild.InnerText; //полученный текст
@@ -370,8 +370,44 @@ namespace speechKit
                 }
                
             }
+            string[] tmps = req.Split(' ');
+            for (int i = 0; i < tmps.Length; i++)
+            {
+                switch (tmps[i])
+                {
+                    case "осп":
+                        tmps[i] = "офз";
+                        break;
+                    case "fn":
+                        tmps[i] = "офз-н";
+                        break;
+                    case "vpn":
+                        tmps[i] = "офз-н";
+                        break;
+                    case "дакрон":
+                        tmps[i] = "datatron";
+                        break;
+                    case "трон":
+                        if (i > 0)
+                            if (tmps[i - 1].Equals("за") || tmps[i - 1].Equals("дата"))
+                            {
+                                tmps[i - 1] = "datatron";
+                                tmps[i] = null;
+                            }
+                        break;
+                    case "фз":
+                        if (i > 0)
+                            if (tmps[i - 1].Equals("о"))
+                            {
+                                tmps[i - 1] = "офз";
+                                tmps[i] = null;
+                            }
+                        break;
 
-            return req;
+                }
+            }
+
+            return string.Join(" ", tmps);
 
 		}
 		

@@ -15,6 +15,8 @@ namespace Datatron.Networking
     public class PseudoAPI
     {
         public string q { get; set; }
+        public string f { get; set; }
+        public string c { get; set; }
         public string a { get; set; }
         public string s1 { get; set; }
         public string s2 { get; set; }
@@ -29,11 +31,11 @@ namespace Datatron.Networking
     class NetworkingSingleton
     {
 
-        public Timer tmr;
+        public Timer tmr2;
         //public void DisableTImer() { tmr.Enabled = false; }
         //public void EnableTImer() { tmr.Enabled = true; }
         //public void AppendToTimer(object a) { tmr.Elapsed += (ElapsedEventHandler)a; }
-
+        Stack<string> msgquery = new Stack<string>();
         public TcpClient client = new TcpClient();
         private IPEndPoint serverEndPoint;
 
@@ -41,25 +43,38 @@ namespace Datatron.Networking
 
         public void SendMessage(string msg)
         {
-            byte[] buffer = System.Text.Encoding.UTF8.GetBytes(msg);
-            try
-            {
-                Debug.WriteLine("kek11 : " + msg.Substring(0,Math.Min(14, msg.Length)));
-                NetworkStream clientStream = client.GetStream();
-                clientStream.Flush();
-                clientStream.Write(buffer, 0, buffer.Length);
-                clientStream.Flush();
-                Debug.WriteLine("kek22");
-            }
-            catch { Debug.WriteLine("CANT SEND DATA"); }
+            msgquery.Push(msg);
         }
 
-        public void SendQuestion(string user_query = "NOOOPE", string formatted_responce = "NOOOPE", string seeMoreQuestions1 = "", string seeMoreQuestions2 = "", int docs = 0, int pics = 0, int urls = 0, string videoNum1 = "2", string videoNum2 = "1")
+        public void send_itself(Object source, ElapsedEventArgs e)
         {
-            tmr.Enabled = false;
+            try
+            {
+                string msg = msgquery.Pop();
+                if (!msg.Equals(""))
+                {
+                    byte[] buffer = System.Text.Encoding.UTF8.GetBytes(msg);
+                    try
+                    {
+                        Debug.WriteLine("kek11 : " + msg.Substring(0, Math.Min(14, msg.Length)));
+                        NetworkStream clientStream = client.GetStream();
+                        clientStream.Flush();
+                        clientStream.Write(buffer, 0, buffer.Length);
+                        clientStream.Flush();
+                        //Debug.WriteLine("kek22");
+                    }
+                    catch { Debug.WriteLine("CANT SEND DATA"); }
+                }
+            }
+            catch { }
+        }
 
+        public void SendQuestion(string user_query = "NOOOPE", string formal_query = "", string confidence = "", string formatted_responce = "NOOOPE", string seeMoreQuestions1 = "", string seeMoreQuestions2 = "", int docs = 0, int pics = 0, int urls = 0, string videoNum1 = "0", string videoNum2 = "0")
+        {
             PseudoAPI fullQuery = new PseudoAPI();
             fullQuery.q = user_query;
+            fullQuery.f = formal_query;
+            fullQuery.c = confidence;
             fullQuery.a = formatted_responce;
             fullQuery.s1 = seeMoreQuestions1;
             fullQuery.s2 = seeMoreQuestions2;
@@ -67,14 +82,8 @@ namespace Datatron.Networking
             fullQuery.vn1 = videoNum1;
             fullQuery.vn2 = videoNum2;
 
-            Task.Delay(150).ContinueWith(_ =>
-            {
                 SendMessage(JsonConvert.SerializeObject(fullQuery));
-            });
-            Task.Delay(300).ContinueWith(_ =>
-            {
-                tmr.Enabled = true;
-            });
+            
         }
 
 
@@ -88,19 +97,20 @@ namespace Datatron.Networking
         private NetworkingSingleton()
         {
             string line = "127.0.0.1";
-            try
+            //try
             {
                 using (StreamReader sr = new StreamReader("config.txt"))
                 {
                     line = sr.ReadToEnd();
                 }
             }
-            catch { }
+            //catch { }
             serverEndPoint = new IPEndPoint(IPAddress.Parse(line), 10000);
             try { client.Connect(serverEndPoint); } catch { }
-            tmr = new Timer(100);
-            tmr.AutoReset = true;
-            tmr.Enabled = true;
+            tmr2 = new Timer(100);
+            tmr2.AutoReset = true;
+            tmr2.Enabled = true;
+            tmr2.Elapsed += send_itself;
         }
 
         public static NetworkingSingleton getInstance()

@@ -43,7 +43,16 @@ namespace Datatron.Networking
 
         private NetworkingSingletonSK()
         {
-            serverEndPoint = new IPEndPoint(IPAddress.Loopback, 10007);
+            string line = "127.0.0.1";
+            try
+            {
+                using (StreamReader sr = new StreamReader("config.txt"))
+                {
+                    line = sr.ReadToEnd();
+                }
+            }
+            catch { }
+            serverEndPoint = new IPEndPoint(IPAddress.Parse(line), 10007);
             try { client.Connect(serverEndPoint); } catch { }
         }
 

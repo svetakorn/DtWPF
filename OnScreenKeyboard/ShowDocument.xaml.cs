@@ -84,14 +84,8 @@ namespace OnScreenKeyboard
             */
 
             networking.SendMessage("^N" + attachments[docNum].caption);
-            Task.Delay(225).ContinueWith(_ =>
-            {
                 networking.SendMessage("^D"+"/docs/doc/" + attachments[docNum].path);
-            });
-            Task.Delay(450).ContinueWith(_ =>
-            {
                 networking.SendMessage("^t1");
-            });
 
         }
 

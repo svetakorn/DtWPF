@@ -77,19 +77,17 @@
 		</Grid>
 		<Grid Grid.Column="1">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="4*"></RowDefinition>
+				<RowDefinition Height="2.86*"></RowDefinition>
+				<RowDefinition Height="1.33*"></RowDefinition>
 				<RowDefinition Height="6*"></RowDefinition>
 				<RowDefinition Height="3*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Grid Grid.Row="0">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="192"></ColumnDefinition>
+					<ColumnDefinition x:Name="CancelAnim" Width="0"></ColumnDefinition>
 					<ColumnDefinition Width="*"></ColumnDefinition>
 				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="2.5*"/>
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
 				<Grid  MouseDown="Grid_MouseDown">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="0.25*"/>
@@ -346,8 +344,9 @@
 						<ImageBrush ImageSource="pause.png" Stretch="Uniform"/>
 					</Image.OpacityMask>
 				</Image-->
-				<Button Grid.Column="1" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#FFFFFF" Foreground="#00000000" BorderThickness="4, 4, 128, 4" />
-				<TextBox Padding="32, 16, 132, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="1" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
+				<Label Grid.Column="1" Content="ОТМЕНА" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="24" Padding="30, 30, 14, 30" Margin="-40,0,0,0" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" MouseDown="Label_MouseDown"/>
+				<Button Grid.Column="2" Margin="16" Height="128" Background="#00DDDDDD" BorderBrush="#FFFFFF" Foreground="#00000000" BorderThickness="4, 4, 128, 4" />
+				<TextBox Padding="32, 16, 132, 16" SpellCheck.IsEnabled="True" Margin="16" Grid.Column="2" Language="ru-ru" x:Name="textBox" Text="{Binding Text, ElementName=onScreenKeyboard, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" Foreground="White" FontSize="40" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" BorderBrush="White" Height="128" BorderThickness="0">
 					<TextBox.SelectionBrush>
 						<SolidColorBrush Color="#FFD8D8D8" Opacity="0.4"/>
 					</TextBox.SelectionBrush>
@@ -356,24 +355,30 @@
 					</TextBox.Background>
 				</TextBox>
 
-				<Rectangle HorizontalAlignment="Right" Width="128" Grid.Column="1" Margin="0,35,16,35" Fill="#FF7D39E4" MouseDown="search_MouseDown">
+				<Rectangle HorizontalAlignment="Right" Width="128" Grid.Column="2" Margin="0,35,16,35" Fill="#FF7D39E4" MouseDown="search_MouseDown">
 					<Rectangle.OpacityMask>
 						<ImageBrush ImageSource="search_icon.png" Stretch="None"/>
 					</Rectangle.OpacityMask>
 				</Rectangle>
 
 
-				<TextBlock Grid.Row="1" Margin="16,0" Foreground="White" FontSize="24" Width="128" VerticalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" ><Run Text="ПОПРОБУЙТЕ"/><LineBreak/><Run Text="СПРОСИТЬ"/></TextBlock>
-				<Grid Grid.Row="1" Grid.Column="1" MouseDown="canvas_MouseDown">
+			</Grid>
+			<Grid Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="192"></ColumnDefinition>
+					<ColumnDefinition Width="*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<TextBlock Margin="16,0" Foreground="White" FontSize="24" Width="128" VerticalAlignment="Center" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" ><Run Text="ПОПРОБУЙТЕ"/><LineBreak/><Run Text="СПРОСИТЬ"/></TextBlock>
+				<Grid Grid.Column="1" MouseDown="canvas_MouseDown">
 					<local:RunningText Margin="16, 0"></local:RunningText>
 					<TextBlock Grid.Row="1" Grid.Column="1" x:Name="_runningText" TextWrapping="Wrap" Margin="0,0,0,0" Width="1160" Foreground="White" FontSize="32" FontFamily="/OnScreenKeyboard;component/Fonts/#Univers Condensed" Text="{Binding Tag, ElementName=_runningText}" Height="40" LineHeight="40"/>
 				</Grid>
 			</Grid>
-			<Grid Grid.Row="1">
+			<Grid Grid.Row="2">
 				<local:NinePatchPurple Margin="16"></local:NinePatchPurple>
 				<local:Keyboard Margin="48" x:Name="onScreenKeyboard"></local:Keyboard>
 			</Grid>
-			<Grid Grid.Row="2">
+			<Grid Grid.Row="3">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="10*"></ColumnDefinition>
 					<ColumnDefinition Width="4*"></ColumnDefinition>
